@@ -1,0 +1,140 @@
+@import 'generics';
+
+$options-labels-width: 150px;
+
+#optionsForm {
+    margin-top: 15px;
+    position: relative;
+
+    &.submit-attempt input:invalid,
+    &.submit-attempt select:invalid {
+        border: 2px solid red;
+    }
+
+    .monospace {
+        font-family: monospace;
+    }
+
+    #testResult {
+        border-radius: 5px;
+        left: -200%;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        transform: translateX(-50%);
+        transition: left .4s ease;
+
+        &.ok {
+            @include alert-success;
+
+            width: 50%;
+        }
+
+        &.ko {
+            @include alert-danger;
+
+            text-align: left;
+            width: 90%;
+        }
+
+        &.ok,
+        &.ko {
+            left: 50%;
+        }
+    }
+
+    #saveOK {
+        @include alert-success;
+
+        border-radius: 5px;
+        left: -200%;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        transform: translateX(-50%);
+        transition: left .4s ease;
+        width: 50%;
+
+        &.show {
+            left: 50%;
+        }
+    }
+
+    #owlForExchangeBug {
+        @include alert-danger;
+
+        border-radius: 5px;
+        display: none;
+        font-size: 13px;
+        margin-bottom: 10px;
+        padding: 10px;
+
+        &.show {
+            display: block;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+
+        label {
+            display: inline-block;
+            font-size: 15px;
+            padding-right: 5px;
+            text-align: right;
+            vertical-align: middle;
+            width: $options-labels-width;
+        }
+
+        input,
+        select {
+            vertical-align: middle;
+            width: calc(100% - ($options-labels-width + 20px));
+        }
+
+        .description {
+            font-size: 11px;
+            margin-top: 5px;
+            padding-left: calc($options-labels-width + 10px);
+
+            audio {
+                display: inline-block;
+                margin: 5px 0 5px;
+                width: 100%;
+            }
+        }
+
+        &.buttons {
+            text-align: center;
+
+            button.save {
+                margin-left: 80px;
+            }
+        }
+    }
+
+    fieldset {
+        display: none;
+        margin-bottom: 15px;
+
+        // The visibility of a nested fieldset depends on the visibility of the parent
+        & fieldset {
+            display: block;
+        }
+
+        // "Lightweight" version of the fieldset, where only the top border is visible
+        &.light {
+            border-width: 2px 0 0 0;
+            margin: 0;
+            padding: 10px 0 0 0;
+        }
+
+        body[data-provider='anthropic'] &#anthropic,
+        body[data-provider='google'] &#google,
+        body[data-provider='openai'] &#openai {
+            display: block;
+        }
+    }
+}

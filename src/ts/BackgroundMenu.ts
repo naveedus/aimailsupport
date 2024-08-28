@@ -94,6 +94,14 @@ const menuIdTranslateAndText2Speech = messenger.menus.create({
     ]
 })
 
+const menuIdModerate = messenger.menus.create({
+    id: 'aiModerate',
+    title: browser.i18n.getMessage('mailModerate'),
+    contexts: [
+        'message_display_action_menu'
+    ]
+})
+
 // Separator for the message display action menu
 browser.menus.create({
     id: 'aiMessageDisplayActionMenuSeparator1',
@@ -269,6 +277,24 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             }
         }
     }
+    else if(info.menuItemId == menuIdModerate) {
+        sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
+
+        const textToModerate = await getCurrentMessageContent()
+
+        if(textToModerate == null) {
+            sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
+        }
+        else {
+            llmProvider.moderateText(textToModerate).then(moderatedResponse => {
+                console.info(JSON.stringify(moderatedResponse))
+                sendMessageToActiveTab({type: 'addText', content: 'DONE'})
+            }).catch(error => {
+                sendMessageToActiveTab({type: 'showError', content: error.message})
+                console.error(`Error during moderation: ${error.message}`)
+            })
+        }
+    }
 })
 
 /**
@@ -308,6 +334,12 @@ browser.runtime.onMessage.addListener(async (message) => {
 async function updateMenuVisibility(): Promise<void> {
     const configs = await getConfigs()
     const llmProvider = ProviderFactory.getInstance(configs)
+
+    // canModerateText -->
+    messenger.menus.update(menuIdModerate, {
+        enabled: llmProvider.getCanModerateText()
+    })
+    // <-- canModerateText
 
     // canSpeechFromText -->
     messenger.menus.update(menuIdText2Speech, {

@@ -11,6 +11,10 @@
         "message": "Listen",
         "description": "Menu option to play audio from the textual content of an email or a portion of it."
     },
+    "mailModerate": {
+        "message": "Moderate",
+        "description": "Menu option to moderate the content of a received email."
+    },
     "mailSoftenText": {
         "message": "Soften text",
         "description": "Menu option to softens the tone of a text."

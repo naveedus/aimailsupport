@@ -2,7 +2,7 @@
  * Definition of a generic class for the implementation of an LLM service provider,
  * which all actual implementations must extend.
  */
-import { ConfigType } from '../ConfigType';
+import { ConfigType } from '../ConfigType'
 
 export class GenericProvider {
     protected mainUserLanguageCode: string
@@ -27,6 +27,16 @@ export class GenericProvider {
      * @returns A Promise resolving to the converted text as a Blob.
      */
     public async getSpeechFromText(input: string): Promise<Blob> {
+        throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+
+    /**
+     * Moderates the input string.
+     * 
+     * @param input - The string to be moderated.
+     * @returns A promise that resolves to the moderated JSON object.
+     */
+    public async moderateText(input: string): Promise<any> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 
@@ -83,6 +93,10 @@ export class GenericProvider {
     // specific capabilities.
     // This is done by checking that the current class actually has a specific
     // implementation for the reference method. -->
+    public getCanModerateText(): boolean {
+        return this.moderateText !== GenericProvider.prototype.moderateText
+    }
+
     public getCanSpeechFromText(): boolean {
         return this.getSpeechFromText !== GenericProvider.prototype.getSpeechFromText
     }

@@ -8,6 +8,9 @@
     "mailListen": {
         "message": "Ascolta"
     },
+    "mailModerate": {
+        "message": "Modera"
+    },
     "mailSoftenText": {
         "message": "Ammorbidisci testo"
     },

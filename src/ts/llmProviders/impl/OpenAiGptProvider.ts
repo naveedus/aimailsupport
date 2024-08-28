@@ -63,6 +63,33 @@ export class OpenAiGptProvider extends GenericProvider {
         return await response.blob()
     }
 
+    public async moderateText(input: string): Promise<any> {
+        const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
+
+        const requestData = JSON.stringify({
+            'model': 'text-moderation-stable',
+            'input': input
+        })
+
+        const requestOptions: RequestInit = {
+            method: 'POST',
+            headers: this.getHeader(),
+            body: requestData,
+            redirect: 'follow',
+            signal: signal
+        }
+
+        const response = await fetch('https://api.openai.com/v1/moderations', requestOptions)
+        clearAbortSignalWithTimeout()
+
+        if (!response.ok) {
+            const errorResponse = await response.json()
+            throw new Error(`OpenAI error: ${errorResponse.error.message}`)
+        }
+
+        return await response.json()
+    }
+
     public async softenText(input: string): Promise<string> {
         console.debug(`Request to softer the text: ${input}`)
 

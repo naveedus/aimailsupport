@@ -10,6 +10,7 @@ const configs: ConfigType = {
     mainUserLanguageCode: 'English',
     llmProvider: null,
     servicesTimeout: 12,
+    debugMode: true,
 
     anthropic: {
         apiKey: null,

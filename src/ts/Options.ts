@@ -1,5 +1,5 @@
 import { ConfigType } from './ConfigType'
-import { getConfigs, localizeNodes } from './Utils'
+import { getConfigs, localizeNodes, logMessage } from './Utils'
 import { ProviderFactory } from './llmProviders/ProviderFactory'
 
 
@@ -67,6 +67,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
         mainUserLanguageCode: (document.querySelector('#mainUserLanguageCode') as HTMLInputElement).value,
         llmProvider: (document.querySelector('#llmProvider') as HTMLInputElement).value,
         servicesTimeout: parseInt((document.querySelector('#servicesTimeout') as HTMLInputElement).value),
+        debugMode: (document.querySelector('#debugMode') as HTMLInputElement).checked,
         anthropic: {
             apiKey: (document.querySelector('#anthropicApiKey') as HTMLInputElement).value,
             model: (document.querySelector('#anthropicModel') as HTMLInputElement).value
@@ -88,8 +89,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
     // <-- store options
 
     browser.storage.sync.set(configs)
-
-    //console.debug(await getConfigs())
+    logMessage('Storing configurations:\n' + JSON.stringify(await getConfigs(), null, 4))
 
     // Displaying and turning off the save OK message -->
     document.querySelector('#saveOK').classList.add('show')
@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     (document.querySelector('#mainUserLanguageCode') as HTMLInputElement).value = configs.mainUserLanguageCode || languageCode;
     (document.querySelector('#llmProvider') as HTMLInputElement).value = selectedLlmProvider;
     (document.querySelector('#servicesTimeout') as HTMLInputElement).value = (configs.servicesTimeout || 12).toString();
+    (document.querySelector('#debugMode') as HTMLInputElement).checked = configs.debugMode;
 
     // Anthropic Claude section -->
     (document.querySelector('#anthropicApiKey') as HTMLInputElement).value = configs.anthropic?.apiKey || '';

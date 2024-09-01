@@ -14,8 +14,9 @@ export async function getConfig(key: string): Promise<any> | null {
 
     try {
         config = await browser.storage.sync.get(key)
+        config = config[key]
     } catch (error) {
-        console.error(`An error occurred while retrieving the config for ${key}: ${error}`)
+        logMessage(`An error occurred while retrieving the config for ${key}: ${error}`, 'error')
     }
 
     return config
@@ -34,7 +35,7 @@ export async function getConfigs(): Promise<ConfigType> | null {
     try {
         configs = await browser.storage.sync.get(null)
     } catch (error) {
-        console.error(`An error occurred while retrieving configs: ${error}`)
+        logMessage(`An error occurred while retrieving configs: ${error}`, 'error')
     }
 
     return configs
@@ -125,7 +126,7 @@ export function getLanguageNameFromCode(languageCode: string): string | undefine
     try {
         return languageNames.of(languageCode)
     } catch (error) {
-        console.error(`Error in retrieving the language name from the code: ${error}`)
+        logMessage(`Error in retrieving the language name from the code: ${error}`, 'error')
         return 'en'
     }
 }
@@ -144,6 +145,26 @@ export function localizeNodes(): void {
         const l10nRef = node.getAttribute('data-l10n-ref')
         node.innerHTML = messenger.i18n.getMessage(l10nRef)
     })
+}
+
+/**
+ * Logs a message to the console if the debug mode is enabled.
+ * 
+ * This function checks the configuration for the 'debugMode' setting.
+ * If 'debugMode' is true, it will log the provided message using the specified 
+ * console method (e.g., 'log', 'error', 'warn', 'info'). 
+ * 
+ * @param message - The message to log to the console.
+ * @param method - The console method to use for logging. Defaults to 'log'.
+ * 
+ * @returns A promise that resolves to void.
+ */
+export async function logMessage(message: string, method: string = 'log'): Promise<void> {
+    const isDebugModeEnabled = await getConfig('debugMode')
+
+    if (isDebugModeEnabled === true) {
+        console[method](message)
+    }
 }
 
 /**

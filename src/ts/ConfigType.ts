@@ -5,6 +5,7 @@ export interface ConfigType {
     mainUserLanguageCode: string
     llmProvider: string
     servicesTimeout: number
+    debugMode: boolean
 
     anthropic: {
         apiKey: string

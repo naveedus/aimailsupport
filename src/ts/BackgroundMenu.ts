@@ -1,5 +1,5 @@
 import { ProviderFactory } from './llmProviders/ProviderFactory'
-import { getConfigs, getCurrentMessageContent, sendMessageToActiveTab } from './Utils'
+import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './Utils'
 
 
 // Create the menu entries -->
@@ -145,7 +145,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textSummarized})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during summarization: ${error.message}`)
+                logMessage(`Error during summarization: ${error.message}`, 'error')
             })
         }
     }
@@ -162,7 +162,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textSoftened})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during softening: ${error.message}`)
+                logMessage(`Error during softening: ${error.message}`, 'error')
             })
         }
     }
@@ -179,7 +179,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textSuggested})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during reply generation: ${error.message}`)
+                logMessage(`Error during reply generation: ${error.message}`, 'error')
             })
         }
     }
@@ -199,7 +199,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addAudio', content: blob})
             } catch (error) {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during translation and summarization: ${error.message}`)
+                logMessage(`Error during summarization and text2Speech: ${error.message}`, 'error')
             }
         }
     }
@@ -216,7 +216,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addAudio', content: blob})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during text2Speech conversion: ${error.message}`)
+                logMessage(`Error during text2Speech conversion: ${error.message}`, 'error')
             })
         }
     }
@@ -233,7 +233,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textTranslated})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during translation: ${error.message}`)
+                logMessage(`Error during translation: ${error.message}`, 'error')
             })
         }
     }
@@ -253,7 +253,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textTranslateAndSummarized})
             } catch (error) {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during translation and summarization: ${error.message}`)
+                logMessage(`Error during translation and summarize: ${error.message}`, 'error')
             }
         }
     }
@@ -273,7 +273,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addAudio', content: blob})
             } catch (error) {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during translation and summarization: ${error.message}`)
+                logMessage(`Error during translation and text2Speech: ${error.message}`, 'error')
             }
         }
     }
@@ -288,10 +288,10 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
         else {
             llmProvider.moderateText(textToModerate).then(moderatedResponse => {
                 console.info(JSON.stringify(moderatedResponse))
-                sendMessageToActiveTab({type: 'addText', content: 'DONE'})
+                sendMessageToActiveTab({type: 'addText', content: 'TODO'})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                console.error(`Error during moderation: ${error.message}`)
+                logMessage(`Error during moderation: ${error.message}`, 'error')
             })
         }
     }

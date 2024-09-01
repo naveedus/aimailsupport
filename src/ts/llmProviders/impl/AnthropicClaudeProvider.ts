@@ -1,6 +1,6 @@
 import { GenericProvider } from '../GenericProvider'
 import { ConfigType } from '../../ConfigType'
-import { getLanguageNameFromCode } from '../../Utils'
+import { getLanguageNameFromCode, logMessage } from '../../Utils'
 
 /**
  * Class with the implementation of methods useful for interfacing with the
@@ -19,19 +19,19 @@ export class AnthropicClaudeProvider extends GenericProvider {
     }
 
     public async softenText(input: string): Promise<string> {
-        console.debug(`Request to softer the text: ${input}`)
+        logMessage(`Request to softer the text: ${input}`, 'debug')
 
         return this.manageMessageContent(this.PROMPTS.SOFTER, input)
     }
 
     public async suggestReplyFromText(input: string): Promise<string> {
-        console.debug(`Request suggestion reply from text: ${input}`)
+        logMessage(`Request suggestion reply from text: ${input}`, 'debug')
 
         return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY, input)
     }
 
     public async summarizeText(input: string): Promise<string> {
-        console.debug(`Request to summarize the text: ${input}`)
+        logMessage(`Request to summarize the text: ${input}`, 'debug')
 
         return this.manageMessageContent(this.PROMPTS.SUMMARIZE, input)
     }
@@ -41,7 +41,7 @@ export class AnthropicClaudeProvider extends GenericProvider {
     }
 
     public async translateText(input: string): Promise<string> {
-        console.debug(`Request to translate in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input}`)
+        logMessage(`Request to translate in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input}`, 'debug')
 
         return this.manageMessageContent(this.PROMPTS.TRANSLATE.replace('%s', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
     }

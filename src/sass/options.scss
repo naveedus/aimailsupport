@@ -92,6 +92,10 @@ $options-labels-width: 150px;
         select {
             vertical-align: middle;
             width: calc(100% - ($options-labels-width + 20px));
+
+            &[type="checkbox"] {
+                width: auto;
+            }
         }
 
         .description {

@@ -88,6 +88,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
     }
     // <-- store options
 
+    // Persists the configurations
     browser.storage.sync.set(configs)
     logMessage('Storing configurations:\n' + JSON.stringify(await getConfigs(), null, 4))
 

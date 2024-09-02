@@ -13,8 +13,7 @@ export async function getConfig(key: string): Promise<any> | null {
     let config: any = null
 
     try {
-        config = await browser.storage.sync.get(key)
-        config = config[key]
+        config = (await browser.storage.sync.get(key))[key]
     } catch (error) {
         logMessage(`An error occurred while retrieving the config for ${key}: ${error}`, 'error')
     }

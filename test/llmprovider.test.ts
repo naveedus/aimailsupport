@@ -4,6 +4,7 @@ import { AnthropicClaudeProvider } from '../src/ts/llmProviders/impl/AnthropicCl
 import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/OpenAiGptProvider'
 
 import dotenv from 'dotenv'
+import 'jest-webextension-mock'
 
 // Dummy configuration:
 const configs: ConfigType = {
@@ -34,8 +35,14 @@ const configs: ConfigType = {
     }
 }
 
+// Persists the configurations
+browser.storage.sync.set(configs)
+
 // Load environment variables from the .env file, see README.md for more information
 dotenv.config()
+
+// Added a little delay between calls to avoid hitting the rate limit on some LLM models
+afterEach(() => new Promise(resolve => setTimeout(resolve, 2000)))
 
 // AnthropicClaudeProvider tests
 describe('AnthropicClaudeProvider', () => {

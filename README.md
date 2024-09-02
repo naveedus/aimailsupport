@@ -130,6 +130,7 @@ AI Mail Support for Thunderbird aims to make use of a minimal set of permissions
   Used to read the content of an existing email in the viewing window, see https://webextension-api.thunderbird.net/en/latest/messages.html#permissions.
 - messagesModify: Read and modify your email messages as they are displayed to you.  
   Used to modify the content of an existing email in the viewing window, see https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html#permissions.
+- sensitiveDataUpload: The contents of the emails are sent (based on the choices made in the options) to the different LLM service providers, who will then be able to process them.  
 - storage: Enables add-on to store and retrieve data, and listen for changes to stored items.  
   Used to store user settings, see https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage.
 

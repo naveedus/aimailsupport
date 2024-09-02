@@ -18,6 +18,7 @@
         "menus",
         "messagesRead",
         "messagesModify",
+        "sensitiveDataUpload",
         "storage",
         "https://api.anthropic.com/"
     ],

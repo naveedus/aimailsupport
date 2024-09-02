@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "AI Mail Support",
     "description": "__MSG_addonDescription__",
-    "version": "0.85",
+    "version": "0.85.1",
     "author": "Yellow Sakura",
     "homepage_url": "https://www.yellowsakura.com",
     "default_locale": "en",
@@ -18,6 +18,7 @@
         "menus",
         "messagesRead",
         "messagesModify",
+        "sensitiveDataUpload",
         "storage",
         "https://api.anthropic.com/"
     ],

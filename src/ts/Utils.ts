@@ -70,6 +70,11 @@ export async function getCurrentMessageContent(): Promise<string> {
 
     // Case: Email viewing -->
     if(messageDisplayed) {
+        // Starting from Thunderbird 128, it is possible to use the function:
+        // await messenger.messages.listInlineTextParts(messageDisplayed.id)
+        // see https://webextension-api.thunderbird.net/en/128-esr-mv2/messages.html#listinlinetextparts-messageid
+        // in combination with the convertToPlainText function to "clean" the
+        // HTML code (https://webextension-api.thunderbird.net/en/128-esr-mv2/messengerUtilities.html#messengerutilities-converttoplaintext).
         const full = await messenger.messages.getFull(messageDisplayed.id)
         const stack = [full]
 

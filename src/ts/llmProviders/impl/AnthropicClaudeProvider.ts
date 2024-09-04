@@ -1,6 +1,6 @@
-import { GenericProvider } from '../GenericProvider'
-import { ConfigType } from '../../ConfigType'
-import { getLanguageNameFromCode, logMessage } from '../../Utils'
+import { GenericProvider } from '../genericProvider'
+import { ConfigType } from '../../helpers/configType'
+import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 
 /**
  * Class with the implementation of methods useful for interfacing with the

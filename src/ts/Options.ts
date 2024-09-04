@@ -1,6 +1,6 @@
-import { ConfigType } from './ConfigType'
-import { getConfigs, localizeNodes, logMessage } from './Utils'
-import { ProviderFactory } from './llmProviders/ProviderFactory'
+import { ConfigType } from './helpers/configType'
+import { getConfigs, localizeNodes } from './helpers/utils'
+import { ProviderFactory } from './llmProviders/providerFactory'
 
 
 // Internationalization message management
@@ -90,7 +90,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
 
     // Persists the configurations
     browser.storage.sync.set(configs)
-    logMessage('Storing configurations:\n' + JSON.stringify(await getConfigs(), null, 4))
+    //logMessage('Storing configurations:\n' + JSON.stringify(await getConfigs(), null, 4))
 
     // Displaying and turning off the save OK message -->
     document.querySelector('#saveOK').classList.add('show')

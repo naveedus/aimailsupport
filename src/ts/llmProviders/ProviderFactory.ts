@@ -2,11 +2,11 @@
  * Factory class responsible for creating instances of AI LLM providers based on the
  * provided configuration.
  */
-import { GenericProvider } from './GenericProvider'
-import { ConfigType } from '../ConfigType'
-import { AnthropicClaudeProvider } from './impl/AnthropicClaudeProvider'
-import { GoogleGeminiProvider } from './impl/GoogleGeminiProvider'
-import { OpenAiGptProvider } from './impl/OpenAiGptProvider'
+import { GenericProvider } from './genericProvider'
+import { ConfigType } from '../helpers/configType'
+import { AnthropicClaudeProvider } from './impl/anthropicClaudeProvider'
+import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
+import { OpenAiGptProvider } from './impl/openAiGptProvider'
 
 
 export class ProviderFactory {

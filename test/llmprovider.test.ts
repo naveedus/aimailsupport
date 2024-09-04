@@ -1,7 +1,7 @@
-import { ConfigType } from '../src/ts/ConfigType'
-import { ProviderFactory } from '../src/ts/llmProviders/ProviderFactory'
-import { AnthropicClaudeProvider } from '../src/ts/llmProviders/impl/AnthropicClaudeProvider'
-import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/OpenAiGptProvider'
+import { ConfigType } from '../src/ts/helpers/configType'
+import { ProviderFactory } from '../src/ts/llmProviders/providerFactory'
+import { AnthropicClaudeProvider } from '../src/ts/llmProviders/impl/anthropicClaudeProvider'
+import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/openAiGptProvider'
 
 import dotenv from 'dotenv'
 import 'jest-webextension-mock'

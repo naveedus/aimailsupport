@@ -1,5 +1,6 @@
-import { ProviderFactory } from './llmProviders/ProviderFactory'
-import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './Utils'
+import { createBarChart } from './helpers/chartUtils'
+import { ProviderFactory } from './llmProviders/providerFactory'
+import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './helpers/utils'
 
 
 // Create the menu entries -->
@@ -287,8 +288,9 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
         }
         else {
             llmProvider.moderateText(textToModerate).then(moderatedResponse => {
-                console.info(JSON.stringify(moderatedResponse))
-                sendMessageToActiveTab({type: 'addText', content: 'TODO'})
+                console.info(createBarChart(moderatedResponse).innerHTML)
+
+                sendMessageToActiveTab({type: 'addText', content: JSON.stringify(moderatedResponse)})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
                 logMessage(`Error during moderation: ${error.message}`, 'error')

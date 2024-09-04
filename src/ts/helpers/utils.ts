@@ -1,4 +1,4 @@
-import { ConfigType } from './ConfigType'
+import { ConfigType } from './configType'
 import sanitizeHtml from 'sanitize-html'
 
 /**

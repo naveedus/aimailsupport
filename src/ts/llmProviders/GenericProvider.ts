@@ -2,7 +2,7 @@
  * Definition of a generic class for the implementation of an LLM service provider,
  * which all actual implementations must extend.
  */
-import { ConfigType } from '../ConfigType'
+import { ConfigType } from '../helpers/configType'
 
 export class GenericProvider {
     protected mainUserLanguageCode: string

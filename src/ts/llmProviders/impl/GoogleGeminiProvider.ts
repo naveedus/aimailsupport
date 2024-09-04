@@ -1,5 +1,5 @@
-import { GenericProvider } from '../GenericProvider'
-import { ConfigType } from '../../ConfigType'
+import { GenericProvider } from '../genericProvider'
+import { ConfigType } from '../../helpers/configType'
 
 
 export class GoogleGeminiProvider extends GenericProvider {

@@ -9,6 +9,10 @@
                     addAudio(message.content)
                     break
 
+                case 'addChart':
+                    addChart(message.content)
+                    break
+
                 case 'addText':
                     addText(message.content)
                     break
@@ -42,6 +46,12 @@ function addAudio(blob: Blob) {
     }
 
     reader.readAsDataURL(blob)
+}
+
+function addChart(chart: HTMLElement) {
+    clearContainer(false)
+
+    getInnerResponse().querySelector('#amsContent').append(chart)
 }
 
 // Support function to get the inner response node inside the shadow

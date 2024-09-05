@@ -176,10 +176,10 @@ export async function logMessage(message: string, method: string = 'log'): Promi
  *
  * @param message An object containing the message to be sent, with properties
  *        'type' and 'content'.
- *         The 'content' property can be a string or a Blob object.
+ *         The 'content' property can be a Blob object, an HTMLElement or a string.
  * @returns A Promise that resolves when the message has been sent successfully
  */
-export async function sendMessageToActiveTab(message: {type: string, content: string | Blob}): Promise<void> {
+export async function sendMessageToActiveTab(message: {type: string, content: Blob | HTMLElement | string}): Promise<void> {
     const tabs = await browser.tabs.query({active: true, currentWindow: true})
     await browser.tabs.sendMessage(tabs[0].id, message)
 }

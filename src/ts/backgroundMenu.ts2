@@ -288,9 +288,9 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
         }
         else {
             llmProvider.moderateText(textToModerate).then(moderatedResponse => {
-                console.info(createBarChart(moderatedResponse).innerHTML)
+                const barChar = createBarChart(moderatedResponse)
 
-                sendMessageToActiveTab({type: 'addText', content: JSON.stringify(moderatedResponse)})
+                sendMessageToActiveTab({type: 'addChart', content: barChar})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
                 logMessage(`Error during moderation: ${error.message}`, 'error')

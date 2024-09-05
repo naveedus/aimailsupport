@@ -1,3 +1,5 @@
+import { createBarChart } from './helpers/chartUtils'
+
 // Manage async messages -->
 (async () => {
     browser.runtime.onMessage.addListener(async (message: any) => {
@@ -48,10 +50,10 @@ function addAudio(blob: Blob) {
     reader.readAsDataURL(blob)
 }
 
-function addChart(chart: HTMLElement) {
+function addChart(chart: string) {
     clearContainer(false)
 
-    getInnerResponse().querySelector('#amsContent').append(chart)
+    getInnerResponse().querySelector('#amsContent').append(createBarChart(chart))
 }
 
 // Support function to get the inner response node inside the shadow

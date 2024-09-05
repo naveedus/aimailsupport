@@ -1,4 +1,3 @@
-import { createBarChart } from './helpers/chartUtils'
 import { ProviderFactory } from './llmProviders/providerFactory'
 import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './helpers/utils'
 
@@ -288,9 +287,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
         }
         else {
             llmProvider.moderateText(textToModerate).then(moderatedResponse => {
-                const barChar = createBarChart(moderatedResponse)
-
-                sendMessageToActiveTab({type: 'addChart', content: barChar})
+                sendMessageToActiveTab({type: 'addChart', content: moderatedResponse})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
                 logMessage(`Error during moderation: ${error.message}`, 'error')

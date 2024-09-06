@@ -1,4 +1,4 @@
-import { createBarChart } from './helpers/chartUtils'
+import { ChartUtils } from './helpers/chartUtils'
 
 // Manage async messages -->
 (async () => {
@@ -53,7 +53,8 @@ function addAudio(blob: Blob) {
 function addChart(chart: string) {
     clearContainer(false)
 
-    getInnerResponse().querySelector('#amsContent').append(createBarChart(chart))
+    const chartUtils = new ChartUtils()
+    getInnerResponse().querySelector('#amsContent').append(chartUtils.createBarChart(chart))
 }
 
 // Support function to get the inner response node inside the shadow

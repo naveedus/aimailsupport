@@ -17,6 +17,28 @@
 
 // Style for the shadow DOM
 #amsInnerResponse {
+    // Any potential chart drawn as a response
+    #chart {
+        .row {
+            align-items: center;
+            display: flex;
+
+            + .row {
+                margin-top: 10px;
+            }
+
+            .label {
+                width: 100px;
+            }
+
+            .bar {
+                background-color: #3498db;
+                border-radius: 5px;
+                height: 20px;
+            }
+        }
+    }
+
     &.error #amsContent {
         @include alert-danger;
     }

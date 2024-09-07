@@ -158,7 +158,7 @@ export function localizeNodes(): void {
  * 
  * This function checks the configuration for the 'debugMode' setting.
  * If 'debugMode' is true, it will log the provided message using the specified 
- * console method (e.g., 'log', 'error', 'warn', 'info'). 
+ * console method (e.g., 'log', 'error', 'warn', 'info').
  * 
  * @param message - The message to log to the console.
  * @param method - The console method to use for logging. Defaults to 'log'.

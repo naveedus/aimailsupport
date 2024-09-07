@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  * Update the DOM based on the selected LLM provider.
  *
  * @param {string} selectedValue - The selected value
+ *
  * @returns {void}
  */
 function updateDOMBasedOnSelectLlmProvider(selectedValue: string): void {

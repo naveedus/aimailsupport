@@ -35,9 +35,15 @@
                 width: 100%;
 
                 .bar {
-                    background-color: #3498db;
+                    background-color: #4CAF50;
+                    border: 1px solid #388E3C;
                     border-radius: 5px;
                     height: 20px;
+
+                    &.unsafe-value {
+                        background-color: #F44336;
+                        border: 1px solid #C62828;
+                    }
                 }
             }
         }

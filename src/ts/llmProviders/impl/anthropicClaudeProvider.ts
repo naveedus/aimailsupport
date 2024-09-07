@@ -60,6 +60,25 @@ export class AnthropicClaudeProvider extends GenericProvider {
         return headers
     }
 
+    /**
+     * This asynchronous method manages message content by sending a request
+     * to the Anthropic API using the provided system and user input.
+     * It constructs a POST request with the relevant model and message data,
+     * manages the request with a timeout signal, and processes the response.
+     *
+     * If the request is successful, it returns the content of the response
+     * message.
+     * In case of failure, it throws an error with the specific message from
+     * the Anthropic API.
+     *
+     * @param systemInput - The input for the 'system' role in the conversation.
+     * @param userInput - The input for the 'user' role in the conversation.
+     *
+     * @returns A promise that resolves to the content of the response message
+     *          from the API.
+     *
+     * @throws An error if the API response is not successful.
+     */
     private async manageMessageContent(systemInput: string, userInput: string): Promise<string> {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 

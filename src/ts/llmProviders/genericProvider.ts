@@ -23,7 +23,8 @@ export class GenericProvider {
     /**
      * Converts text to speech.
      *
-     * @param input The input text to be converted.
+     * @param input - The input text to be converted.
+     *
      * @returns A Promise resolving to the converted text as a Blob.
      */
     public async getSpeechFromText(input: string): Promise<Blob> {
@@ -34,6 +35,7 @@ export class GenericProvider {
      * Moderates the input string.
      * 
      * @param input - The string to be moderated.
+     *
      * @returns A promise that resolves to the moderated JSON object.
      */
     public async moderateText(input: string): Promise<any> {
@@ -43,7 +45,8 @@ export class GenericProvider {
     /**
      * Softens the tone of the input text and provides a modified version.
      *
-     * @param input The input text to be softened.
+     * @param input - The input text to be softened.
+     *
      * @returns A Promise resolving to the softened version of the input text.
      */
     public async softenText(input: string): Promise<string> {
@@ -53,7 +56,8 @@ export class GenericProvider {
     /**
      * Provides a suggested reply based on the input text.
      *
-     * @param input The input text for which a reply is suggested.
+     * @param input - The input text for which a reply is suggested.
+     *
      * @returns A Promise resolving to the suggested reply.
      */
     public async suggestReplyFromText(input: string): Promise<string> {
@@ -63,7 +67,8 @@ export class GenericProvider {
     /**
      * Summarizes the input text.
      *
-     * @param input The input text to be summarized.
+     * @param input - The input text to be summarized.
+     *
      * @returns A Promise resolving to the summarized text.
      */
     public async summarizeText(input: string): Promise<string> {
@@ -82,7 +87,8 @@ export class GenericProvider {
     /**
      * Translates the input text.
      *
-     * @param input The input text to be translated.
+     * @param input - The input text to be translated.
+     *
      * @returns A Promise resolving to the translated text.
      */
     public async translateText(input: string): Promise<string> {
@@ -130,6 +136,7 @@ export class GenericProvider {
      *
      * @param timeout - The duration in seconds after which the request should be
      *                  aborted.
+     *
      * @returns An object containing the AbortSignal and a clear function.
      */
     protected createAbortSignalWithTimeout(timeout: number): { signal: AbortSignal,

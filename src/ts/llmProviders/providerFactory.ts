@@ -14,7 +14,8 @@ export class ProviderFactory {
     /**
      * Returns an instance of an AI LLM provider based on the provided configuration.
      *
-     * @param config The configuration object specifying the desired provider.
+     * @param config - The configuration object specifying the desired provider.
+     *
      * @returns An instance of the specified AI LLM provider.
      */
     static getInstance(config: ConfigType): GenericProvider {

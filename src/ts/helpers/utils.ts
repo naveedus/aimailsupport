@@ -5,7 +5,8 @@ import sanitizeHtml from 'sanitize-html'
  * Retrieve data from browser storage for a specific key.
  * Returns null if no data is found or an error occurs.
  *
- * @param key The key to retrieve data from storage.
+ * @param key - The key to retrieve data from storage.
+ *
  * @returns A promise that resolves with the retrieved data, or null if an error
  *          occurs.
  */
@@ -120,7 +121,8 @@ export async function getCurrentMessageContent(): Promise<string> {
 /**
  * Retrieves the extended name of a language based on its code.
  *
- * @param {string} languageCode The language code (e.g., 'en' for English).
+ * @param {string} languageCode - The language code (e.g., 'en' for English).
+ *
  * @returns {string | undefined} The extended name of the language if found,
  *          otherwise 'en'.
  */
@@ -174,12 +176,19 @@ export async function logMessage(message: string, method: string = 'log'): Promi
 /**
  * Sends a message to the currently active tab in the browser
  *
- * @param message An object containing the message to be sent, with properties
- *        'type' and 'content'.
- *         The 'content' property can be a Blob object or a string.
+ * @param message - An object containing the message to be sent, with
+ *                  properties 'type' and 'content'.
+ *                  The 'content' property can be a Blob object, a string
+ *                  or an index signature type.
+ *                  The index signature type is { [key: string]: number },
+ *                  meaning an object whose keys are strings and values are
+ *                  numbers.
+ *                  This type is used to manage graphs.
+ *
  * @returns A Promise that resolves when the message has been sent successfully
  */
-export async function sendMessageToActiveTab(message: {type: string, content: Blob | string}): Promise<void> {
+export async function sendMessageToActiveTab(message: {type: string,
+        content: Blob | string | { [key: string]: number } }): Promise<void> {
     const tabs = await browser.tabs.query({active: true, currentWindow: true})
     await browser.tabs.sendMessage(tabs[0].id, message)
 }

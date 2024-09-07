@@ -4,20 +4,27 @@
 export class ChartUtils {
 
     /**
-     * Creates a simple horizontal bar chart and returns the chart container as an HTMLElement.
+     * Creates a simple horizontal bar chart and returns the chart container as an
+     * HTMLElement.
      *
-     * @param data - Input data (ignored in this implementation).
+     * @param data - The input data for chart.
+     * @param warningThreshold - When provided, it is used to add a class to determine
+     *                           whether the current value is safe or not.
+     *                           The safety context depends on the situation and is
+     *                           used to apply different styling to the value bar.
+     *
      * @returns An HTMLElement containing the bar chart.
      */
-    public createBarChart(data: any): HTMLElement {
+    public createBarChart(data: { [key: string]: number },
+            warningThreshold: number | null = null): HTMLElement {
         const chartContainer = document.createElement('div')
         chartContainer.id = 'chart'
 
-        // Sample data for demonstration (ignoring the input `data` field)
-        const labels = ['Item A', 'Item B', 'Item C', 'Item D', 'Item E']
-        const values = [30, 60, 45, 80, 100] // These values represent the bar lengths
+        // Extract labels and values from the input `data` object
+        const labels = Object.keys(data)
+        const values = Object.values(data)
 
-        // Iterate over the sample data to create each bar in the chart
+        // Iterate over the data to create each bar in the chart
         for (let i = 0; i < labels.length; ++i) {
             // Create a container for each row (label + bar)
             const rowContainer = document.createElement('div')
@@ -36,6 +43,10 @@ export class ChartUtils {
             const bar = document.createElement('div')
             bar.classList.add('bar')
             bar.style.width = `${values[i]}%` // Set the bar width based on the value
+
+            if(warningThreshold != null && values[i] >= warningThreshold) {
+                bar.classList.add('unsafe-value')
+            }
 
             barWrapper.appendChild(bar)
             // <-- create the bar

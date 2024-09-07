@@ -63,7 +63,7 @@ export class OpenAiGptProvider extends GenericProvider {
         return await response.blob()
     }
 
-    public async moderateText(input: string): Promise<any> {
+    public async moderateText(input: string): Promise<{ [key: string]: number }> {
         /*const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
@@ -90,8 +90,9 @@ export class OpenAiGptProvider extends GenericProvider {
         const jsonData = await response.json()
         */
 
-        const jsonData = JSON.parse('{"id":"modr-A3qX1v5Zf1lYenAaKzpzdtcfW0Zrn","model":"text-moderation-007","results":[{"flagged":false,"categories":{"sexual":false,"hate":false,"harassment":false,"self-harm":false,"sexual/minors":false,"hate/threatening":false,"violence/graphic":false,"self-harm/intent":false,"self-harm/instructions":false,"harassment/threatening":false,"violence":false},"category_scores":{"sexual":0.00490998849272728,"hate":0.04140038788318634,"harassment":0.002445516875013709,"self-harm":0.002073025330901146,"sexual/minors":0.0017407482955604792,"hate/threatening":0.0006821546703577042,"violence/graphic":0.007680510636419058,"self-harm/intent":0.000034031178074656054,"self-harm/instructions":0.000019110957509838045,"harassment/threatening":0.0001075867039617151,"violence":0.045738596469163895}}]}')
-        return jsonData.results
+        const jsonData = JSON.parse('{"id":"modr-A3qX1v5Zf1lYenAaKzpzdtcfW0Zrn","model":"text-moderation-007","results":[{"flagged":false,"categories":{"sexual":false,"hate":false,"harassment":false,"self-harm":false,"sexual/minors":false,"hate/threatening":false,"violence/graphic":false,"self-harm/intent":false,"self-harm/instructions":false,"harassment/threatening":false,"violence":false},"category_scores":{"sexual":0.8,"hate":0.9,"harassment":0.002445516875013709,"self-harm":0.002073025330901146,"sexual/minors":0.0017407482955604792,"hate/threatening":0.0006821546703577042,"violence/graphic":0.007680510636419058,"self-harm/intent":0.000034031178074656054,"self-harm/instructions":0.000019110957509838045,"harassment/threatening":0.0001075867039617151,"violence":0.045738596469163895}}]}')
+
+        return this.normalizeModerationResponse(jsonData)
     }
 
     public async softenText(input: string): Promise<string> {
@@ -139,6 +140,25 @@ export class OpenAiGptProvider extends GenericProvider {
         return headers
     }
 
+    /**
+     * This asynchronous method manages message content by sending a request
+     * to the OpenAI API using the provided system and user input.
+     * It constructs a POST request with the relevant model and message data,
+     * manages the request with a timeout signal, and processes the response.
+     *
+     * If the request is successful, it returns the content of the response
+     * message.
+     * In case of failure, it throws an error with the specific message from
+     * the OpenAI API.
+     *
+     * @param systemInput - The input for the 'system' role in the conversation.
+     * @param userInput - The input for the 'user' role in the conversation.
+     *
+     * @returns A promise that resolves to the content of the response message
+     *          from the API.
+     *
+     * @throws An error if the API response is not successful.
+     */
     private async manageMessageContent(systemInput: string, userInput: string): Promise<string> {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
@@ -168,5 +188,31 @@ export class OpenAiGptProvider extends GenericProvider {
 
         const responseData = await response.json()
         return responseData.choices[0].message.content
+    }
+
+    /**
+     * This method normalizes the moderation response by rounding the category
+     * scores to the nearest integer.
+     *
+     * It takes the first result from the provided JSON data and processes its
+     * category scores, the result is an object where the keys are the category
+     * names and the values are the rounded scores.
+     */
+    private normalizeModerationResponse(data: any): { [key: string]: number } {
+        const categoryScores = data.results[0].category_scores
+        const normalizedScores: { [key: string]: number } = {}
+
+        // Iterate over the category scores and round the values
+        for (const category in categoryScores) {
+            if (categoryScores.hasOwnProperty(category)) {
+                // Capitalize the first letter of the category key
+                const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1)
+
+                // Round the value and store it in the normalizedScores object
+                normalizedScores[capitalizedCategory] = Math.round(categoryScores[category] * 100)
+            }
+        }
+
+        return normalizedScores
     }
 }

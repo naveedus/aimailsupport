@@ -50,11 +50,11 @@ function addAudio(blob: Blob) {
     reader.readAsDataURL(blob)
 }
 
-function addChart(chart: string) {
+function addChart(chart: { [key: string]: number }) {
     clearContainer(false)
 
     const chartUtils = new ChartUtils()
-    getInnerResponse().querySelector('#amsContent').append(chartUtils.createBarChart(chart))
+    getInnerResponse().querySelector('#amsContent').append(chartUtils.createBarChart(chart, 50))
 }
 
 // Support function to get the inner response node inside the shadow
@@ -135,8 +135,8 @@ function createContainer(): void {
  * Clears the container used for displaying AI model responses between user
  * requests.
  *
- * @param hide A boolean flag indicating whether to hide the container.
- *        Default is true.
+ * @param hide - A boolean flag indicating whether to hide the container.
+ *               Default is true.
  */
 function clearContainer(hide: boolean = true): void {
     if(hide) {

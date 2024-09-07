@@ -27,17 +27,21 @@ export class ChartUtils {
             const label = document.createElement('div')
             label.classList.add('label')
             label.innerText = labels[i]
+            // <-- create the label for the bar
 
-            // Create the bar itself
+            // Create the bar -->
+            const barWrapper = document.createElement('div')
+            barWrapper.classList.add('bar-wrapper')
+
             const bar = document.createElement('div')
             bar.classList.add('bar')
             bar.style.width = `${values[i]}%` // Set the bar width based on the value
 
-            // Append label and bar to the row container
-            rowContainer.appendChild(label)
-            rowContainer.appendChild(bar)
+            barWrapper.appendChild(bar)
+            // <-- create the bar
 
-            // Append the row container to the main chart container
+            rowContainer.appendChild(label)
+            rowContainer.appendChild(barWrapper)
             chartContainer.appendChild(rowContainer)
         }
 

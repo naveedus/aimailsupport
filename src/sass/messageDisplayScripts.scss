@@ -31,10 +31,14 @@
                 width: 100px;
             }
 
-            .bar {
-                background-color: #3498db;
-                border-radius: 5px;
-                height: 20px;
+            .bar-wrapper {
+                width: 100%;
+
+                .bar {
+                    background-color: #3498db;
+                    border-radius: 5px;
+                    height: 20px;
+                }
             }
         }
     }

@@ -8,5 +8,5 @@ module.exports = {
       }
     }]
   },
-  testMatch: ['**/tests/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
+  testMatch: ['**/tests/**/*.test.ts', '**/?(*.)+(spec|test).ts']
 };

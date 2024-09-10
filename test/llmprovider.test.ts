@@ -100,7 +100,7 @@ describe('OpenAiGptProvider', () => {
         Object.entries(output).forEach(([key, value]) => {
             expect(typeof key).toBe('string')
             expect(typeof value).toBe('number')
-        });
+        })
     })
 
     test('should be able to generate audio from text', async () => {

@@ -9,9 +9,9 @@ export class ChartUtils {
      *
      * @param data - The input data for chart.
      * @param warningThreshold - When provided, it is used to add a class to determine
-     *                           whether the current value is safe or not.
-     *                           The safety context depends on the situation and is
-     *                           used to apply different styling to the value bar.
+     *        whether the current value is safe or not.
+     *        The safety context depends on the situation and is used to apply different
+     *        styling to the value bar.
      *
      * @returns An HTMLElement containing the bar chart.
      */
@@ -39,6 +39,7 @@ export class ChartUtils {
             // Create the bar -->
             const barWrapper = document.createElement('div')
             barWrapper.classList.add('bar-wrapper')
+            barWrapper.setAttribute('data-value', `${values[i]}%`);
 
             const bar = document.createElement('div')
             bar.classList.add('bar')

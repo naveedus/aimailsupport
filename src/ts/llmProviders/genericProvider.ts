@@ -135,7 +135,7 @@ export class GenericProvider {
      * the request will be aborted if it takes longer than the specified timeout.
      *
      * @param timeout - The duration in seconds after which the request should be
-     *                  aborted.
+     *        aborted.
      *
      * @returns An object containing the AbortSignal and a clear function.
      */

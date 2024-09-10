@@ -89,6 +89,20 @@ describe('OpenAiGptProvider', () => {
         expect(provider).toBeInstanceOf(OpenAiGptProvider)
     })
 
+    test('should be able to modate text', async () => {
+        const output = await provider.moderateText('Example of text to moderate')
+
+        // Verify that the output is an object
+        expect(typeof output).toBe('object')
+        expect(output).not.toBeNull()
+
+        // Verify that each key is a string and each value is a number
+        Object.entries(output).forEach(([key, value]) => {
+            expect(typeof key).toBe('string')
+            expect(typeof value).toBe('number')
+        });
+    })
+
     test('should be able to generate audio from text', async () => {
         const output = await provider.getSpeechFromText('Example of text to speach')
         expect(output).toBeInstanceOf(Blob)

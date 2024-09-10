@@ -177,13 +177,12 @@ export async function logMessage(message: string, method: string = 'log'): Promi
  * Sends a message to the currently active tab in the browser
  *
  * @param message - An object containing the message to be sent, with
- *                  properties 'type' and 'content'.
- *                  The 'content' property can be a Blob object, a string
- *                  or an index signature type.
- *                  The index signature type is { [key: string]: number },
- *                  meaning an object whose keys are strings and values are
- *                  numbers.
- *                  This type is used to manage graphs.
+ *        properties 'type' and 'content'.
+ *        The 'content' property can be a Blob object, a string or an index
+ *        signature type.
+ *        The index signature type is { [key: string]: number }, meaning an
+ *        object whose keys are strings and values are numbers.
+ *        This type is used to manage graphs.
  *
  * @returns A Promise that resolves when the message has been sent successfully
  */

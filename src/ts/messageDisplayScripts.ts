@@ -136,7 +136,7 @@ function createContainer(): void {
  * requests.
  *
  * @param hide - A boolean flag indicating whether to hide the container.
- *               Default is true.
+ *        Default is true.
  */
 function clearContainer(hide: boolean = true): void {
     if(hide) {

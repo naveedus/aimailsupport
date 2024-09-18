@@ -55,6 +55,7 @@ export class AnthropicClaudeProvider extends GenericProvider {
         const headers: Headers = new Headers()
         headers.append('x-api-key', this.apiKey)
         headers.append('anthropic-version', '2023-06-01')
+        headers.append('anthropic-dangerous-direct-browser-access', 'true')
         headers.append('Content-Type', 'application/json')
 
         return headers

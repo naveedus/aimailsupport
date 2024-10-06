@@ -82,7 +82,7 @@ describe('AnthropicClaudeProvider', () => {
 describe('OpenAiGptProvider', () => {
     configs.llmProvider = 'openai'
     configs.openai.apiKey = process.env.openai_api_key
-    configs.openai.model = 'gpt-3.5-turbo'
+    configs.openai.model = 'gpt-4o-mini'
 
     const provider = ProviderFactory.getInstance(configs)
 

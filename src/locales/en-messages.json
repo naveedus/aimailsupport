@@ -19,9 +19,61 @@
         "message": "Moderate",
         "description": "Menu option to moderate the content of a received email."
     },
+    "mailModerate.openaiClassification.harassment": {
+        "message": "Harassment",
+        "description": "Content that expresses, incites, or promotes harassing language towards any target."
+    },
+    "mailModerate.openaiClassification.harassment_threatening": {
+        "message": "Harassment / threatening",
+        "description": "Harassment content that also includes violence or serious harm towards any target."
+    },
+    "mailModerate.openaiClassification.hate": {
+        "message": "Hate",
+        "description": "Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g. chess players) is harassment."
+    },
+    "mailModerate.openaiClassification.hate_threatening": {
+        "message": "Hate / threatening",
+        "description": "Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste."
+    },
+    "mailModerate.openaiClassification.illicit": {
+        "message": "Illicit",
+        "description": "Content that encourages the planning or execution of non-violent wrongdoing, or that gives advice or instruction on how to commit illicit acts. A phrase like 'how to shoplift' would fit this category."
+    },
+    "mailModerate.openaiClassification.illicit_violent": {
+        "message": "Illicit / violent",
+        "description": "The same types of content flagged by the illicit category, but also includes references to violence or procuring a weapon."
+    },
+    "mailModerate.openaiClassification.self-harm": {
+        "message": "Self-harm",
+        "description": "Content that promotes, encourages, or depicts acts of self-harm, such as suicide, cutting, and eating disorders."
+    },
+    "mailModerate.openaiClassification.self-harm_intent": {
+        "message": "Self-harm / intent",
+        "description": "Content where the speaker expresses that they are engaging or intend to engage in acts of self-harm, such as suicide, cutting, and eating disorders."
+    },
+    "mailModerate.openaiClassification.self-harm_instructions": {
+        "message": "Self-harm / instructions",
+        "description": "Content that encourages performing acts of self-harm, such as suicide, cutting, and eating disorders, or that gives instructions or advice on how to commit such acts."
+    },
+    "mailModerate.openaiClassification.sexual": {
+        "message": "Sexual",
+        "description": "Content meant to arouse sexual excitement, such as the description of sexual activity, or that promotes sexual services (excluding sex education and wellness)."
+    },
+    "mailModerate.openaiClassification.sexual_minors": {
+        "message": "Sexual / minors",
+        "description": "Sexual content that includes an individual who is under 18 years old."
+    },
+    "mailModerate.openaiClassification.violence": {
+        "message": "Violence",
+        "description": "Content that depicts death, violence, or physical injury."
+    },
+    "mailModerate.openaiClassification.violence_graphic": {
+        "message": "Violence / graphic",
+        "description": "Content that depicts death, violence, or physical injury in graphic detail."
+    },
     "mailSoftenText": {
         "message": "Soften text",
-        "description": "Menu option to softens the tone of a text."
+        "description": "Menu option to soften the tone of a text."
     },
     "mailSuggestReply": {
         "message": "Suggest reply",

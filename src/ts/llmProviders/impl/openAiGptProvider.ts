@@ -67,7 +67,7 @@ export class OpenAiGptProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'model': 'text-moderation-stable',
+            'model': 'omni-moderation-latest',
             'input': input
         })
 
@@ -201,11 +201,22 @@ export class OpenAiGptProvider extends GenericProvider {
         // Iterate over the category scores and round the values
         for (const category in categoryScores) {
             if (categoryScores.hasOwnProperty(category)) {
-                // Capitalize the first letter of the category key
-                const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1)
+                // Manage a translated string for a specific OpenAI moderation
+                // category.
+                // Each moderation category (e.g., "hate/threatening") has an
+                // associated name that may contain the "/" character, but
+                // since localization keys cannot contain "/", it’s necessary 
+                // to replace "/" with "_",
+                // The string 'mailModerate.openaiClassification.' is concatenated
+                // with the modified category (where "/" is replaced with "_") to
+                // form a localization key. This key is then used to retrieve the
+                // translated text associated with that specific moderation category
+                // in line with OpenAI’s moderation documentation available at: 
+                // https://platform.openai.com/docs/guides/moderation/quickstart?moderation-quickstart-examples=text
+                const translatedCategory = browser.i18n.getMessage('mailModerate.openaiClassification.' + category.replace(/\//g, '_'))
 
                 // Round the value and store it in the normalizedScores object
-                normalizedScores[capitalizedCategory] = Math.round(categoryScores[category] * 100)
+                normalizedScores[translatedCategory] = Math.round(categoryScores[category] * 100)
             }
         }
 

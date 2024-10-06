@@ -14,6 +14,45 @@
     "mailModerate": {
         "message": "Modera"
     },
+    "mailModerate.openaiClassification.harassment": {
+        "message": "Molestia"
+    },
+    "mailModerate.openaiClassification.harassment_threatening": {
+        "message": "Molestia / minacce"
+    },
+    "mailModerate.openaiClassification.hate": {
+        "message": "Odio"
+    },
+    "mailModerate.openaiClassification.hate_threatening": {
+        "message": "Odio / minacce"
+    },
+    "mailModerate.openaiClassification.illicit": {
+        "message": "Illecito"
+    },
+    "mailModerate.openaiClassification.illicit_violent": {
+        "message": "Illecito / violento"
+    },
+    "mailModerate.openaiClassification.self-harm": {
+        "message": "Autolesionismo"
+    },
+    "mailModerate.openaiClassification.self-harm_intent": {
+        "message": "Autolesionismo / intenzione"
+    },
+    "mailModerate.openaiClassification.self-harm_instructions": {
+        "message": "Autolesionismo / istruzioni"
+    },
+    "mailModerate.openaiClassification.sexual": {
+        "message": "Sessuale"
+    },
+    "mailModerate.openaiClassification.sexual_minors": {
+        "message": "Sessuale / minori"
+    },
+    "mailModerate.openaiClassification.violence": {
+        "message": "Violenza"
+    },
+    "mailModerate.openaiClassification.violence_graphic": {
+        "message": "Violenza / grafica"
+    },
     "mailSoftenText": {
         "message": "Ammorbidisci testo"
     },
@@ -66,7 +105,7 @@
         "message": "Seleziona un fornitore"
     },
     "options.llmProvider.description": {
-        "message": "Seziona il fornitore di servizi AI (LLM) che verrà usato per tutte le integrazioni.<p><b>Attenzione:</b> assicurati di configurare le varie opzioni in modo consapevole, sia in relazione agli aspetti di contenuto che verranno gestiti dal provider, che in relazione ai costi del servizio.</p>"
+        "message": "Seleziona il fornitore di servizi AI (LLM) che verrà usato per tutte le integrazioni.<p><b>Attenzione:</b> assicurati di configurare le varie opzioni in modo consapevole, sia in relazione agli aspetti di contenuto che verranno gestiti dal provider, che in relazione ai costi del servizio.</p>"
     },
     "options.mainUserLanguage": {
         "message": "Lingua principale"
@@ -108,7 +147,7 @@
         "message": "Voce*"
     },
     "options.openai.text2speech.voice.description": {
-        "message": "L'anteprima audio delle varie voci è quella inglese proposta da OpenAI e non è influenzata dalla opzioni di configurazioni presenti in questo pannello."
+        "message": "L'anteprima audio delle varie voci è quella inglese proposta da OpenAI e non è influenzata dalle opzioni di configurazioni presenti in questo pannello."
     },
     "options.saveButton": {
         "message": "Salva"

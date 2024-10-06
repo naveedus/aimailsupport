@@ -72,7 +72,8 @@ describe('AnthropicClaudeProvider', () => {
     })
 
     test('should be able to translate text', async () => {
-        const output = await provider.translateText('Example of text to translate')
+        // 'Esempio di testo da tradurre' is Italian for 'Example of text to translate'
+        const output = await provider.translateText('Esempio di testo da tradurre')
         expect(typeof output).toBe('string')
     })
 })
@@ -125,7 +126,8 @@ describe('OpenAiGptProvider', () => {
     })
 
     test('should be able to translate text', async () => {
-        const output = await provider.translateText('Example of text to translate')
+        // 'Esempio di testo da tradurre' is Italian for 'Example of text to translate'
+        const output = await provider.translateText('Esempio di testo da tradurre')
         expect(typeof output).toBe('string')
     })
 })

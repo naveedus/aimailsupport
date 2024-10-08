@@ -149,9 +149,10 @@ The add-on uses a very small set of messages that require translation, so if you
 5. Add the folder `%ISO CODE%` to `_locales`;
 6. Test using the build process as described in the [Getting started section](#getting-started) and release the modification as a pull request.
 
-## Licenses
+## License and references
 
-The code is licensed under the [MIT](https://opensource.org/licenses/MIT) by [Yellow Sakura](https://www.yellowsakura.com), [support@yellowsakura.com](mailto:support@yellowsakura.com), see LICENSE file.
+The code is licensed under the [MIT](https://opensource.org/licenses/MIT) by [Yellow Sakura](https://www.yellowsakura.com), [support@yellowsakura.com](mailto:support@yellowsakura.com), see LICENSE file.  
+For more details, please refer to the [project page](https://www.yellowsakura.com/en/projects/ai-mail-support-for-thunderbird) and the link to the [official AMO (addons.mozilla.org) page](https://addons.thunderbird.net/en-GB/thunderbird/addon/ai-mail-support).
 
 Dependencies:
 

@@ -8,12 +8,12 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation: https://platform.openai.com/docs/api-reference
  */
 export class OpenAiGptProvider extends GenericProvider {
-    private apiKey: string
-    private organizationId: string
-    private model: string
-    private text2speechAudioQuality: string
-    private text2speechVoice: string
-    private text2speechSpeed: number
+    private readonly apiKey: string
+    private readonly organizationId: string
+    private readonly model: string
+    private readonly text2speechAudioQuality: string
+    private readonly text2speechVoice: string
+    private readonly text2speechSpeed: number
 
     public constructor(config: ConfigType) {
         super(config)

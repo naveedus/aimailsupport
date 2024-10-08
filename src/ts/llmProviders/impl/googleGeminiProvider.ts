@@ -1,9 +1,8 @@
 import { GenericProvider } from '../genericProvider'
 import { ConfigType } from '../../helpers/configType'
 
-
 export class GoogleGeminiProvider extends GenericProvider {
-    private apiKey: string
+    private readonly apiKey: string
 
     public constructor(config: ConfigType) {
         super(config)

@@ -8,8 +8,8 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation: https://docs.anthropic.com/en/api/getting-started
  */
 export class AnthropicClaudeProvider extends GenericProvider {
-    private apiKey: string
-    private model: string
+    private readonly apiKey: string
+    private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)

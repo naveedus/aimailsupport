@@ -1,7 +1,6 @@
 import { ProviderFactory } from './llmProviders/providerFactory'
 import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './helpers/utils'
 
-
 // Create the menu entries -->
 const menuIdSummarize = messenger.menus.create({
     id: 'aiSummarize',

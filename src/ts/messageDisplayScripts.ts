@@ -33,7 +33,7 @@ import { ChartUtils } from './helpers/chartUtils'
 // <-- manage async messages
 
 function addAudio(blob: Blob) {
-    clearContainer(false)
+    clearContainer()
 
     const reader = new FileReader()
     reader.onload = () => {
@@ -51,7 +51,7 @@ function addAudio(blob: Blob) {
 }
 
 function addChart(chart: { [key: string]: number }) {
-    clearContainer(false)
+    clearContainer()
 
     const chartUtils = new ChartUtils()
     getInnerResponse().querySelector('#amsContent').append(chartUtils.createBarChart(chart, 50))
@@ -64,20 +64,20 @@ function getInnerResponse() {
 }
 
 function addText(newContent: string) {
-    clearContainer(false)
+    clearContainer()
 
     getInnerResponse().querySelector('#amsContent').textContent = newContent
 }
 
 function showError(newContent: string) {
-    clearContainer(false)
+    clearContainer()
 
     getInnerResponse().classList.add('error')
     getInnerResponse().querySelector('#amsContent').textContent = newContent
 }
 
 function thinking(thinkingText: string) {
-    clearContainer(false)
+    clearContainer()
 
     getInnerResponse().classList.add('thinking')
     getInnerResponse().querySelector('#amsContent').innerHTML = `${thinkingText}<span class="dots"></span>`
@@ -124,25 +124,28 @@ function createContainer(): void {
     const closeIcon: HTMLImageElement = document.createElement('img')
     closeIcon.id = 'amsClose'
     closeIcon.src = browser.runtime.getURL('/images/close-icon.svg')
-    closeIcon.addEventListener('click', () => clearContainer())
+    closeIcon.addEventListener('click', () => clearContainer(true))
     amsInnerResponse.appendChild(closeIcon)
     // <-- contents
 
-    document.body.insertBefore(amsOuterResponse, document.body.firstChild)
+    document.body.appendChild(amsOuterResponse)
 }
 
 /**
  * Clears the container used for displaying AI model responses between user
  * requests.
  *
- * @param hide - A boolean flag indicating whether to hide the container.
- *        Default is true.
+ * @param destroy - A boolean flag indicating whether to destroy the container.
+ *        Default is false.
  */
-function clearContainer(hide: boolean = true): void {
-    if(hide) {
-        document.querySelector('#amsOuterResponse').classList.remove('show')
+function clearContainer(destroy: boolean = false): void {
+    if(destroy) {
+        document.querySelector('#amsOuterResponse').remove()
+        return
     }
-    else {
+
+    // Ensure the component is visible
+    if(!document.querySelector('#amsOuterResponse').classList.contains('show')) {
         document.querySelector('#amsOuterResponse').classList.add('show')
     }
 

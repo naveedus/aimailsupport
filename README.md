@@ -32,6 +32,7 @@ Several LLMs (Large Language Models) are integrated to provide a range of option
 The LLMs providers* currently supported are:
 
 * Claude by [Anthropic](https://www.anthropic.com);
+* Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com).
 
 However, the goal is to extend support to other models to provide as many options as possible.
@@ -113,6 +114,7 @@ However, it is necessary to prepare an ```.env``` file beforehand, with the keys
 
 ```
 anthropic_api_key = KEY_VALUE
+google_api_key = KEY VALUE
 openai_api_key = KEY_VALUE
 ```
 

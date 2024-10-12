@@ -14,6 +14,7 @@ export interface ConfigType {
 
     google: {
         apiKey: string
+        model: string
     }
 
     openai: {

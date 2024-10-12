@@ -72,7 +72,8 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             model: (document.querySelector('#anthropicModel') as HTMLInputElement).value
         },
         google: {
-            apiKey: (document.querySelector('#googleApiKey') as HTMLInputElement).value
+            apiKey: (document.querySelector('#googleApiKey') as HTMLInputElement).value,
+            model: (document.querySelector('#googleModel') as HTMLInputElement).value
         },
         openai: {
             apiKey: (document.querySelector('#openaiApiKey') as HTMLInputElement).value,
@@ -132,6 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Google Gemini section -->
     (document.querySelector('#googleApiKey') as HTMLInputElement).value = configs.google?.apiKey || '';
+    (document.querySelector('#googleModel') as HTMLInputElement).value = configs.google?.model || 'gemini-1.5-flash';
     // <-- Google Gemini section
 
     // OpenAI GPT section -->

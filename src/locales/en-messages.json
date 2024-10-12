@@ -123,6 +123,10 @@
         "message": "<b>WARNING</b>: It appears that at least one of your accounts is using the Owl for Exchange add-on, which has a bug with Thunderbird's official <a href=\"https://webextension-api.thunderbird.net/en/115/messageDisplayScripts.html\">messageDisplayScripts API</a>.<br>This will prevent the 'AI Mail Support' add-on from functioning when working with Exchange or Office365 accounts.",
         "description": "The text displayed on the options page when at least one account managed by the Owl for Exchange is founded."
     },
+    "options.google.model": {
+        "message": "Model*",
+        "description": "Model to be used for all text processing: https://ai.google.dev/gemini-api/docs/models/gemini#model-variations"
+    },
     "options.google.apiKey": {
         "message": "API Key*",
         "description": "API key field for Google Gemini."

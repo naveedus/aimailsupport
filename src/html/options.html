@@ -94,7 +94,7 @@
                 <select id="llmProvider" required>
                     <option disabled selected data-l10n-ref="options.llmProvider.default"></option>
                     <option value="anthropic">Anthropic Claude</option>
-                    <!--<option value="google">Google Gemini</option>-->
+                    <option value="google">Google Gemini</option>
                     <option value="openai">OpenAI GPT</option>
                 </select>
                 <div class="description" data-l10n-ref="options.llmProvider.description"></div>
@@ -120,6 +120,7 @@
                     <div class="description" data-l10n-ref="options.anthropic.apiKey.description"></div>
                 </div>
 
+                <!-- https://docs.anthropic.com/en/docs/about-claude/models#model-names -->
                 <div class="form-group">
                     <label for="anthropicModel" data-l10n-ref="options.anthropic.model">&nbsp;</label>
                     <select id="anthropicModel" data-required>
@@ -140,6 +141,16 @@
                     <input id="googleApiKey" type="password" data-required>
                     <div class="description" data-l10n-ref="options.google.apiKey.description"></div>
                 </div>
+
+                <!-- https://ai.google.dev/gemini-api/docs/models/gemini#model-variations -->
+                <div class="form-group">
+                    <label for="googleModel" data-l10n-ref="options.google.model">&nbsp;</label>
+                    <select id="googleModel" data-required>
+                        <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                        <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                        <option value="gemini-1.0-pro">Gemini 1.0 Pro</option>
+                    </select>
+                </div>
             </fieldset><!-- /Google Gemini section -->
 
             <!-- OpenAI GPT section -->
@@ -158,6 +169,7 @@
                     <div class="description" data-l10n-ref="options.openai.organizationId.description"></div>
                 </div>
 
+                <!-- https://platform.openai.com/docs/models/models-overview -->
                 <div class="form-group">
                     <label for="openaiModel" data-l10n-ref="options.openai.model">&nbsp;</label>
                     <select id="openaiModel" data-required>

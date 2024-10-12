@@ -18,6 +18,24 @@ export class GoogleGeminiProvider extends GenericProvider {
         this.model = config.google.model
     }
 
+    public async softenText(input: string): Promise<string> {
+        logMessage(`Request to softer the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SOFTER, input)
+    }
+
+    public async suggestReplyFromText(input: string): Promise<string> {
+        logMessage(`Request suggestion reply from text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY, input)
+    }
+
+    public async summarizeText(input: string): Promise<string> {
+        logMessage(`Request to summarize the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SUMMARIZE, input)
+    }
+
     public async testIntegration(): Promise<void> {
         await this.translateText('Hi!')
     }
@@ -64,7 +82,7 @@ export class GoogleGeminiProvider extends GenericProvider {
 
         const requestData = JSON.stringify({
             'contents': [
-                { 'parts': [ { 'text': `${systemInput} ${userInput}` } ] }
+                { 'parts': [ { 'text': `${systemInput}: ${userInput}` } ] }
             ]
         })
 

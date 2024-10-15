@@ -110,8 +110,10 @@ export async function getCurrentMessageContent(): Promise<string> {
             allowedAttributes: {}})
     }
 
-    // Remove newlines and extra spaces before returning the plain text
+    // Remove link (https and https), newlines and extra spaces before returning
+    // the plain text
     if(fullPlain) {
+        fullPlain = fullPlain.replace(/https?:\/\/[^\s]+/g, '')
         fullPlain = fullPlain.replace(/[\r\n]+/g, ' ').replace(/\s{2,}/g, ' ').trim()
     }
 

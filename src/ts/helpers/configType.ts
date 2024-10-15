@@ -4,6 +4,7 @@
 export interface ConfigType {
     mainUserLanguageCode: string
     llmProvider: string
+    temperature: number
     servicesTimeout: number
     debugMode: boolean
 

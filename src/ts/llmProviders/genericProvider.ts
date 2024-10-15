@@ -10,9 +10,9 @@ export class GenericProvider {
 
     protected readonly PROMPTS = {
         SOFTER: 'Make the following text softer, use the same language as the text',
-        SUGGEST_REPLY: 'Suggest a response to the text as if written by me, use the same language as the text',
-        SUMMARIZE: 'Summarize the text, use the same language as the text',
-        TRANSLATE: 'Translate the text in %s'
+        SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
+        SUMMARIZE: 'Summarize the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
+        TRANSLATE: 'Translate the email content to %s, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers'
     }
 
     public constructor(config: ConfigType) {

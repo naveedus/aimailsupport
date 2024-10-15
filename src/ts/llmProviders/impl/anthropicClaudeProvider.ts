@@ -8,12 +8,18 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation: https://docs.anthropic.com/en/api/getting-started
  */
 export class AnthropicClaudeProvider extends GenericProvider {
+    private readonly temperature: number
     private readonly apiKey: string
     private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
+        // The temperature value is normalized based on the options, with a
+        // range of 0 to 1 for Anthropic, while for other LLM models, and
+        // consequently in the add-on options, values can be set between 0
+        // and 2.
+        this.temperature = config.temperature / 2
         this.apiKey = config.anthropic.apiKey
         this.model = config.anthropic.model
     }
@@ -85,6 +91,7 @@ export class AnthropicClaudeProvider extends GenericProvider {
 
         const requestData = JSON.stringify({
             'model': this.model,
+            'temperature': this.temperature,
             'max_tokens': 1024,
             'system': systemInput,
             'messages': [

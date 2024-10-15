@@ -3,6 +3,10 @@
         "message": "The add-on enhances your email inbox experience through AI (LLM) support.",
         "description": "Description of the add-on."
     },
+    "errorGoogleGeminiSafetyThresholdExceeded": {
+        "message": "Safety threshold exceeded.",
+        "description": "Displayed when the safety threshold for the Google Gemini model is exceeded."
+    },
     "errorInvalidaddonOptions": {
         "message": "Options are invalid. Configure the necessary settings for the \"AI Mail Support\" add-on.",
         "description": "Text displayed when the add-on options are invalid and an attempt is made to invoke one of the options that requires the configuration of an AI system."
@@ -146,6 +150,14 @@
     "options.llmProvider.description": {
         "message": "Select the AI service provider (LLM) to be used for all integrations.<p><b>Attention:</b> make sure to configure the various options consciously, both concerning the content aspects managed by the provider and regarding the service costs.</p>",
         "description": "Description of the LLM provider selection."
+    },
+    "options.llmTemperature": {
+        "message": "Temperature (<span class=\"monospace\"></span>x)",
+        "description": "Option to control the balance between predictability and creativity in the model's output."
+    },
+    "options.llmTemperature.description": {
+        "message": "Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.<p><b>Attention:</b> LLM models with a temperature range different from 0 to 2 are normalized according to their reference range.</p>",
+        "description": "Explain the effect of the temperature setting on the model's responses, highlighting the trade-off between predictability and creativity."
     },
     "options.mainUserLanguage": {
         "message": "Primary language",

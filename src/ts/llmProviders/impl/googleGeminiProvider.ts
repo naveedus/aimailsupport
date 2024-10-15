@@ -8,12 +8,14 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation: https://ai.google.dev/gemini-api/docs
  */
 export class GoogleGeminiProvider extends GenericProvider {
+    private readonly temperature: number
     private readonly apiKey: string
     private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
+        this.temperature = config.temperature
         this.apiKey = config.google.apiKey
         this.model = config.google.model
     }
@@ -81,9 +83,31 @@ export class GoogleGeminiProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'contents': [
-                { 'parts': [ { 'text': `${systemInput}: ${userInput}` } ] }
-            ]
+            'system_instruction': {
+                'parts': { 'text': systemInput }
+            },
+            'contents': {
+                'parts': { 'text': userInput }
+            },
+            // https://ai.google.dev/gemini-api/docs/safety-settings
+            /*'safety_settings': [
+                {
+                    'category': 'HARM_CATEGORY_HARASSMENT',
+                    'threshold': 'BLOCK_ONLY_HIGH'
+                },
+                {
+                    'category': "HARM_CATEGORY_HATE_SPEECH",
+                    'threshold': "BLOCK_ONLY_HIGH"
+                },
+                {
+                    'category': "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    'threshold': "BLOCK_ONLY_HIGH"
+                },
+                {
+                    'category': "HARM_CATEGORY_DANGEROUS_CONTENT",
+                    'threshold': "BLOCK_ONLY_HIGH"
+                }
+            ]*/
         })
 
         const requestOptions: RequestInit = {
@@ -103,6 +127,15 @@ export class GoogleGeminiProvider extends GenericProvider {
         }
 
         const responseData = await response.json()
+
+        // Check the response from the Google AI model for any safety-related
+        // issues, if the finishReason is 'SAFETY', it indicates that the safety
+        // threshold has been exceeded.
+        // Reference: https://ai.google.dev/gemini-api/docs/safety-settings
+        if(responseData.candidates[0].finishReason == 'SAFETY') {
+            throw new Error(`Google AI error: ${browser.i18n.getMessage('errorGoogleGeminiSafetyThresholdExceeded')}`)
+        }
+
         return responseData.candidates[0].content.parts[0].text
     }
 }

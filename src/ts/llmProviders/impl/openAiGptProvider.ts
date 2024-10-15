@@ -8,6 +8,7 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation: https://platform.openai.com/docs/api-reference
  */
 export class OpenAiGptProvider extends GenericProvider {
+    private readonly temperature: number
     private readonly apiKey: string
     private readonly organizationId: string
     private readonly model: string
@@ -18,6 +19,7 @@ export class OpenAiGptProvider extends GenericProvider {
     public constructor(config: ConfigType) {
         super(config)
 
+        this.temperature = config.temperature
         this.apiKey = config.openai.apiKey
         this.organizationId = config.openai.organizationId
         this.model = config.openai.model
@@ -63,6 +65,8 @@ export class OpenAiGptProvider extends GenericProvider {
         return await response.blob()
     }
 
+    // Classifies if text input is potentially harmful.
+    // https://platform.openai.com/docs/api-reference/moderations
     public async moderateText(input: string): Promise<{ [key: string]: number }> {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
@@ -160,6 +164,7 @@ export class OpenAiGptProvider extends GenericProvider {
 
         const requestData = JSON.stringify({
             'model': this.model,
+            'temperature': this.temperature,
             'messages': [
                 { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }

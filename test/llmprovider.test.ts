@@ -1,6 +1,7 @@
 import { ConfigType } from '../src/ts/helpers/configType'
 import { ProviderFactory } from '../src/ts/llmProviders/providerFactory'
 import { AnthropicClaudeProvider } from '../src/ts/llmProviders/impl/anthropicClaudeProvider'
+import { GoogleGeminiProvider } from '../src/ts/llmProviders/impl/googleGeminiProvider'
 import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/openAiGptProvider'
 
 import dotenv from 'dotenv'
@@ -10,22 +11,24 @@ import 'jest-webextension-mock'
 const configs: ConfigType = {
     mainUserLanguageCode: 'English',
     llmProvider: null,
+    temperature: 1,
     servicesTimeout: 12,
     debugMode: true,
 
     anthropic: {
         apiKey: null,
-        model: null
+        model: 'claude-3-haiku-20240307'
     },
 
     google: {
-        apiKey: null
+        apiKey: null,
+        model: 'gemini-1.5-flash'
     },
 
     openai: {
         apiKey: null,
         organizationId: null,
-        model: null,
+        model: 'gpt-4o-mini',
 
         text2speech: {
             audioQuality: 'tts-1',
@@ -48,7 +51,6 @@ afterEach(() => new Promise(resolve => setTimeout(resolve, 2000)))
 describe('AnthropicClaudeProvider', () => {
     configs.llmProvider = 'anthropic'
     configs.anthropic.apiKey = process.env.anthropic_api_key
-    configs.anthropic.model = 'claude-3-haiku-20240307'
 
     const provider = ProviderFactory.getInstance(configs)
 
@@ -78,11 +80,43 @@ describe('AnthropicClaudeProvider', () => {
     })
 })
 
+// GoogleGeminiProvider tests
+describe('GoogleGeminiProvider', () => {
+    configs.llmProvider = 'google'
+    configs.google.apiKey = process.env.google_api_key
+
+    const provider = ProviderFactory.getInstance(configs)
+
+    test('should be an instance of GoogleGeminiProvider', () => {
+        expect(provider).toBeInstanceOf(GoogleGeminiProvider)
+    })
+
+    test('should be able to soften a text', async () => {
+        const output = await provider.softenText('Example of text to soften')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest a reply from text', async () => {
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to summarize text', async () => {
+        const output = await provider.summarizeText('Example of text to summarize')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to translate text', async () => {
+        // 'Esempio di testo da tradurre' is Italian for 'Example of text to translate'
+        const output = await provider.translateText('Esempio di testo da tradurre')
+        expect(typeof output).toBe('string')
+    })
+})
+
 // OpenAiGptProvider tests
 describe('OpenAiGptProvider', () => {
     configs.llmProvider = 'openai'
     configs.openai.apiKey = process.env.openai_api_key
-    configs.openai.model = 'gpt-4o-mini'
 
     const provider = ProviderFactory.getInstance(configs)
 

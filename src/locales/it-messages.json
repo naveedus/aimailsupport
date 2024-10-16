@@ -95,14 +95,14 @@
     "options.errorOwlForExchangeBug": {
         "message": "<b>ATTENZIONE</b>: Sembra che almeno uno dei tuoi account usi l'estensione Owl for Exchange (Gufo per Exchange), che ha un bug con le <a href=\"https://webextension-api.thunderbird.net/en/115/messageDisplayScripts.html\">messageDisplayScripts API ufficiali di Thunderbird</a>.<br>Questo impedirà all'estensione di \"AI Mail Support\" di funzionare quando si lavora su account Exchange od Office365."
     },
-    "options.google.model": {
-        "message": "Modello*"
-    },
     "options.google.apiKey": {
         "message": "Chiave API*"
     },
     "options.google.apiKey.description": {
         "message": "Vai sul sito <a href=\"https://ai.google.dev\">Google AI for Developers</a> per recuperare o creare una chiave."
+    },
+    "options.google.model": {
+        "message": "Modello*"
     },
     "options.llmProvider": {
         "message": "Provider di servizi AI"

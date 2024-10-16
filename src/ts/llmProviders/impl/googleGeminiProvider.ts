@@ -89,25 +89,27 @@ export class GoogleGeminiProvider extends GenericProvider {
             'contents': {
                 'parts': { 'text': userInput }
             },
+            // All thresholds are disabled to avoid interference with the use of
+            // various LLM functions.
             // https://ai.google.dev/gemini-api/docs/safety-settings
-            /*'safety_settings': [
+            'safety_settings': [
                 {
                     'category': 'HARM_CATEGORY_HARASSMENT',
-                    'threshold': 'BLOCK_ONLY_HIGH'
+                    'threshold': 'BLOCK_NONE'
                 },
                 {
                     'category': "HARM_CATEGORY_HATE_SPEECH",
-                    'threshold': "BLOCK_ONLY_HIGH"
+                    'threshold': "BLOCK_NONE"
                 },
                 {
                     'category': "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                    'threshold': "BLOCK_ONLY_HIGH"
+                    'threshold': "BLOCK_NONE"
                 },
                 {
                     'category': "HARM_CATEGORY_DANGEROUS_CONTENT",
-                    'threshold': "BLOCK_ONLY_HIGH"
+                    'threshold': "BLOCK_NONE"
                 }
-            ]*/
+            ]
         })
 
         const requestOptions: RequestInit = {

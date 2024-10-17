@@ -168,7 +168,7 @@ Dependencies:
 
 Images:
 
-* Robots logo icons in `docs/bot-icon-*` created by [Smashicons - Freepik](https://www.freepik.com/icon/bot_4712106)
+* Robots logo icons in `docs/bot-icon-*` were created by [Smashicons - Freepik](https://www.freepik.com/icon/bot_4712106)
 
 ---
 

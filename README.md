@@ -19,7 +19,7 @@ Our aim is to assist users dealing with high volumes of daily emails, providing 
 2. [Build](#build)
 3. [Permissions details](#permissions-details)
 4. [Translation](#translation)
-5. [Licenses](#licenses)
+5. [License and references](#license-and-references)
 
 ## Getting started
 

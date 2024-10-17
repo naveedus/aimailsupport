@@ -56,6 +56,36 @@
     "mailModerate.openaiClassification.violence_graphic": {
         "message": "Violenza / grafica"
     },
+    "mailRephrase": {
+        "message": "Riscrivi…"
+    },
+    "mailRephraseStandard": {
+        "message": "Standard"
+    },
+    "mailRephraseFluid": {
+        "message": "Fluido"
+    },
+    "mailRephraseCreative": {
+        "message": "Creativo"
+    },
+    "mailRephraseSimple": {
+        "message": "Semplice"
+    },
+    "mailRephraseFormal": {
+        "message": "Formale"
+    },
+    "mailRephraseAcademic": {
+        "message": "Accademico"
+    },
+    "mailRephraseExpanded": {
+        "message": "Espanso"
+    },
+    "mailRephraseShortened": {
+        "message": "Accorciato"
+    },
+    "mailRephrasePolite": {
+        "message": "Cortese"
+    },
     "mailSoftenText": {
         "message": "Ammorbidisci testo"
     },

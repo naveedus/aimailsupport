@@ -12,6 +12,97 @@ const menuIdSummarize = messenger.menus.create({
     ]
 })
 
+// Rephrase submenu -->
+const subMenuIdRephrase = messenger.menus.create({
+    id: 'aiSubMenuRephrase',
+    title: browser.i18n.getMessage('mailRephrase'),
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseStandard = messenger.menus.create({
+    id: 'aiRephraseStandard',
+    title: browser.i18n.getMessage('mailRephraseStandard'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseFluid = messenger.menus.create({
+    id: 'aiRephraseFluid',
+    title: browser.i18n.getMessage('mailRephraseFluid'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseCreative = messenger.menus.create({
+    id: 'aiRephraseCreative',
+    title: browser.i18n.getMessage('mailRephraseCreative'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseSimple = messenger.menus.create({
+    id: 'aiRephraseSimple',
+    title: browser.i18n.getMessage('mailRephraseSimple'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseFormal = messenger.menus.create({
+    id: 'aiRephraseFormal',
+    title: browser.i18n.getMessage('mailRephraseFormal'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseAcademic = messenger.menus.create({
+    id: 'aiRephraseAcademic',
+    title: browser.i18n.getMessage('mailRephraseAcademic'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseExpanded = messenger.menus.create({
+    id: 'aiRephraseExpanded',
+    title: browser.i18n.getMessage('mailRephraseExpanded'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephraseShortened = messenger.menus.create({
+    id: 'aiRephraseShortened',
+    title: browser.i18n.getMessage('mailRephraseShortened'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+
+const subMenuIdRephrasePolite = messenger.menus.create({
+    id: 'aiRephrasePolite',
+    title: browser.i18n.getMessage('mailRephrasePolite'),
+    parentId: subMenuIdRephrase,
+    contexts: [
+        'selection'
+    ]
+})
+// <-- rephrase submenu
+
 const menuIdSoftenText = messenger.menus.create({
     id: 'aiSoftenText',
     title: browser.i18n.getMessage('mailSoftenText'),
@@ -28,6 +119,7 @@ const menuIdSuggestReply = messenger.menus.create({
     ]
 })
 
+// Summarize submenu -->
 const subMenuIdSummarize = messenger.menus.create({
     id: 'aiSubMenuSummarize',
     title: browser.i18n.getMessage('mailSummarizeAnd'),
@@ -46,6 +138,7 @@ const menuIdSummarizeAndText2Speech = messenger.menus.create({
         'selection'
     ]
 })
+// <-- summarize submenu
 
 const menuIdText2Speech = messenger.menus.create({
     id: 'aiText2Speech',
@@ -64,6 +157,7 @@ const menuIdTranslate = messenger.menus.create({
     ]
 })
 
+// Translate submenu -->
 const subMenuIdTranslateAnd = messenger.menus.create({
     id: 'aiSubMenuTranslateSummarize',
     title: browser.i18n.getMessage('mailTranslateAnd'),
@@ -92,6 +186,7 @@ const menuIdTranslateAndText2Speech = messenger.menus.create({
         'selection'
     ]
 })
+// <-- translate submenu
 
 const menuIdModerate = messenger.menus.create({
     id: 'aiModerate',

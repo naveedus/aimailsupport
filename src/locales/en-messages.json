@@ -75,6 +75,46 @@
         "message": "Violence / graphic",
         "description": "Content that depicts death, violence, or physical injury in graphic detail."
     },
+    "mailRephrase": {
+        "message": "Rephrase…",
+        "description": "This option opens a submenu with various tones of voice that can be used to rephrase a text"
+    },
+    "mailRephraseStandard": {
+        "message": "Standard",
+        "description": "This option rephrases the input text ensuring a standard tone of voice."
+    },
+    "mailRephraseFluid": {
+        "message": "Fluid",
+        "description": "This option rephrases the input text ensuring a fluid tone of voice."
+    },
+    "mailRephraseCreative": {
+        "message": "Creative",
+        "description": "This option rephrases the input text ensuring a creative tone of voice."
+    },
+    "mailRephraseSimple": {
+        "message": "Simple",
+        "description": "This option rephrases the input text ensuring a simplified tone of voice."
+    },
+    "mailRephraseFormal": {
+        "message": "Formal",
+        "description": "This option rephrases the input text ensuring a formal tone of voice."
+    },
+    "mailRephraseAcademic": {
+        "message": "Academic",
+        "description": "This option rephrases the input text ensuring an academic tone of voice."
+    },
+    "mailRephraseExpanded": {
+        "message": "Expanded",
+        "description": "This option rephrases the input text ensuring an expanded tone of voice."
+    },
+    "mailRephraseShortened": {
+        "message": "Shortened",
+        "description": "This option rephrases the input text ensuring a shortened tone of voice."
+    },
+    "mailRephrasePolite": {
+        "message": "Polite",
+        "description": "This option rephrases the input text ensuring a polite tone of voice."
+    },
     "mailSoftenText": {
         "message": "Soften text",
         "description": "Menu option to soften the tone of a text."

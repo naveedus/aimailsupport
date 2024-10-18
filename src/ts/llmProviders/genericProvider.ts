@@ -9,7 +9,7 @@ export class GenericProvider {
     protected servicesTimeout: number
 
     protected readonly PROMPTS = {
-        SOFTER: 'Make the following text softer, use the same language as the text',
+        REPHRASE: 'Take the following text and rephrase it according to the %s style using the same language as the text',
         SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUMMARIZE: 'Summarize the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         TRANSLATE: 'Translate the email content to %s, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers'
@@ -43,13 +43,17 @@ export class GenericProvider {
     }
 
     /**
-     * Softens the tone of the input text and provides a modified version.
+     * Rephrase the input text according to the specified style and provide
+     * a modified version.
      *
-     * @param input - The input text to be softened.
+     * @param input - The input text to be rephrased.
+     * @param style - The style to be applied for rewriting (e.g., "formal",
+     *        "creative", "polite", ...).
      *
-     * @returns A Promise resolving to the softened version of the input text.
+     * @returns A Promise resolving to the rephrased version of the input
+     *          text based on the specified style.
      */
-    public async softenText(input: string): Promise<string> {
+    public async rephraseText(input: string, style: string): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 
@@ -103,12 +107,12 @@ export class GenericProvider {
         return this.moderateText !== GenericProvider.prototype.moderateText
     }
 
-    public getCanSpeechFromText(): boolean {
-        return this.getSpeechFromText !== GenericProvider.prototype.getSpeechFromText
+    public getCanRephraseText(): boolean {
+        return this.rephraseText !== GenericProvider.prototype.rephraseText
     }
 
-    public getCanSoftenText(): boolean {
-        return this.softenText !== GenericProvider.prototype.softenText
+    public getCanSpeechFromText(): boolean {
+        return this.getSpeechFromText !== GenericProvider.prototype.getSpeechFromText
     }
 
     public getCanSuggestReply(): boolean {

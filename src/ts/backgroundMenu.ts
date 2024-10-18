@@ -21,7 +21,7 @@ const subMenuIdRephrase = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseStandard = messenger.menus.create({
+const menuIdRephraseStandard = messenger.menus.create({
     id: 'aiRephraseStandard',
     title: browser.i18n.getMessage('mailRephraseStandard'),
     parentId: subMenuIdRephrase,
@@ -30,7 +30,7 @@ const subMenuIdRephraseStandard = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseFluid = messenger.menus.create({
+const menuIdRephraseFluid = messenger.menus.create({
     id: 'aiRephraseFluid',
     title: browser.i18n.getMessage('mailRephraseFluid'),
     parentId: subMenuIdRephrase,
@@ -39,7 +39,7 @@ const subMenuIdRephraseFluid = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseCreative = messenger.menus.create({
+const menuIdRephraseCreative = messenger.menus.create({
     id: 'aiRephraseCreative',
     title: browser.i18n.getMessage('mailRephraseCreative'),
     parentId: subMenuIdRephrase,
@@ -48,7 +48,7 @@ const subMenuIdRephraseCreative = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseSimple = messenger.menus.create({
+const menuIdRephraseSimple = messenger.menus.create({
     id: 'aiRephraseSimple',
     title: browser.i18n.getMessage('mailRephraseSimple'),
     parentId: subMenuIdRephrase,
@@ -57,7 +57,7 @@ const subMenuIdRephraseSimple = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseFormal = messenger.menus.create({
+const menuIdRephraseFormal = messenger.menus.create({
     id: 'aiRephraseFormal',
     title: browser.i18n.getMessage('mailRephraseFormal'),
     parentId: subMenuIdRephrase,
@@ -66,7 +66,7 @@ const subMenuIdRephraseFormal = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseAcademic = messenger.menus.create({
+const menuIdRephraseAcademic = messenger.menus.create({
     id: 'aiRephraseAcademic',
     title: browser.i18n.getMessage('mailRephraseAcademic'),
     parentId: subMenuIdRephrase,
@@ -75,7 +75,7 @@ const subMenuIdRephraseAcademic = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseExpanded = messenger.menus.create({
+const menuIdRephraseExpanded = messenger.menus.create({
     id: 'aiRephraseExpanded',
     title: browser.i18n.getMessage('mailRephraseExpanded'),
     parentId: subMenuIdRephrase,
@@ -84,7 +84,7 @@ const subMenuIdRephraseExpanded = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephraseShortened = messenger.menus.create({
+const menuIdRephraseShortened = messenger.menus.create({
     id: 'aiRephraseShortened',
     title: browser.i18n.getMessage('mailRephraseShortened'),
     parentId: subMenuIdRephrase,
@@ -93,7 +93,7 @@ const subMenuIdRephraseShortened = messenger.menus.create({
     ]
 })
 
-const subMenuIdRephrasePolite = messenger.menus.create({
+const menuIdRephrasePolite = messenger.menus.create({
     id: 'aiRephrasePolite',
     title: browser.i18n.getMessage('mailRephrasePolite'),
     parentId: subMenuIdRephrase,
@@ -102,14 +102,6 @@ const subMenuIdRephrasePolite = messenger.menus.create({
     ]
 })
 // <-- rephrase submenu
-
-const menuIdSoftenText = messenger.menus.create({
-    id: 'aiSoftenText',
-    title: browser.i18n.getMessage('mailSoftenText'),
-    contexts: [
-        'selection'
-    ]
-})
 
 const menuIdSuggestReply = messenger.menus.create({
     id: 'aiSuggestReply',
@@ -243,20 +235,29 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
-    if(info.menuItemId == menuIdSoftenText) {
+    else if([menuIdRephraseStandard, menuIdRephraseFluid, menuIdRephraseCreative, menuIdRephraseSimple,
+            menuIdRephraseFormal, menuIdRephraseAcademic, menuIdRephraseExpanded, menuIdRephraseShortened,
+            menuIdRephrasePolite].includes(info.menuItemId)) {
         sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
 
-        const textToSoften = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
+        const textToRephrase = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
 
-        if(textToSoften == null) {
+        if(textToRephrase == null) {
             sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
         }
         else {
-            llmProvider.softenText(textToSoften).then(textSoftened => {
-                sendMessageToActiveTab({type: 'addText', content: textSoftened})
+            // Extracts the style from the menuItemId by taking a substring starting
+            // from the 10th character.
+            // The value 10 corresponds to the length of the string 'aiRephrase',
+            // allowing the code to retrieve the portion of the menuItemId that
+            // follows 'aiRephrase'.
+            const style = (info.menuItemId as string).substring(10).toLowerCase()
+
+            llmProvider.rephraseText(textToRephrase, style).then(textRephrased => {
+                sendMessageToActiveTab({type: 'addText', content: textRephrased})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                logMessage(`Error during softening: ${error.message}`, 'error')
+                logMessage(`Error during rephrase: ${error.message}`, 'error')
             })
         }
     }
@@ -434,6 +435,12 @@ async function updateMenuVisibility(): Promise<void> {
     })
     // <-- canModerateText
 
+    // canRephraseText -->
+    messenger.menus.update(subMenuIdRephrase, {
+        enabled: llmProvider.getCanRephraseText()
+    })
+    // <-- canRephraseText
+
     // canSpeechFromText -->
     messenger.menus.update(menuIdText2Speech, {
         enabled: llmProvider.getCanSpeechFromText()
@@ -447,12 +454,6 @@ async function updateMenuVisibility(): Promise<void> {
         enabled: llmProvider.getCanSpeechFromText()
     })
     // <-- canSpeechFromText
-
-    // canSoftenText -->
-    messenger.menus.update(menuIdSoftenText, {
-        enabled: llmProvider.getCanSoftenText()
-    })
-    // <-- canSoftenText
 
     // canSuggestReply -->
     messenger.menus.update(menuIdSuggestReply, {

@@ -115,10 +115,6 @@
         "message": "Polite",
         "description": "This option rephrases the input text ensuring a polite tone of voice."
     },
-    "mailSoftenText": {
-        "message": "Soften text",
-        "description": "Menu option to soften the tone of a text."
-    },
     "mailSuggestReply": {
         "message": "Suggest reply",
         "description": "Menu option to receive a suggested reply to an email."

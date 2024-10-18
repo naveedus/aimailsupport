@@ -86,9 +86,6 @@
     "mailRephrasePolite": {
         "message": "Cortese"
     },
-    "mailSoftenText": {
-        "message": "Ammorbidisci testo"
-    },
     "mailSuggestReply": {
         "message": "Suggerisci risposta"
     },

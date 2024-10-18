@@ -58,8 +58,8 @@ describe('AnthropicClaudeProvider', () => {
         expect(provider).toBeInstanceOf(AnthropicClaudeProvider)
     })
 
-    test('should be able to soften a text', async () => {
-        const output = await provider.softenText('Example of text to soften')
+    test('should be able to rephrase a text', async () => {
+        const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
         expect(typeof output).toBe('string')
     })
 
@@ -91,8 +91,8 @@ describe('GoogleGeminiProvider', () => {
         expect(provider).toBeInstanceOf(GoogleGeminiProvider)
     })
 
-    test('should be able to soften a text', async () => {
-        const output = await provider.softenText('Example of text to soften')
+    test('should be able to rephrase a text', async () => {
+        const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
         expect(typeof output).toBe('string')
     })
 
@@ -144,8 +144,8 @@ describe('OpenAiGptProvider', () => {
         expect(output.type).toBe('audio/mpeg')
     })
 
-    test('should be able to soften a text', async () => {
-        const output = await provider.softenText('Example of text to soften')
+    test('should be able to rephrase a text', async () => {
+        const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
         expect(typeof output).toBe('string')
     })
 

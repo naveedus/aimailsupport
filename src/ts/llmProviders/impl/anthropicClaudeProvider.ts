@@ -24,10 +24,10 @@ export class AnthropicClaudeProvider extends GenericProvider {
         this.model = config.anthropic.model
     }
 
-    public async softenText(input: string): Promise<string> {
-        logMessage(`Request to softer the text: ${input}`, 'debug')
+    public async rephraseText(input: string, style: string): Promise<string> {
+        logMessage(`Request to use the syle "${style}" to rephrase the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SOFTER, input)
+        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', style), input)
     }
 
     public async suggestReplyFromText(input: string): Promise<string> {

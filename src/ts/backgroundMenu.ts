@@ -23,7 +23,7 @@ const subMenuIdRephrase = messenger.menus.create({
 
 const menuIdRephraseStandard = messenger.menus.create({
     id: 'aiRephraseStandard',
-    title: browser.i18n.getMessage('mailRephraseStandard'),
+    title: browser.i18n.getMessage('mailRephrase.standard'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -32,7 +32,7 @@ const menuIdRephraseStandard = messenger.menus.create({
 
 const menuIdRephraseFluid = messenger.menus.create({
     id: 'aiRephraseFluid',
-    title: browser.i18n.getMessage('mailRephraseFluid'),
+    title: browser.i18n.getMessage('mailRephrase.fluid'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -41,7 +41,7 @@ const menuIdRephraseFluid = messenger.menus.create({
 
 const menuIdRephraseCreative = messenger.menus.create({
     id: 'aiRephraseCreative',
-    title: browser.i18n.getMessage('mailRephraseCreative'),
+    title: browser.i18n.getMessage('mailRephrase.creative'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -50,7 +50,7 @@ const menuIdRephraseCreative = messenger.menus.create({
 
 const menuIdRephraseSimple = messenger.menus.create({
     id: 'aiRephraseSimple',
-    title: browser.i18n.getMessage('mailRephraseSimple'),
+    title: browser.i18n.getMessage('mailRephrase.simple'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -59,7 +59,7 @@ const menuIdRephraseSimple = messenger.menus.create({
 
 const menuIdRephraseFormal = messenger.menus.create({
     id: 'aiRephraseFormal',
-    title: browser.i18n.getMessage('mailRephraseFormal'),
+    title: browser.i18n.getMessage('mailRephrase.formal'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -68,7 +68,7 @@ const menuIdRephraseFormal = messenger.menus.create({
 
 const menuIdRephraseAcademic = messenger.menus.create({
     id: 'aiRephraseAcademic',
-    title: browser.i18n.getMessage('mailRephraseAcademic'),
+    title: browser.i18n.getMessage('mailRephrase.academic'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -77,7 +77,7 @@ const menuIdRephraseAcademic = messenger.menus.create({
 
 const menuIdRephraseExpanded = messenger.menus.create({
     id: 'aiRephraseExpanded',
-    title: browser.i18n.getMessage('mailRephraseExpanded'),
+    title: browser.i18n.getMessage('mailRephrase.expanded'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -86,7 +86,7 @@ const menuIdRephraseExpanded = messenger.menus.create({
 
 const menuIdRephraseShortened = messenger.menus.create({
     id: 'aiRephraseShortened',
-    title: browser.i18n.getMessage('mailRephraseShortened'),
+    title: browser.i18n.getMessage('mailRephrase.shortened'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -95,7 +95,7 @@ const menuIdRephraseShortened = messenger.menus.create({
 
 const menuIdRephrasePolite = messenger.menus.create({
     id: 'aiRephrasePolite',
-    title: browser.i18n.getMessage('mailRephrasePolite'),
+    title: browser.i18n.getMessage('mailRephrase.polite'),
     parentId: subMenuIdRephrase,
     contexts: [
         'selection'
@@ -103,13 +103,96 @@ const menuIdRephrasePolite = messenger.menus.create({
 })
 // <-- rephrase submenu
 
-const menuIdSuggestReply = messenger.menus.create({
-    id: 'aiSuggestReply',
+// Suggest reply submenu -->
+const subMenuIdSuggestReply = messenger.menus.create({
+    id: 'aiSubMenuSuggestReply',
     title: browser.i18n.getMessage('mailSuggestReply'),
     contexts: [
         'compose_action_menu'
     ]
 })
+
+const menuIdSuggestReplyStandard = messenger.menus.create({
+    id: 'aiSuggestReplyStandard',
+    title: browser.i18n.getMessage('mailRephrase.standard'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyFluid = messenger.menus.create({
+    id: 'aiSuggestReplyFluid',
+    title: browser.i18n.getMessage('mailRephrase.fluid'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyCreative = messenger.menus.create({
+    id: 'aiSuggestReplyCreative',
+    title: browser.i18n.getMessage('mailRephrase.creative'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplySimple = messenger.menus.create({
+    id: 'aiSuggestReplySimple',
+    title: browser.i18n.getMessage('mailRephrase.simple'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyFormal = messenger.menus.create({
+    id: 'aiSuggestReplyFormal',
+    title: browser.i18n.getMessage('mailRephrase.formal'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyAcademic = messenger.menus.create({
+    id: 'aiSuggestReplyAcademic',
+    title: browser.i18n.getMessage('mailRephrase.academic'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyExpanded = messenger.menus.create({
+    id: 'aiSuggestReplyExpanded',
+    title: browser.i18n.getMessage('mailRephrase.expanded'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyShortened = messenger.menus.create({
+    id: 'aiSuggestReplyShortened',
+    title: browser.i18n.getMessage('mailRephrase.shortened'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+
+const menuIdSuggestReplyPolite = messenger.menus.create({
+    id: 'aiSuggestReplyPolite',
+    title: browser.i18n.getMessage('mailRephrase.polite'),
+    parentId: subMenuIdSuggestReply,
+    contexts: [
+        'compose_action_menu'
+    ]
+})
+// <-- suggest reply submenu
 
 // Summarize submenu -->
 const subMenuIdSummarize = messenger.menus.create({
@@ -246,14 +329,14 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
         }
         else {
-            // Extracts the style from the menuItemId by taking a substring starting
-            // from the 10th character.
+            // Extracts the tone of voice from the menuItemId by taking a substring
+            // starting from the 10th character.
             // The value 10 corresponds to the length of the string 'aiRephrase',
             // allowing the code to retrieve the portion of the menuItemId that
             // follows 'aiRephrase'.
-            const style = (info.menuItemId as string).substring(10).toLowerCase()
+            const toneOfVoice = (info.menuItemId as string).substring(10).toLowerCase()
 
-            llmProvider.rephraseText(textToRephrase, style).then(textRephrased => {
+            llmProvider.rephraseText(textToRephrase, toneOfVoice).then(textRephrased => {
                 sendMessageToActiveTab({type: 'addText', content: textRephrased})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
@@ -261,7 +344,9 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
-    else if(info.menuItemId == menuIdSuggestReply) {
+    else if([menuIdSuggestReplyStandard, menuIdSuggestReplyFluid, menuIdSuggestReplyCreative, menuIdSuggestReplySimple,
+            menuIdSuggestReplyFormal, menuIdSuggestReplyAcademic, menuIdSuggestReplyExpanded, menuIdSuggestReplyShortened,
+            menuIdSuggestReplyPolite].includes(info.menuItemId)) {
         sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
 
         const textForSuggestion = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
@@ -270,7 +355,14 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
         }
         else {
-            llmProvider.suggestReplyFromText(textForSuggestion).then(textSuggested => {
+            // Extracts the tone of voice from the menuItemId by taking a substring
+            // starting from the 14th character.
+            // The value 14 corresponds to the length of the string 'aiSuggestReply',
+            // allowing the code to retrieve the portion of the menuItemId that
+            // follows 'aiRephrase'.
+            const toneOfVoice = (info.menuItemId as string).substring(14).toLowerCase()
+
+            llmProvider.suggestReplyFromText(textForSuggestion, toneOfVoice).then(textSuggested => {
                 sendMessageToActiveTab({type: 'addText', content: textSuggested})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
@@ -389,6 +481,9 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
+    else {
+        logMessage(`Invalid menu item selected: ${info.menuItemId}`, 'error')
+    }
 })
 
 /**
@@ -456,7 +551,7 @@ async function updateMenuVisibility(): Promise<void> {
     // <-- canSpeechFromText
 
     // canSuggestReply -->
-    messenger.menus.update(menuIdSuggestReply, {
+    messenger.menus.update(subMenuIdSuggestReply, {
         enabled: llmProvider.getCanSuggestReply()
     })
     // <-- canSuggestReply

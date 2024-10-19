@@ -171,7 +171,7 @@ export async function logMessage(message: string, method: string = 'log'): Promi
     const isDebugModeEnabled = await getConfig('debugMode')
 
     if (isDebugModeEnabled === true) {
-        console[method](message)
+        console[method](`AI Mail Support: ${message}`)
     }
 }
 

@@ -95,16 +95,16 @@ export class OpenAiGptProvider extends GenericProvider {
         return this.normalizeModerationResponse(jsonData)
     }
 
-    public async rephraseText(input: string, style: string): Promise<string> {
-        logMessage(`Request to use the syle "${style}" to rephrase the text: ${input}`, 'debug')
+    public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to rephrase the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', style), input)
+        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', toneOfVoice), input)
     }
 
-    public async suggestReplyFromText(input: string): Promise<string> {
-        logMessage(`Request suggestion reply from text: ${input}`, 'debug')
+    public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to suggest a reply to the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY, input)
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY.replace('%s', toneOfVoice), input)
     }
 
     public async summarizeText(input: string): Promise<string> {

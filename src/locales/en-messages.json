@@ -7,7 +7,7 @@
         "message": "Safety threshold exceeded.",
         "description": "Displayed when the safety threshold for the Google Gemini model is exceeded."
     },
-    "errorInvalidaddonOptions": {
+    "errorInvalidAddonOptions": {
         "message": "Options are invalid. Configure the necessary settings for the \"AI Mail Support\" add-on.",
         "description": "Text displayed when the add-on options are invalid and an attempt is made to invoke one of the options that requires the configuration of an AI system."
     },
@@ -79,45 +79,81 @@
         "message": "Rephrase…",
         "description": "This option opens a submenu with various tones of voice that can be used to rephrase a text"
     },
-    "mailRephraseStandard": {
-        "message": "Standard",
-        "description": "This option rephrases the input text ensuring a standard tone of voice."
-    },
-    "mailRephraseFluid": {
-        "message": "Fluid",
-        "description": "This option rephrases the input text ensuring a fluid tone of voice."
-    },
-    "mailRephraseCreative": {
-        "message": "Creative",
-        "description": "This option rephrases the input text ensuring a creative tone of voice."
-    },
-    "mailRephraseSimple": {
-        "message": "Simple",
-        "description": "This option rephrases the input text ensuring a simplified tone of voice."
-    },
-    "mailRephraseFormal": {
-        "message": "Formal",
-        "description": "This option rephrases the input text ensuring a formal tone of voice."
-    },
-    "mailRephraseAcademic": {
+    "mailRephrase.academic": {
         "message": "Academic",
         "description": "This option rephrases the input text ensuring an academic tone of voice."
     },
-    "mailRephraseExpanded": {
+    "mailRephrase.creative": {
+        "message": "Creative",
+        "description": "This option rephrases the input text ensuring a creative tone of voice."
+    },
+    "mailRephrase.expanded": {
         "message": "Expanded",
         "description": "This option rephrases the input text ensuring an expanded tone of voice."
     },
-    "mailRephraseShortened": {
-        "message": "Shortened",
-        "description": "This option rephrases the input text ensuring a shortened tone of voice."
+    "mailRephrase.fluid": {
+        "message": "Fluid",
+        "description": "This option rephrases the input text ensuring a fluid tone of voice."
     },
-    "mailRephrasePolite": {
+    "mailRephrase.formal": {
+        "message": "Formal",
+        "description": "This option rephrases the input text ensuring a formal tone of voice."
+    },
+    "mailRephrase.polite": {
         "message": "Polite",
         "description": "This option rephrases the input text ensuring a polite tone of voice."
     },
+    "mailRephrase.simple": {
+        "message": "Simple",
+        "description": "This option rephrases the input text ensuring a simplified tone of voice."
+    },
+    "mailRephrase.shortened": {
+        "message": "Shortened",
+        "description": "This option rephrases the input text ensuring a shortened tone of voice."
+    },
+    "mailRephrase.standard": {
+        "message": "Standard",
+        "description": "This option rephrases the input text ensuring a standard tone of voice."
+    },
     "mailSuggestReply": {
-        "message": "Suggest reply",
-        "description": "Menu option to receive a suggested reply to an email."
+        "message": "Suggest reply…",
+        "description": "Submenu option to receive a suggested reply to an email."
+    },
+    "mailSuggestReply.academic": {
+        "message": "Academic",
+        "description": "This option suggests a reply to an email ensuring an academic tone of voice."
+    },
+    "mailSuggestReply.creative": {
+        "message": "Creative",
+        "description": "This option suggests a reply to an email ensuring a creative tone of voice."
+    },
+    "mailSuggestReply.expanded": {
+        "message": "Expanded",
+        "description": "This option suggests a reply to an email ensuring an expanded tone of voice."
+    },
+    "mailSuggestReply.fluid": {
+        "message": "Fluid",
+        "description": "This option suggests a reply to an email ensuring a fluid tone of voice."
+    },
+    "mailSuggestReply.formal": {
+        "message": "Formal",
+        "description": "This option suggests a reply to an email ensuring a formal tone of voice."
+    },
+    "mailSuggestReply.polite": {
+        "message": "Polite",
+        "description": "This option suggests a reply to an email ensuring a polite tone of voice."
+    },
+    "mailSuggestReply.simple": {
+        "message": "Simple",
+        "description": "This option suggests a reply to an email ensuring a simplified tone of voice."
+    },
+    "mailSuggestReply.shortened": {
+        "message": "Shortened",
+        "description": "This option suggests a reply to an email ensuring a shortened tone of voice."
+    },
+    "mailSuggestReply.standard": {
+        "message": "Standard",
+        "description": "This option suggests a reply to an email ensuring a standard tone of voice."
     },
     "mailSummarize": {
         "message": "Summarize",
@@ -251,13 +287,13 @@
         "message": "The audio preview of the various voices is the English one proposed by OpenAI and is not influenced by the configuration options present in this panel.",
         "description": "Explanation that the preview voices are the official English voices provided by OpenAI and that they are not influenced by the options available in the add-on panel."
     },
-    "options.savedPreferences": {
-        "message": "Saved preferences",
-        "description": "Preferences that have been saved."
-    },
     "options.saveButton": {
         "message": "Save",
         "description": "Button used to save settings or preferences."
+    },
+    "options.savedPreferences": {
+        "message": "Saved preferences",
+        "description": "Preferences that have been saved."
     },
     "options.servicesTimeout": {
         "message": "Services Timeout (seconds)",

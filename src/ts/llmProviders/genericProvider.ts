@@ -43,28 +43,31 @@ export class GenericProvider {
     }
 
     /**
-     * Rephrase the input text according to the specified style and provide
-     * a modified version.
+     * Rephrase the input text according to the specified tone of voice
+     * and provide a modified version.
      *
      * @param input - The input text to be rephrased.
-     * @param style - The style to be applied for rewriting (e.g., "formal",
-     *        "creative", "polite", ...).
+     * @param toneOfVoice - The town on voice to be applied for rewriting
+     *        (e.g., "formal", "creative", "polite", ...).
      *
      * @returns A Promise resolving to the rephrased version of the input
      *          text based on the specified style.
      */
-    public async rephraseText(input: string, style: string): Promise<string> {
+    public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 
     /**
-     * Provides a suggested reply based on the input text.
+     * Provides a suggested reply based on the input text according to the
+     * specified tone of voice.
      *
      * @param input - The input text for which a reply is suggested.
+     * @param toneOfVoice - The town on voice to be applied for rewriting
+     *        (e.g., "formal", "creative", "polite", ...).
      *
      * @returns A Promise resolving to the suggested reply.
      */
-    public async suggestReplyFromText(input: string): Promise<string> {
+    public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 

@@ -64,7 +64,7 @@ describe('AnthropicClaudeProvider', () => {
     })
 
     test('should be able to suggest a reply from text', async () => {
-        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply')
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
     })
 
@@ -97,7 +97,7 @@ describe('GoogleGeminiProvider', () => {
     })
 
     test('should be able to suggest a reply from text', async () => {
-        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply')
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
     })
 
@@ -150,7 +150,7 @@ describe('OpenAiGptProvider', () => {
     })
 
     test('should be able to suggest a reply from text', async () => {
-        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply')
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
     })
 

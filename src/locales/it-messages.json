@@ -59,35 +59,62 @@
     "mailRephrase": {
         "message": "Riscrivi…"
     },
-    "mailRephraseStandard": {
-        "message": "Standard"
-    },
-    "mailRephraseFluid": {
-        "message": "Fluido"
-    },
-    "mailRephraseCreative": {
-        "message": "Creativo"
-    },
-    "mailRephraseSimple": {
-        "message": "Semplice"
-    },
-    "mailRephraseFormal": {
-        "message": "Formale"
-    },
-    "mailRephraseAcademic": {
+    "mailRephrase.academic": {
         "message": "Accademico"
     },
-    "mailRephraseExpanded": {
+    "mailRephrase.creative": {
+        "message": "Creativo"
+    },
+    "mailRephrase.expanded": {
         "message": "Espanso"
     },
-    "mailRephraseShortened": {
-        "message": "Accorciato"
+    "mailRephrase.fluid": {
+        "message": "Fluido"
     },
-    "mailRephrasePolite": {
+    "mailRephrase.formal": {
+        "message": "Formale"
+    },
+    "mailRephrase.polite": {
         "message": "Cortese"
     },
+    "mailRephrase.simple": {
+        "message": "Semplice"
+    },
+    "mailRephrase.shortened": {
+        "message": "Accorciato"
+    },
+    "mailRephrase.standard": {
+        "message": "Standard"
+    },
     "mailSuggestReply": {
-        "message": "Suggerisci risposta"
+        "message": "Suggerisci risposta…"
+    },
+    "mailSuggestReply.academic": {
+        "message": "Accademico"
+    },
+    "mailSuggestReply.creative": {
+        "message": "Creativo"
+    },
+    "mailSuggestReply.expanded": {
+        "message": "Espanso"
+    },
+    "mailSuggestReply.fluid": {
+        "message": "Fluido"
+    },
+    "mailSuggestReply.formal": {
+        "message": "Formale"
+    },
+    "mailSuggestReply.polite": {
+        "message": "Cortese"
+    },
+    "mailSuggestReply.simple": {
+        "message": "Semplice"
+    },
+    "mailSuggestReply.shortened": {
+        "message": "Accorciato"
+    },
+    "mailSuggestReply.standard": {
+        "message": "Standard"
     },
     "mailSummarize": {
         "message": "Riassumi"

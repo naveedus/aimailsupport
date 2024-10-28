@@ -33,11 +33,15 @@ The LLMs providers* currently supported are:
 
 * Claude by [Anthropic](https://www.anthropic.com);
 * Gemini by [Google](https://ai.google.dev);
-* GPT by [OpenAI](https://openai.com).
+* GPT by [OpenAI](https://openai.com);
+* Llama, Phi, Mistral, Gemma, and other models using [Ollama](https://ai.google.dev).
 
 However, the goal is to extend support to other models to provide as many options as possible.
 
 \* To use them, it is necessary to create an account on the respective platforms and enable an API access key. <u>Usage fees apply</u>; for more details, please refer to the respective websites.
+
+**ATTENTION**: Unlike other LLMs models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
+Still, it requires <u>significant</u> hardware resources.
 
 ### Settings and usage
 

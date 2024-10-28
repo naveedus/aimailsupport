@@ -4,8 +4,10 @@
  */
 import { GenericProvider } from './genericProvider'
 import { ConfigType } from '../helpers/configType'
+
 import { AnthropicClaudeProvider } from './impl/anthropicClaudeProvider'
 import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
+import { OllamaProvider } from './impl/ollamaProvider'
 import { OpenAiGptProvider } from './impl/openAiGptProvider'
 
 export class ProviderFactory {
@@ -23,6 +25,8 @@ export class ProviderFactory {
                 return new AnthropicClaudeProvider(config)
             case 'google':
                 return new GoogleGeminiProvider(config)
+            case 'ollama':
+                return new OllamaProvider(config)
             case 'openai':
                 return new OpenAiGptProvider(config)
             default:

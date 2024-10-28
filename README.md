@@ -29,19 +29,17 @@ We have, and more than once.
 That's why we decided to create this add-on for Thunderbird to help manage the multitude of emails we read daily as part of our work activities.
 
 Several LLMs (Large Language Models) are integrated to provide a range of options for advanced text management, operating at the deepest possible semantic level, to optimize the management of your email inbox.  
-The LLMs providers* currently supported are:
+The LLMs* currently supported are:
 
 * Claude by [Anthropic](https://www.anthropic.com);
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
 * Llama, Phi, Mistral, Gemma, and other models using [Ollama](https://ai.google.dev).
 
-However, the goal is to extend support to other models to provide as many options as possible.
-
 \* To use them, it is necessary to create an account on the respective platforms and enable an API access key. <u>Usage fees apply</u>; for more details, please refer to the respective websites.
 
-**ATTENTION**: Unlike other LLMs models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
-Still, it requires <u>significant</u> hardware resources.
+**ATTENTION**: Unlike other LLM models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
+The downside is that this requires *SIGNIFICANT* hardware resources.
 
 ### Settings and usage
 

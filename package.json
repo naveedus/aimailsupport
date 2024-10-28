@@ -13,9 +13,7 @@
     "build:options": "parcel build src/html/options.html --dist-dir ai-mail-support/options --public-url /options/ --no-source-maps --no-content-hash --no-cache",
     "build": "npm run build:manifest && npm run build:locales && npm run build:addon",
     "build:package": "npm run build && cd ai-mail-support && zip -r -FS ../ai-mail-support.xpi * --exclude '*.DS_Store*'",
-    "quality": "npm run quality:html && npm run quality:ts",
-    "quality:html": "node_modules/.bin/html-validate src/html",
-    "quality:ts": "node_modules/.bin/eslint src/ts/*.ts",
+    "quality": "node_modules/.bin/eslint src/ts/*.ts",
     "test": "jest"
   },
   "devDependencies": {
@@ -28,11 +26,11 @@
     "buffer": "^6.0.3",
     "dotenv": "^16.4.5",
     "eslint": "^9.12",
-    "html-validate": "^8.17.1",
     "jest": "^29.7.0",
     "jest-webextension-mock": "^3.9.0",
     "json-minify": "^1.0.0",
     "parcel": "^2.12.0",
+    "posthtml-include": "^2.0.1",
     "ts-jest": "^29.2.4",
     "typescript-eslint": "^8.8"
   },

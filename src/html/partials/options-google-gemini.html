@@ -1,0 +1,19 @@
+<fieldset id="google">
+    <legend>Google Gemini:</legend>
+
+    <div class="form-group">
+        <label for="googleApiKey" data-l10n-ref="options.google.apiKey">&nbsp;</label>
+        <input id="googleApiKey" type="password" data-required>
+        <div class="description" data-l10n-ref="options.google.apiKey.description"></div>
+    </div>
+
+    <!-- https://ai.google.dev/gemini-api/docs/models/gemini#model-variations -->
+    <div class="form-group">
+        <label for="googleModel" data-l10n-ref="options.google.model">&nbsp;</label>
+        <select id="googleModel" data-required>
+            <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+            <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+            <option value="gemini-1.0-pro">Gemini 1.0 Pro</option>
+        </select>
+    </div>
+</fieldset>

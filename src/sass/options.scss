@@ -11,10 +11,6 @@ $options-labels-width: 150px;
         border: 2px solid red;
     }
 
-    .monospace {
-        font-family: monospace;
-    }
-
     #testResult {
         border-radius: 5px;
         left: -200%;
@@ -86,6 +82,11 @@ $options-labels-width: 150px;
             text-align: right;
             vertical-align: middle;
             width: $options-labels-width;
+
+            .monospace {
+                font-family: monospace;
+                font-size: 14px;
+            }
         }
 
         input,
@@ -137,6 +138,7 @@ $options-labels-width: 150px;
 
         body[data-provider='anthropic'] &#anthropic,
         body[data-provider='google'] &#google,
+        body[data-provider='ollama'] &#ollama,
         body[data-provider='openai'] &#openai {
             display: block;
         }

@@ -1,0 +1,20 @@
+<fieldset id="anthropic">
+    <legend>Anthropic Claude:</legend>
+
+    <div class="form-group">
+        <label for="anthropicApiKey" data-l10n-ref="options.anthropic.apiKey">&nbsp;</label>
+        <input id="anthropicApiKey" type="password" data-required>
+        <div class="description" data-l10n-ref="options.anthropic.apiKey.description"></div>
+    </div>
+
+    <!-- https://docs.anthropic.com/en/docs/about-claude/models#model-names -->
+    <div class="form-group">
+        <label for="anthropicModel" data-l10n-ref="options.anthropic.model">&nbsp;</label>
+        <select id="anthropicModel" data-required>
+            <option value="claude-3-5-sonnet-20240620">Claude 3.5 Sonnet</option>
+            <option value="claude-3-opus-20240229">Claude 3 Opus</option>
+            <option value="claude-3-sonnet-20240229">Claude 3 Sonnet</option>
+            <option selected value="claude-3-haiku-20240307">Claude 3 Haiku</option>
+        </select>
+    </div>
+</fieldset>

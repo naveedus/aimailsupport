@@ -84,6 +84,9 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             apiKey: (document.querySelector('#googleApiKey') as HTMLInputElement).value,
             model: (document.querySelector('#googleModel') as HTMLInputElement).value
         },
+        ollama: {
+            model: (document.querySelector('#ollamaModel') as HTMLInputElement).value
+        },
         openai: {
             apiKey: (document.querySelector('#openaiApiKey') as HTMLInputElement).value,
             organizationId: (document.querySelector('#openaiOrganizationId') as HTMLInputElement).value,
@@ -149,6 +152,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     (document.querySelector('#googleApiKey') as HTMLInputElement).value = configs.google?.apiKey || '';
     (document.querySelector('#googleModel') as HTMLInputElement).value = configs.google?.model || 'gemini-1.5-flash';
     // <-- Google Gemini section
+
+    // Ollama section -->
+    (document.querySelector('#ollamaModel') as HTMLInputElement).value = configs.ollama?.model || '';
+    // <-- Ollama section
 
     // OpenAI GPT section -->
     (document.querySelector('#openaiApiKey') as HTMLInputElement).value = configs.openai?.apiKey || '';

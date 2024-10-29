@@ -16,7 +16,35 @@ export class OllamaProvider extends GenericProvider {
         super(config)
 
         this.temperature = config.temperature
-        this.model = 'TODO' //config.ollama.model
+        this.model = config.ollama.model
+    }
+
+    /**
+     * Returns an array of name/model pairs for all active Ollama models in
+     * the local installation.
+     */
+    public static async getLocalModels(): Promise<{ name: string, model: string }[]> {
+        const requestOptions: RequestInit = {
+            method: 'GET',
+            redirect: 'follow'
+        }
+
+        const response = await fetch('http://localhost:11434/api/tags', requestOptions)
+
+        if (!response.ok) {
+            const errorResponse = await response.json()
+            throw new Error(`Ollama error: ${errorResponse.error.message}`)
+        }
+
+        const responseData = await response.json()
+
+        // Extract an array of name/model pairs from the response
+        const models = responseData.models.map((model: { name: string, model: string }) => ({
+            name: model.name,
+            model: model.model
+        }))
+
+        return models
     }
 
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {

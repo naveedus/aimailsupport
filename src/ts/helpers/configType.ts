@@ -18,6 +18,10 @@ export interface ConfigType {
         model: string
     }
 
+    ollama: {
+        model: string
+    }
+
     openai: {
         apiKey: string
         organizationId: string

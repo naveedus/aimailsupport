@@ -39,7 +39,7 @@ export class ChartUtils {
             // Create the bar -->
             const barWrapper = document.createElement('div')
             barWrapper.classList.add('bar-wrapper')
-            barWrapper.setAttribute('data-value', `${values[i]}%`);
+            barWrapper.setAttribute('data-value', `${values[i]}%`)
 
             const bar = document.createElement('div')
             bar.classList.add('bar')

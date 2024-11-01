@@ -73,10 +73,13 @@ $options-labels-width: 150px;
     }
 
     .form-group {
+        display: flex;
+        flex-wrap: wrap;
         margin-bottom: 10px;
 
         label {
             display: inline-block;
+            flex-shrink: 0;
             font-size: 15px;
             padding-right: 5px;
             text-align: right;
@@ -91,11 +94,15 @@ $options-labels-width: 150px;
 
         input,
         select {
-            vertical-align: middle;
-            width: calc(100% - ($options-labels-width + 20px));
+            align-self: center;
+            flex-grow: 1;
 
             &[type="checkbox"] {
-                width: auto;
+                flex-grow: 0;
+            }
+
+            & + button {
+                margin-left: 10px;
             }
         }
 
@@ -112,7 +119,7 @@ $options-labels-width: 150px;
         }
 
         &.buttons {
-            text-align: center;
+            justify-content: center;
 
             button.save {
                 margin-left: 80px;

@@ -239,6 +239,10 @@
         "message": "Primary output language that will be attempted to be used in all integrations.",
         "description": "Choosing a primary language ensures consistent communication across all platforms and integrations."
     },
+    "options.ollama.listModelsButton": {
+        "message": "List models",
+        "description": "List locally available Ollama models"
+    },
     "options.ollama.model": {
         "message": "Model*",
         "description": "Model to be used for all text processing: https://ollama.com/library"

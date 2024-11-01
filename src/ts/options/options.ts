@@ -1,6 +1,6 @@
-import { ConfigType } from './helpers/configType'
-import { getConfigs, localizeNodes } from './helpers/utils'
-import { ProviderFactory } from './llmProviders/providerFactory'
+import { ConfigType } from '../helpers/configType'
+import { getConfigs, localizeNodes } from '../helpers/utils'
+import { ProviderFactory } from '../llmProviders/providerFactory'
 
 // Internationalization message management
 localizeNodes()

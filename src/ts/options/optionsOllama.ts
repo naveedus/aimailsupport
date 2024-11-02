@@ -1,5 +1,6 @@
 // Specific code to manage options for Ollama
 
+import { getConfig } from '../helpers/utils'
 import { OllamaProvider } from '../llmProviders/impl/ollamaProvider'
 
 // Adds an event listener to display all available Ollama local models for
@@ -8,10 +9,10 @@ document.querySelector('#ollamaListModel').addEventListener('click', async _ => 
 
     const selectOllamaModel = document.querySelector<HTMLSelectElement>('#ollamaModel')
 
-    // Get the selected value and remove all elements from the list, so
-    // that the new elements read replace the old ones, ensuring
-    // consistency with any previously selected model.
-    const selectedValue = selectOllamaModel.value
+    // The last selected model or the one previously saved in the options is
+    // retrieved, and then all models are removed from the list to ensure
+    // that the newly read models completely replace the old list.
+    const selectedValue = selectOllamaModel.value || (await getConfig('ollama')).model
     selectOllamaModel.innerHTML = ''
 
     try {
@@ -36,7 +37,7 @@ document.querySelector('#ollamaListModel').addEventListener('click', async _ => 
     } catch (error) {
         // TODO: manage network unavailable or CORS “Access-Control-Allow-Origin”
         // https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama
-        // e.g. launchctl setenv OLLAMA_ORIGINS "*"
+        // e.g. launchctl setenv OLLAMA_ORIGINS "moz-extension://*"
         // https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server
     }
 })

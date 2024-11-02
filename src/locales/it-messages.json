@@ -90,16 +90,16 @@
         "message": "Suggerisci risposta…"
     },
     "mailSuggestReply.academic": {
-        "message": "Accademico"
+        "message": "Accademica"
     },
     "mailSuggestReply.creative": {
-        "message": "Creativo"
+        "message": "Creativa"
     },
     "mailSuggestReply.expanded": {
-        "message": "Espanso"
+        "message": "Espansa"
     },
     "mailSuggestReply.fluid": {
-        "message": "Fluido"
+        "message": "Fluida"
     },
     "mailSuggestReply.formal": {
         "message": "Formale"
@@ -111,7 +111,7 @@
         "message": "Semplice"
     },
     "mailSuggestReply.shortened": {
-        "message": "Accorciato"
+        "message": "Accorciata"
     },
     "mailSuggestReply.standard": {
         "message": "Standard"
@@ -184,6 +184,9 @@
     },
     "options.ollama.model": {
         "message": "Modello*"
+    },
+    "options.ollama.warningTimeout": {
+        "message": "<strong>Attenzione</strong>: Ollama viene eseguito totalmente localmente, il che richiede delle risorse hardware e dei tempi di esecuzione significativamente più alti rispetto ad una chiamata ad un servizio cloud. Impostare un timeout adeguato!"
     },
     "options.openai.apiKey": {
         "message": "Chiave API*"

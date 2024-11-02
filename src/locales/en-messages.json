@@ -247,6 +247,10 @@
         "message": "Model*",
         "description": "Model to be used for all text processing: https://ollama.com/library"
     },
+    "options.ollama.warningTimeout": {
+        "message": "<strong>Attention</strong>: Ollama runs entirely locally, which requires hardware resources and significantly higher execution times compared to a cloud service call. Set an appropriate timeout!",
+        "description": "The message is displayed when a user selects the Ollama model, which, being run locally, has very high response times, and the default timeout value, primarily designed for cloud services, is not sufficient."
+    },
     "options.openai.apiKey": {
         "message": "API Key*",
         "description": "API key field for OpenAI GPT."

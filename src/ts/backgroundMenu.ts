@@ -114,7 +114,7 @@ const subMenuIdSuggestReply = messenger.menus.create({
 
 const menuIdSuggestReplyStandard = messenger.menus.create({
     id: 'aiSuggestReplyStandard',
-    title: browser.i18n.getMessage('mailRephrase.standard'),
+    title: browser.i18n.getMessage('mailSuggestReply.standard'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -123,7 +123,7 @@ const menuIdSuggestReplyStandard = messenger.menus.create({
 
 const menuIdSuggestReplyFluid = messenger.menus.create({
     id: 'aiSuggestReplyFluid',
-    title: browser.i18n.getMessage('mailRephrase.fluid'),
+    title: browser.i18n.getMessage('mailSuggestReply.fluid'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -132,7 +132,7 @@ const menuIdSuggestReplyFluid = messenger.menus.create({
 
 const menuIdSuggestReplyCreative = messenger.menus.create({
     id: 'aiSuggestReplyCreative',
-    title: browser.i18n.getMessage('mailRephrase.creative'),
+    title: browser.i18n.getMessage('mailSuggestReply.creative'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -141,7 +141,7 @@ const menuIdSuggestReplyCreative = messenger.menus.create({
 
 const menuIdSuggestReplySimple = messenger.menus.create({
     id: 'aiSuggestReplySimple',
-    title: browser.i18n.getMessage('mailRephrase.simple'),
+    title: browser.i18n.getMessage('mailSuggestReply.simple'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -150,7 +150,7 @@ const menuIdSuggestReplySimple = messenger.menus.create({
 
 const menuIdSuggestReplyFormal = messenger.menus.create({
     id: 'aiSuggestReplyFormal',
-    title: browser.i18n.getMessage('mailRephrase.formal'),
+    title: browser.i18n.getMessage('mailSuggestReply.formal'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -159,7 +159,7 @@ const menuIdSuggestReplyFormal = messenger.menus.create({
 
 const menuIdSuggestReplyAcademic = messenger.menus.create({
     id: 'aiSuggestReplyAcademic',
-    title: browser.i18n.getMessage('mailRephrase.academic'),
+    title: browser.i18n.getMessage('mailSuggestReply.academic'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -168,7 +168,7 @@ const menuIdSuggestReplyAcademic = messenger.menus.create({
 
 const menuIdSuggestReplyExpanded = messenger.menus.create({
     id: 'aiSuggestReplyExpanded',
-    title: browser.i18n.getMessage('mailRephrase.expanded'),
+    title: browser.i18n.getMessage('mailSuggestReply.expanded'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -177,7 +177,7 @@ const menuIdSuggestReplyExpanded = messenger.menus.create({
 
 const menuIdSuggestReplyShortened = messenger.menus.create({
     id: 'aiSuggestReplyShortened',
-    title: browser.i18n.getMessage('mailRephrase.shortened'),
+    title: browser.i18n.getMessage('mailSuggestReply.shortened'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'
@@ -186,7 +186,7 @@ const menuIdSuggestReplyShortened = messenger.menus.create({
 
 const menuIdSuggestReplyPolite = messenger.menus.create({
     id: 'aiSuggestReplyPolite',
-    title: browser.i18n.getMessage('mailRephrase.polite'),
+    title: browser.i18n.getMessage('mailSuggestReply.polite'),
     parentId: subMenuIdSuggestReply,
     contexts: [
         'compose_action_menu'

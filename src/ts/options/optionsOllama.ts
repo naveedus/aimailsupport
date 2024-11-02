@@ -18,7 +18,7 @@ document.querySelector('#ollamaListModel').addEventListener('click', async _ => 
     try {
         const ollamaLocalModels = await OllamaProvider.getLocalModels()
 
-        // Sort the array by the "name" field
+        // Sort the array by the 'name' field
         ollamaLocalModels.sort((a, b) => a.name.localeCompare(b.name))
 
         // Add the newly retrieved models

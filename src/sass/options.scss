@@ -111,8 +111,26 @@ $options-labels-width: 150px;
             margin-top: 5px;
             padding-left: calc($options-labels-width + 10px);
 
-            // Specific warning for a description notifying the user that the Ollama
-            // model has significant response times, making it essential to ensure
+            // Styles for messages that notify the user about two scenarios:
+            //
+            //   1. When an issue occurs during API calls while attempting to list
+            //      available models;
+            //   2. When no models are found in Ollama.
+            &.ollama-error-api,
+            &.ollama-warning-no-model {
+                display: none;
+
+                &.show {
+                    display: block;
+                }
+
+                strong {
+                    color: red;
+                }
+            }
+
+            // Style for a warning message that notifies the user about the significant
+            // response times of the Ollama model, emphasizing the importance of setting
             // an appropriate timeout.
             &.ollama-warning-timeout {
                 display: none;

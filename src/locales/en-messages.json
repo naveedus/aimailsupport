@@ -247,6 +247,14 @@
         "message": "Model*",
         "description": "Model to be used for all text processing: https://ollama.com/library"
     },
+    "options.ollama.errorApi": {
+        "message": "<strong>Attention</strong>: Unable to communicate with Ollama. Please ensure that it is running and that the origin for invocation from Thunderbird has been <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama\">properly configured</a> by enabling <code>moz-extension://*</code> as indicated in <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server\">this section</a>.<br />For example, in macOS use: <code>launchctl setenv OLLAMA_ORIGINS \"moz-extension://*\"</code>.",
+        "description": "Error message displayed in case of inability to call the local Ollama APIs or if CORS is not configured."
+    },
+    "options.ollama.warningNoModel": {
+        "message": "<strong>Attention</strong>: No model found in Ollama, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://ollama.com/library\">official website</a>.",
+        "description": "Message displayed when no usable LLM model is identified within Ollama."
+    },
     "options.ollama.warningTimeout": {
         "message": "<strong>Attention</strong>: Ollama runs entirely locally, which requires hardware resources and significantly higher execution times compared to a cloud service call. Set an appropriate timeout!",
         "description": "The message is displayed when a user selects the Ollama model, which, being run locally, has very high response times, and the default timeout value, primarily designed for cloud services, is not sufficient."

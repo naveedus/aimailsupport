@@ -185,6 +185,12 @@
     "options.ollama.model": {
         "message": "Modello*"
     },
+    "options.ollama.errorApi": {
+        "message": "<strong>Attenzione</strong>: Impossibile comunicare con Ollama, assicurarsi che sia in esecuzione e che sia stata <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama\">opportunamente configurata l'origine</a> per l'invocazione da Thunderbird, abilitando <code>moz-extension://*</code> come indicato in <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server\">questa sezione</a><br/>Ad esempio, in macOS con: <code>launchctl setenv OLLAMA_ORIGINS \"moz-extension://*\"</code>."
+    },
+    "options.ollama.warningNoModel": {
+        "message": "<strong>Attenzione</strong>: Nessun modello trovato in Ollama, procedere all'installazione di un modello, es. Llama, come indicato sul <a href=\"https://ollama.com/library\">sito ufficiale</a>."
+    },
     "options.ollama.warningTimeout": {
         "message": "<strong>Attenzione</strong>: Ollama viene eseguito totalmente localmente, il che richiede delle risorse hardware e dei tempi di esecuzione significativamente più alti rispetto ad una chiamata ad un servizio cloud. Impostare un timeout adeguato!"
     },

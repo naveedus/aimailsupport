@@ -182,6 +182,9 @@
     "options.ollama.listModelsButton": {
         "message": "Elenca modelli"
     },
+    "options.ollama.description": {
+        "message": "Ollama è un progetto open source che permette di utilizzare diversi LLM avanzati in locale, direttamente sul proprio computer e senza bisogno di collegarsi ad un server esterno.<br />È possibile scaricare il tutto dal <a href=\"https://ollama.com/download\">sito ufficiale</a>."
+    },
     "options.ollama.model": {
         "message": "Modello*"
     },

@@ -481,7 +481,9 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
-    else {
+    // Fallback message case, but only if the menu does not match any values to
+    // ignore, e.g., options.
+    else if (!['aiOptions'].includes(info.menuItemId as string)) {
         logMessage(`Invalid menu item selected: ${info.menuItemId}`, 'error')
     }
 })

@@ -95,11 +95,9 @@
         }
     }
 
-    #amsClose {
-        cursor: pointer;
-        position: absolute;
-        right: 80px;
-        top: 10px;
+    .close-icon {
+        right: 65px;
+        top: 0;
     }
 }
 

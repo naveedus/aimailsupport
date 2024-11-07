@@ -37,27 +37,30 @@ document.querySelectorAll('#optionsForm select').forEach((node) => {
 })
 // <-- capture all changes in the form fields, disabling the test button
 
-// Test management
+// Test management -->
 document.querySelector('#optionsForm button.test').addEventListener('click', async (event) => {
-    event.preventDefault()
+    // Disable the test button while waiting for the result
+    (event.target as HTMLButtonElement).disabled = true
 
     const configs = await getConfigs()
     const llmProvider = ProviderFactory.getInstance(configs)
 
     llmProvider.testIntegration().then(() => {
         document.querySelector('#optionsForm #testResult').classList.add('ok')
-        document.querySelector('#optionsForm #testResult').innerHTML = messenger.i18n.getMessage('options.testSuccessful')
+        document.querySelector('#optionsForm #testResult .message').innerHTML = messenger.i18n.getMessage('options.testSuccessful')
     }).catch(error => {
         document.querySelector('#optionsForm #testResult').classList.add('ko')
-        document.querySelector('#optionsForm #testResult').innerHTML = error.message
+        document.querySelector('#optionsForm #testResult .message').innerHTML = error.message
     })
-
-    // Turning off the test result message -->
-    setTimeout(() => {
-        document.querySelector('#optionsForm #testResult').classList.remove('ok', 'ko')
-    }, 3000)
-    // <-- turning off the test result message
 })
+
+document.querySelector('#testResult .close-icon').addEventListener('click', async _ => {
+    document.querySelector('#optionsForm #testResult').classList.remove('ok', 'ko')
+
+    // Re-enable the test button as the user has closed the pop-up with the response
+    document.querySelector<HTMLButtonElement>('#optionsForm button.test').disabled = false
+})
+// <-- test management
 
 // Save management
 document.querySelector('#optionsForm').addEventListener('submit', async (event) => {

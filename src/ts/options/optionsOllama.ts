@@ -3,16 +3,25 @@
 import { getConfig } from '../helpers/utils'
 import { OllamaProvider } from '../llmProviders/impl/ollamaProvider'
 
+// Check if the currently used LLM provider is Ollama, and if so, load the
+// available local models.
+if((await getConfig('llmProvider')) == 'ollama') {
+    getOllamaLocalModels()
+}
+
 // Adds an event listener to display all available Ollama local models for
 // user selection.
 document.querySelector('#ollamaListModel').addEventListener('click', async _ => {
+    getOllamaLocalModels()
+})
 
+async function getOllamaLocalModels() {
     const selectOllamaModel = document.querySelector<HTMLSelectElement>('#ollamaModel')
 
     // The last selected model or the one previously saved in the options is
     // retrieved, and then all models are removed from the list to ensure
     // that the newly read models completely replace the old list.
-    const selectedValue = selectOllamaModel.value || (await getConfig('ollama')).model
+    const selectedValue = selectOllamaModel.value || (await getConfig('ollama'))?.model
     selectOllamaModel.innerHTML = ''
 
     // Removal of any previously displayed API error message
@@ -62,4 +71,4 @@ document.querySelector('#ollamaListModel').addEventListener('click', async _ => 
     catch (error) {
         document.querySelector('#ollama .description.ollama-error-api').classList.add('show')
     }
-})
+}

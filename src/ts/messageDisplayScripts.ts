@@ -121,9 +121,9 @@ function createContainer(): void {
     content.id = 'amsContent'
     amsInnerResponse.appendChild(content)
 
-    const closeIcon: HTMLImageElement = document.createElement('img')
-    closeIcon.id = 'amsClose'
-    closeIcon.src = browser.runtime.getURL('/images/close-icon.svg')
+    const closeIcon: HTMLSpanElement = document.createElement('span')
+    closeIcon.className = 'close-icon'
+    closeIcon.innerHTML = '&times;'
     closeIcon.addEventListener('click', () => clearContainer(true))
     amsInnerResponse.appendChild(closeIcon)
     // <-- contents
@@ -136,7 +136,7 @@ function createContainer(): void {
  * requests.
  *
  * @param destroy - A boolean flag indicating whether to destroy the container.
- *        Default is false.
+ *        The default value is false.
  */
 function clearContainer(destroy: boolean = false): void {
     if(destroy) {

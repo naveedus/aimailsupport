@@ -78,7 +78,6 @@
         "browser_style": false
     },
     "web_accessible_resources": [
-        "images/bot-icon-color-64.webp",
-        "images/close-icon.svg"
+        "images/bot-icon-color-64.webp"
     ]
 }

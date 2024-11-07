@@ -14,10 +14,12 @@ $options-labels-width: 150px;
     #testResult {
         border-radius: 5px;
         left: -200%;
+        overflow-x: hidden;
         padding: 10px;
         position: absolute;
         text-align: center;
         bottom: 0;
+        text-overflow: ellipsis;
         transform: translateX(-50%);
         transition: left .4s ease;
 
@@ -37,6 +39,11 @@ $options-labels-width: 150px;
         &.ok,
         &.ko {
             left: 50%;
+        }
+
+        .close-icon {
+            right: 5px;
+            top: 0;
         }
     }
 

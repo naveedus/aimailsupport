@@ -87,8 +87,8 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             model: document.querySelector<HTMLInputElement>('#anthropicModel').value
         },
         groq: {
-            apiKey: '', //document.querySelector<HTMLInputElement>('#groqApiKey').value,
-            model: '' //document.querySelector<HTMLInputElement>('#groqModel').value
+            apiKey: document.querySelector<HTMLInputElement>('#groqApiKey').value,
+            model: document.querySelector<HTMLInputElement>('#groqModel').value
         },
         google: {
             apiKey: document.querySelector<HTMLInputElement>('#googleApiKey').value,
@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', async _ => {
     // <-- Anthropic Claude section
 
     // Groq section -->
-    //document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.google?.apiKey || ''
-    //document.querySelector<HTMLInputElement>('#groqModel').value = configs.google?.model || ''
+    document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.groq?.apiKey || ''
+    document.querySelector<HTMLInputElement>('#groqModel').value = configs.groq?.model || ''
     // <-- Groq section
 
     // Google Gemini section -->

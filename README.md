@@ -117,6 +117,7 @@ However, it is necessary to prepare an ```.env``` file beforehand, with the keys
 ```
 anthropic_api_key = KEY_VALUE
 google_api_key = KEY VALUE
+groq_api_key = KEY VALUE
 openai_api_key = KEY_VALUE
 ```
 

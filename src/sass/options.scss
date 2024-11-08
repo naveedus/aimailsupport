@@ -124,7 +124,16 @@ $options-labels-width: 150px;
             margin-top: 5px;
             padding-left: calc($options-labels-width + 10px);
 
-            // Styles for messages that notify the user about two scenarios:
+            // Styles for messages that for Groq notify errors
+            &.groq-error-api {
+                display: none;
+
+                &.show {
+                    display: block;
+                }
+            }
+
+            // Styles for messages that for Ollama notify the user about two scenarios:
             //
             //   1. When an issue occurs during API calls while attempting to list
             //      available models;
@@ -196,6 +205,7 @@ $options-labels-width: 150px;
 
         body[data-provider='anthropic'] &#anthropic,
         body[data-provider='google'] &#google,
+        body[data-provider='groq'] &#groq,
         body[data-provider='ollama'] &#ollama,
         body[data-provider='openai'] &#openai {
             display: block;

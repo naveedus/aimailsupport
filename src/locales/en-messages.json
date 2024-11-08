@@ -211,6 +211,18 @@
         "message": "Model*",
         "description": "Model to be used for all text processing: https://ai.google.dev/gemini-api/docs/models/gemini#model-variations"
     },
+    "options.groq.apiKey": {
+        "message": "API Key*",
+        "description": "API key field for Groq Console."
+    },
+    "options.groq.apiKey.description": {
+        "message": "Go to the <a href=\"https://console.groq.com/keys\">Groq console</a> to retrieve or create a key.",
+        "description": "Description of the API Key section with details on how to retrieve it from the official Groq console website."
+    },
+    "options.groq.listModelsButton": {
+        "message": "List models",
+        "description": "List the available models on Groq Console."
+    },
     "options.llmProvider": {
         "message": "AI Service Provider",
         "description": "Provider of LLM services."

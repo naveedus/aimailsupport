@@ -158,6 +158,15 @@
     "options.google.model": {
         "message": "Modello*"
     },
+    "options.groq.apiKey": {
+        "message": "Chiave API*"
+    },
+    "options.groq.apiKey.description": {
+        "message": "Vai sul sito <a href=\"https://console.groq.com/keys\">Groq console</a> per recuperare o creare una chiave."
+    },
+    "options.groq.listModelsButton": {
+        "message": "Elenca modelli"
+    },
     "options.llmProvider": {
         "message": "Provider di servizi AI"
     },

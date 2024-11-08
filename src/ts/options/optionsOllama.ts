@@ -9,8 +9,7 @@ if((await getConfig('llmProvider')) == 'ollama') {
     getOllamaLocalModels()
 }
 
-// Adds an event listener to display all available Ollama local models for
-// user selection.
+// Adds an event listener to display all available Ollama local models
 document.querySelector('#ollamaListModel').addEventListener('click', async _ => {
     getOllamaLocalModels()
 })

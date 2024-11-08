@@ -22,6 +22,7 @@ $options-labels-width: 150px;
         text-overflow: ellipsis;
         transform: translateX(-50%);
         transition: left .4s ease;
+        z-index: 100;
 
         &.ok {
             @include alert-success;
@@ -165,6 +166,11 @@ $options-labels-width: 150px;
 
         &.buttons {
             justify-content: center;
+
+
+            button.test.testing {
+                animation: zoomPulse 1s infinite;
+            }
 
             button.save {
                 margin-left: 80px;

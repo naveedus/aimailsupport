@@ -16,3 +16,15 @@
     font-size: 18px;
     position: absolute;
 }
+
+// Animations -->
+@keyframes backgroundChange {
+    from { background-color: white; }
+    to { background-color: #bebebe; }
+}
+
+@keyframes zoomPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+// <-- animations

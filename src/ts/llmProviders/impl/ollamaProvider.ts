@@ -10,12 +10,14 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  */
 export class OllamaProvider extends GenericProvider {
     private readonly temperature: number
+    private readonly serviceUrl: string
     private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
         this.temperature = config.temperature
+        this.serviceUrl = config.ollama.serviceUrl
         this.model = config.ollama.model
     }
 
@@ -23,13 +25,13 @@ export class OllamaProvider extends GenericProvider {
      * Returns an array of name/model pairs for all active Ollama models in
      * the local installation.
      */
-    public static async getLocalModels(): Promise<{ name: string, model: string }[]> {
+    public static async getLocalModels(serviceUrl: string): Promise<{ name: string, model: string }[]> {
         const requestOptions: RequestInit = {
             method: 'GET',
             redirect: 'follow'
         }
 
-        const response = await fetch('http://localhost:11434/api/tags', requestOptions)
+        const response = await fetch(`${serviceUrl}/api/tags`, requestOptions)
 
         if (!response.ok) {
             const errorResponse = await response.json()
@@ -114,7 +116,7 @@ export class OllamaProvider extends GenericProvider {
             signal: signal
         }
 
-        const response = await fetch('http://localhost:11434/api/generate', requestOptions)
+        const response = await fetch(`${this.serviceUrl}/api/generate`, requestOptions)
         clearAbortSignalWithTimeout()
 
         if (!response.ok) {

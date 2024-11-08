@@ -40,7 +40,8 @@ document.querySelectorAll('#optionsForm select').forEach((node) => {
 // Test management -->
 document.querySelector('#optionsForm button.test').addEventListener('click', async (event) => {
     // Disable the test button while waiting for the result
-    (event.target as HTMLButtonElement).disabled = true
+    (event.target as HTMLButtonElement).disabled = true;
+    (event.target as HTMLButtonElement).classList.add('testing')
 
     const configs = await getConfigs()
     const llmProvider = ProviderFactory.getInstance(configs)
@@ -51,6 +52,8 @@ document.querySelector('#optionsForm button.test').addEventListener('click', asy
     }).catch(error => {
         document.querySelector('#optionsForm #testResult').classList.add('ko')
         document.querySelector('#optionsForm #testResult .message').innerHTML = error.message
+    }).finally(() => {
+        document.querySelector<HTMLButtonElement>('#optionsForm button.test').classList.remove('testing')
     })
 })
 
@@ -83,11 +86,16 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             apiKey: document.querySelector<HTMLInputElement>('#anthropicApiKey').value,
             model: document.querySelector<HTMLInputElement>('#anthropicModel').value
         },
+        groq: {
+            apiKey: '', //document.querySelector<HTMLInputElement>('#groqApiKey').value,
+            model: '' //document.querySelector<HTMLInputElement>('#groqModel').value
+        },
         google: {
             apiKey: document.querySelector<HTMLInputElement>('#googleApiKey').value,
             model: document.querySelector<HTMLInputElement>('#googleModel').value
         },
         ollama: {
+            serviceUrl: document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value,
             model: document.querySelector<HTMLInputElement>('#ollamaModel').value
         },
         openai: {
@@ -126,7 +134,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
 })
 
 // Restore options
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async _ => {
     const configs = await getConfigs()
 
     const selectedLlmProvider = configs.llmProvider
@@ -151,12 +159,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector<HTMLInputElement>('#anthropicModel').value = configs.anthropic?.model || 'claude-3-haiku-20240307'
     // <-- Anthropic Claude section
 
+    // Groq section -->
+    //document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.google?.apiKey || ''
+    //document.querySelector<HTMLInputElement>('#groqModel').value = configs.google?.model || ''
+    // <-- Groq section
+
     // Google Gemini section -->
     document.querySelector<HTMLInputElement>('#googleApiKey').value = configs.google?.apiKey || ''
     document.querySelector<HTMLInputElement>('#googleModel').value = configs.google?.model || 'gemini-1.5-flash'
     // <-- Google Gemini section
 
     // Ollama section -->
+    document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value = configs.ollama?.serviceUrl || 'http://localhost:11434'
     document.querySelector<HTMLInputElement>('#ollamaModel').value = configs.ollama?.model || ''
     // <-- Ollama section
 

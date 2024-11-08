@@ -18,7 +18,13 @@ export interface ConfigType {
         model: string
     }
 
+    groq: {
+        apiKey: string
+        model: string
+    }
+
     ollama: {
+        serviceUrl: string
         model: string
     }
 

@@ -11,7 +11,9 @@
     z-index: 9999;
 
     &.show {
-        display: block;
+        // The use of !important is necessary to override any generic .show
+        // styles that might interfere with the display.
+        display: block !important;
     }
 }
 

@@ -9,7 +9,17 @@ if((await getConfig('llmProvider')) == 'ollama') {
     getOllamaLocalModels()
 }
 
-// Adds an event listener to display all available Ollama local models
+// The LLM provider change event is handled to reload all available Ollama
+// local models.
+document.querySelector('#llmProvider').addEventListener('change', (event) => {
+    const selectedValue = (event.target as HTMLSelectElement).value
+
+    if(selectedValue == 'ollama') {
+        getOllamaLocalModels()
+    }
+})
+
+// Adds a click event listener for loading all available Ollama local models
 document.querySelector('#ollamaListModel').addEventListener('click', async _ => {
     getOllamaLocalModels()
 })
@@ -17,9 +27,9 @@ document.querySelector('#ollamaListModel').addEventListener('click', async _ => 
 async function getOllamaLocalModels() {
     const selectOllamaModel = document.querySelector<HTMLSelectElement>('#ollamaModel')
 
-    // The last selected model or the one previously saved in the options is
-    // retrieved, and then all models are removed from the list to ensure
-    // that the newly read models completely replace the old list.
+    // The last selected model or the one previously saved in the options
+    // is retrieved, and then all models are removed from the list to
+    // ensure that the newly read models completely replace the old list.
     const selectedValue = selectOllamaModel.value || (await getConfig('ollama'))?.model
     selectOllamaModel.innerHTML = ''
 
@@ -52,21 +62,22 @@ async function getOllamaLocalModels() {
             })
         }
         else {
-            // A specific message is displayed to indicate that no model was
-            // found in Ollama.
+            // A specific message is displayed to indicate that no model
+            // was found in Ollama.
             document.querySelector('#ollama .description.ollama-warning-no-model').classList.add('show')
         }
     }
-    // Error handling: possible cases could be related to the fact that Ollama
-    // is not running, making the APIs unavailable, or that CORS has not been
-    // enabled on these APIs, resulting in an "Access-Control-Allow-Origin"
-    // error, see:
+    // Error handling: possible cases could be related to the fact that
+    // Ollama is not running, making the APIs unavailable, or that CORS
+    // has not been enabled on these APIs, resulting in an:
+    // "Access-Control-Allow-Origin" error, see:
     //
     //   1. https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama
     //   2. https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server
     //
-    // So for exmaple in a macOS environment, the following command should be
-    // executed: launchctl setenv OLLAMA_ORIGINS "moz-extension://*"
+    // So for exmaple in a macOS environment, the following command
+    // should be executed:
+    // launchctl setenv OLLAMA_ORIGINS "moz-extension://*"
     catch (error) {
         document.querySelector('#ollama .description.ollama-error-api').classList.add('show')
     }

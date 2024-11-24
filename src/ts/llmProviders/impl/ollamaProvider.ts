@@ -121,7 +121,7 @@ export class OllamaProvider extends GenericProvider {
 
         if (!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`Ollama error: ${errorResponse.error.message}`)
+            throw new Error(`Ollama error: ${errorResponse.error}`)
         }
 
         const responseData = await response.json()

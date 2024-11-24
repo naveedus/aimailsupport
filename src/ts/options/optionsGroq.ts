@@ -3,7 +3,7 @@
 import { getConfig } from '../helpers/utils'
 import { GroqProvider } from '../llmProviders/impl/groqProvider'
 
-// Check if the currently used LLM provider is Ollama, and if so, load the
+// Check if the currently used LLM provider is Groq, and if so, load the
 // available local models.
 if((await getConfig('llmProvider')) == 'groq') {
     getGroqModels()

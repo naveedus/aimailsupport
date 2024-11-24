@@ -213,15 +213,15 @@
     },
     "options.groq.apiKey": {
         "message": "API Key*",
-        "description": "API key field for Groq Console."
+        "description": "API key field for Groq cloud console."
     },
     "options.groq.apiKey.description": {
-        "message": "Go to the <a href=\"https://console.groq.com/keys\">Groq console</a> to retrieve or create a key.",
-        "description": "Description of the API Key section with details on how to retrieve it from the official Groq console website."
+        "message": "Go to the <a href=\"https://console.groq.com/keys\">Groq cloud console</a> to retrieve or create a key.",
+        "description": "Description of the API Key section with details on how to retrieve it from the official Groq cloud console website."
     },
     "options.groq.listModelsButton": {
         "message": "List models",
-        "description": "List the available models on Groq Console."
+        "description": "List the available models on Groq cloud console."
     },
     "options.llmProvider": {
         "message": "AI Service Provider",

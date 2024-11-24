@@ -162,7 +162,7 @@
         "message": "Chiave API*"
     },
     "options.groq.apiKey.description": {
-        "message": "Vai sul sito <a href=\"https://console.groq.com/keys\">Groq console</a> per recuperare o creare una chiave."
+        "message": "Vai sul sito <a href=\"https://console.groq.com/keys\">Groq cloud console</a> per recuperare o creare una chiave."
     },
     "options.groq.listModelsButton": {
         "message": "Elenca modelli"

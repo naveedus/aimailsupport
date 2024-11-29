@@ -34,11 +34,13 @@ The LLMs* currently supported are:
 * Claude by [Anthropic](https://www.anthropic.com);
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
+* Llama, Mistral, Gemma, and other models using [Groq Cloud](https://groq.com);
 * Llama, Phi, Mistral, Gemma, and other models using [Ollama](https://ollama.com).
 
 \* To use them, it is necessary to create an account on the respective platforms and enable an API access key. <u>Usage fees apply</u>; for more details, please refer to the respective websites.
 
-**ATTENTION**: Unlike other LLM models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
+**ATTENTION 1**: The services offered by Groq Cloud include the option to use a free plan, albeit with low rate limits on requests.
+**ATTENTION 2**: Unlike other LLM models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
 The downside is that this requires *SIGNIFICANT* hardware resources.
 
 ### Settings and usage
@@ -119,6 +121,12 @@ anthropic_api_key = KEY_VALUE
 google_api_key = KEY VALUE
 groq_api_key = KEY VALUE
 openai_api_key = KEY_VALUE
+```
+
+To test Ollama, it is necessary to install the model ```llama3.2:1b``` using the command:
+
+```console
+$ ollama pull llama3.2:1b
 ```
 
 ## Permissions details

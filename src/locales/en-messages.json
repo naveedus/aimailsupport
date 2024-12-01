@@ -354,5 +354,13 @@
     "thinking": {
         "message": "I'm thinking!",
         "description": "Text displayed when waiting for a response from remote services."
+    },
+    "options.xai.apiKey": {
+        "message": "API Key*",
+        "description": "API key field for xAI Grok."
+    },
+    "options.xai.apiKey.description": {
+        "message": "Go to the <a href=\"https://console.x.ai\">xAI console</a> site to retrieve or create a key.",
+        "description": "Description of the website where it is possible to generate an API access key."
     }
 }

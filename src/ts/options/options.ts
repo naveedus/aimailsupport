@@ -107,6 +107,9 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
                 voice: document.querySelector<HTMLInputElement>('#openaiText2SpeechVoice').value,
                 speed: parseFloat(document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value)
             }
+        },
+        xai: {
+            apiKey: document.querySelector<HTMLInputElement>('#xaiApiKey').value
         }
     }
     // <-- store options
@@ -184,6 +187,10 @@ document.addEventListener('DOMContentLoaded', async _ => {
     document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value = (configs.openai?.text2speech?.speed || 1).toString()
     document.querySelector<HTMLInputElement>('label[for=openaiText2SpeechSpeed] span').innerText = parseFloat(document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value).toFixed(2)
     // <-- OpenAI GPT section
+
+    // xAI Grok section -->
+    document.querySelector<HTMLInputElement>('#xaiApiKey').value = configs.xai?.apiKey || ''
+    // <-- xAI Grok section
 
     updateDOMBasedOnSelectLlmProvider(selectedLlmProvider)
 

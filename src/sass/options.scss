@@ -207,7 +207,8 @@ $options-labels-width: 150px;
         body[data-provider='google'] &#google,
         body[data-provider='groq'] &#groq,
         body[data-provider='ollama'] &#ollama,
-        body[data-provider='openai'] &#openai {
+        body[data-provider='openai'] &#openai,
+        body[data-provider='xai'] &#xai {
             display: block;
         }
     }

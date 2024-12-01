@@ -38,5 +38,9 @@ export interface ConfigType {
             voice: string
             speed: number
         }
+    },
+
+    xai: {
+        apiKey: string
     }
 }

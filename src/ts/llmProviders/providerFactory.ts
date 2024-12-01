@@ -10,6 +10,7 @@ import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
 import { GroqProvider } from './impl/groqProvider'
 import { OllamaProvider } from './impl/ollamaProvider'
 import { OpenAiGptProvider } from './impl/openAiGptProvider'
+import { XaiGrokProvider } from './impl/xaiGrokProvider'
 
 export class ProviderFactory {
 
@@ -32,6 +33,8 @@ export class ProviderFactory {
                 return new OllamaProvider(config)
             case 'openai':
                 return new OpenAiGptProvider(config)
+            case 'xai':
+                return new XaiGrokProvider(config)
             default:
                 return new GenericProvider(config)
         }

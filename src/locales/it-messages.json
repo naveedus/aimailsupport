@@ -265,5 +265,11 @@
     },
     "thinking": {
         "message": "Sto pensando!"
+    },
+    "options.xai.apiKey": {
+        "message": "Chiave API*"
+    },
+    "options.xai.apiKey.description": {
+        "message": "Vai sul sito <a href=\"https://console.x.ai\">xAI console</a> per recuperare o creare una chiave."
     }
 }

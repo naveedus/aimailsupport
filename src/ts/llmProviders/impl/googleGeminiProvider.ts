@@ -109,7 +109,10 @@ export class GoogleGeminiProvider extends GenericProvider {
                     'category': "HARM_CATEGORY_DANGEROUS_CONTENT",
                     'threshold': "BLOCK_NONE"
                 }
-            ]
+            ],
+            'generationConfig': {
+                'temperature': this.temperature
+            }
         })
 
         const requestOptions: RequestInit = {

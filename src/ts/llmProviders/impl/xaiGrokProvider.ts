@@ -18,6 +18,24 @@ export class XaiGrokProvider extends GenericProvider {
         this.apiKey = config.xai.apiKey
     }
 
+    public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to rephrase the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', toneOfVoice), input)
+    }
+
+    public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to suggest a reply to the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY.replace('%s', toneOfVoice), input)
+    }
+
+    public async summarizeText(input: string): Promise<string> {
+        logMessage(`Request to summarize the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SUMMARIZE, input)
+    }
+
     public async testIntegration(): Promise<void> {
         await this.translateText('Hi!')
     }

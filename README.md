@@ -34,6 +34,7 @@ The LLMs* currently supported are:
 * Claude by [Anthropic](https://www.anthropic.com);
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
+* Grok by [xAI](https://x.ai);
 * Llama, Mistral, Gemma, and other models using [Groq Cloud](https://groq.com);
 * Llama, Phi, Mistral, Gemma, and other models using [Ollama](https://ollama.com).
 

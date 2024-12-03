@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', async _ => {
     // (https://webextension-api.thunderbird.net/en/115/messageDisplayScripts.html)
     // that affects the functionality of this add-on.
     const accountList = await messenger.accounts.list(false)
-    if(accountList.some(account => account.type === 'owl')) {
+    if(accountList.some(account => account.type.endsWith('owl'))) {
         document.querySelector('#owlForExchangeBug').classList.add('show')
     }
 

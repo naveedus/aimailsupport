@@ -61,14 +61,14 @@ export class XaiGrokProvider extends GenericProvider {
 
     /**
      * This asynchronous method manages message content by sending a request
-     * to the xAP API using the provided system and user input.
+     * to the xAI API using the provided system and user input.
      * It constructs a POST request with the relevant model and message data,
      * manages the request with a timeout signal, and processes the response.
      *
      * If the request is successful, it returns the content of the response
      * message.
      * In case of failure, it throws an error with the specific message from
-     * the xAP API.
+     * the xAI API.
      *
      * @param systemInput - The input for the 'system' role in the conversation.
      * @param userInput - The input for the 'user' role in the conversation.

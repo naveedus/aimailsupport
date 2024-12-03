@@ -25,7 +25,7 @@ const configs: ConfigType = {
 
     google: {
         apiKey: null,
-        model: 'gemini-1.5-flash'
+        model: 'gemini-1.5-flash-8b'
     },
 
     groq: {

@@ -82,7 +82,7 @@ export class XaiGrokProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'model': 'grok-beta',
+            'model': 'grok-2-latest',
             'messages': [
                 { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }

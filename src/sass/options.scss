@@ -60,6 +60,7 @@ $options-labels-width: 150px;
         transform: translateX(-50%);
         transition: left .4s ease;
         width: 50%;
+        z-index: 100;
 
         &.show {
             left: 50%;
@@ -84,6 +85,7 @@ $options-labels-width: 150px;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 10px;
+        position: relative;
 
         label {
             display: inline-block;
@@ -111,6 +113,19 @@ $options-labels-width: 150px;
 
             & + button {
                 margin-left: 10px;
+            }
+        }
+
+        input[is="password-toggle"] {
+            padding-right: 20px;
+
+            + .icon {
+                cursor: pointer;
+                font-size: 12px;
+                position: absolute;
+                right: 0;
+                top: 3px;
+                z-index: 10;
             }
         }
 

@@ -328,7 +328,7 @@
         "description": "The voice to use when generating the audio: https://platform.openai.com/docs/guides/text-to-speech/voice-options."
     },
     "options.openai.text2speech.voice.description": {
-        "message": "The audio preview of the various voices is the English one proposed by OpenAI and is not influenced by the configuration options present in this panel.",
+        "message": "The preview of the voices is the English one proposed by OpenAI and is not influenced by the configuration options present in this panel.",
         "description": "Explanation that the preview voices are the official English voices provided by OpenAI and that they are not influenced by the options available in the add-on panel."
     },
     "options.saveButton": {

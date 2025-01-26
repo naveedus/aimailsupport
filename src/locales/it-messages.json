@@ -246,7 +246,7 @@
         "message": "Voce*"
     },
     "options.openai.text2speech.voice.description": {
-        "message": "L'anteprima audio delle varie voci è quella inglese proposta da OpenAI e non è influenzata dalle opzioni di configurazioni presenti in questo pannello."
+        "message": "L'anteprima delle voci è quella inglese proposta da OpenAI e non è influenzata dalle opzioni di configurazioni presenti in questo pannello."
     },
     "options.saveButton": {
         "message": "Salva"

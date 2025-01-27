@@ -4,39 +4,37 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 
 /**
  * Class with the implementation of methods useful for interfacing with the
- * Groq Cloud APIs.
- * Official documentation: https://console.groq.com/docs/overview
+ * LM Studio APIs.
+ * Official documentation: https://lmstudio.ai/docs/api
  */
-export class GroqProvider extends GenericProvider {
+export class LmsProvider extends GenericProvider {
     private readonly temperature: number
-    private readonly apiKey: string
+    private readonly serviceUrl: string
     private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
         this.temperature = config.temperature
-        this.apiKey = config.groq.apiKey
-        this.model = config.groq.model
+        this.serviceUrl = config.lms.serviceUrl
+        this.model = config.lms.model
     }
 
     /**
-     * Returns an array of model IDs for all available Groq Cloud models.
+     * Returns an array of model IDs for all available LM Studio models in
+     * the local installation.
      */
-    public static async getModels(apiKey: string): Promise<string[]> {
+    public static async getModels(serviceUrl: string): Promise<string[]> {
         const requestOptions: RequestInit = {
             method: 'GET',
-            redirect: 'follow',
-            headers: new Headers({
-                'Authorization': `Bearer ${apiKey}`
-            })
+            redirect: 'follow'
         }
 
-        const response = await fetch('https://api.groq.com/openai/v1/models', requestOptions)
+        const response = await fetch(`${serviceUrl}/v1/models`, requestOptions)
 
         if (!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`Groq error: ${errorResponse.error.message}`)
+            throw new Error(`AI Studio error: ${errorResponse.error.message}`)
         }
 
         const responseData = await response.json()
@@ -74,28 +72,15 @@ export class GroqProvider extends GenericProvider {
     }
 
     /**
-     * Function to generate headers for API requests.
-     *
-     * @returns {Headers} The headers object with necessary headers appended.
-     */
-    private getHeader(): Headers {
-        const headers: Headers = new Headers()
-        headers.append('Content-Type', 'application/json')
-        headers.append('Authorization', `Bearer ${this.apiKey}`)
-
-        return headers
-    }
-
-    /**
      * This asynchronous method manages message content by sending a request
-     * to the Groq Cloud API using the provided system and user input.
+     * to the AI Studio API using the provided system and user input.
      * It constructs a POST request with the relevant model and message data,
      * manages the request with a timeout signal, and processes the response.
      *
      * If the request is successful, it returns the content of the response
      * message.
      * In case of failure, it throws an error with the specific message from
-     * the Groq Cloud API.
+     * the AI Studio API.
      *
      * @param systemInput - The input for the 'system' role in the conversation.
      * @param userInput - The input for the 'user' role in the conversation.
@@ -108,6 +93,11 @@ export class GroqProvider extends GenericProvider {
     private async manageMessageContent(systemInput: string, userInput: string): Promise<string> {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
+        // The AI Studio APIs explicitly require the declaration of the header
+        // field with a content type set to application/json.
+        const headers: Headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+
         const requestData = JSON.stringify({
             'model': this.model,
             'messages': [
@@ -119,18 +109,18 @@ export class GroqProvider extends GenericProvider {
 
         const requestOptions: RequestInit = {
             method: 'POST',
-            headers: this.getHeader(),
+            headers: headers,
             body: requestData,
             redirect: 'follow',
             signal: signal
         }
 
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', requestOptions)
+        const response = await fetch(`${this.serviceUrl}/v1/chat/completions`, requestOptions)
         clearAbortSignalWithTimeout()
 
         if (!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`Groq error: ${errorResponse.error.message}`)
+            throw new Error(`LM Studio error: ${errorResponse.error}`)
         }
 
         const responseData = await response.json()

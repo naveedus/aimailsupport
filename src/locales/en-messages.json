@@ -223,6 +223,10 @@
         "message": "List models",
         "description": "List the available models on Groq cloud console."
     },
+    "options.groq.model": {
+        "message": "Model*",
+        "description": "Model to be used for all text processing: https://console.groq.com/docs/models"
+    },
     "options.llmProvider": {
         "message": "AI Service Provider",
         "description": "Provider of LLM services."
@@ -251,6 +255,34 @@
         "message": "Primary output language that will be attempted to be used in all integrations.",
         "description": "Choosing a primary language ensures consistent communication across all platforms and integrations."
     },
+    "options.lms.description": {
+        "message": "LM Studio is an open-source project that allows you to use various advanced LLMs locally, without needing to connect to an external server.<br />You can download everything from the <a href=\"https://lmstudio.ai\">official website</a>.",
+        "description": "Message displayed when the LLM service provider LM Studio is selected."
+    },
+    "options.lms.errorApi": {
+        "message": "<strong>Attention</strong>: Unable to communicate with LM Studio. Please ensure that it is running and that the CORS option is enabled in the Settings",
+        "description": "Error message displayed in case of inability to call the local LM Studio APIs or if CORS is not configured."
+    },
+    "options.lms.listModelsButton": {
+        "message": "List models",
+        "description": "List locally available LM Studio models"
+    },
+    "options.lms.model": {
+        "message": "Model*",
+        "description": "Model to be used for all text processing: https://lmstudio.ai/models"
+    },
+    "options.lms.serviceUrl": {
+        "message": "LM Studio services URL",
+        "description": "This option allows configuring the URL of the REST services used by LM Studio: https://lmstudio.ai/docs/api."
+    },
+    "options.lms.serviceUrl.description": {
+        "message": "LM Studio can be run locally (URL: <code>http://localhost:1234</code>), or on a separate machine that can be accessed by specifying the target URL or IP address.",
+        "description": "Description explaining the target URL for invoking LM Studio services"
+    },
+    "options.lms.warningNoModel": {
+        "message": "<strong>Attention</strong>: No model found in LM Studio, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://lmstudio.ai/models\">official website</a>.",
+        "description": "Message displayed when no usable LLM model is identified within LM Studio."
+    },
     "options.ollama.description": {
         "message": "Ollama is an open-source project that allows you to use various advanced LLMs locally, without needing to connect to an external server.<br />You can download everything from the <a href=\"https://ollama.com/download\">official website</a>.",
         "description": "Message displayed when the LLM service provider Ollama is selected."
@@ -278,10 +310,6 @@
     "options.ollama.warningNoModel": {
         "message": "<strong>Attention</strong>: No model found in Ollama, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://ollama.com/library\">official website</a>.",
         "description": "Message displayed when no usable LLM model is identified within Ollama."
-    },
-    "options.ollama.warningTimeout": {
-        "message": "<strong>Attention</strong>: Ollama runs entirely locally, which requires hardware resources and significantly higher execution times compared to a cloud service call. Set an appropriate timeout!",
-        "description": "The message is displayed when a user selects the Ollama model, which, being run locally, has very high response times, and the default timeout value, primarily designed for cloud services, is not sufficient."
     },
     "options.openai.apiKey": {
         "message": "API Key*",

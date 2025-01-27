@@ -8,6 +8,7 @@ import { ConfigType } from '../helpers/configType'
 import { AnthropicClaudeProvider } from './impl/anthropicClaudeProvider'
 import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
 import { GroqProvider } from './impl/groqProvider'
+import { LmsProvider } from './impl/lmsProvider'
 import { OllamaProvider } from './impl/ollamaProvider'
 import { OpenAiGptProvider } from './impl/openAiGptProvider'
 import { XaiGrokProvider } from './impl/xaiGrokProvider'
@@ -29,6 +30,8 @@ export class ProviderFactory {
                 return new GoogleGeminiProvider(config)
             case 'groq':
                 return new GroqProvider(config)
+            case 'lms':
+                return new LmsProvider(config)
             case 'ollama':
                 return new OllamaProvider(config)
             case 'openai':

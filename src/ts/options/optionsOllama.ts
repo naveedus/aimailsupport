@@ -41,7 +41,7 @@ async function getOllamaLocalModels() {
     document.querySelector('#ollama .description.ollama-warning-no-model').classList.remove('show')
 
     try {
-        const ollamaLocalModels = await OllamaProvider.getLocalModels(document.querySelector<HTMLSelectElement>('#ollamaServiceUrl').value)
+        const ollamaLocalModels = await OllamaProvider.getModels(document.querySelector<HTMLSelectElement>('#ollamaServiceUrl').value)
 
         if (ollamaLocalModels.length != 0) {
             // Sort the array by the 'name' field

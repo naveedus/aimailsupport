@@ -33,6 +33,11 @@ const configs: ConfigType = {
         model: 'llama-3.2-3b-preview'
     },
 
+    lms: {
+        serviceUrl: 'http://localhost:1234',
+        model: 'llama3.2:1b'
+    },
+
     ollama: {
         serviceUrl: 'http://localhost:11434',
         model: 'llama3.2:1b'

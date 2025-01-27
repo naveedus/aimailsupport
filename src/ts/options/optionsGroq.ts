@@ -37,7 +37,7 @@ async function getGroqModels() {
     document.querySelector('#groq .description.groq-error-api').classList.remove('show')
 
     try {
-        const groqLocalModels = await GroqProvider.getLocalModels(document.querySelector<HTMLSelectElement>('#groqApiKey').value)
+        const groqLocalModels = await GroqProvider.getModels(document.querySelector<HTMLSelectElement>('#groqApiKey').value)
 
         // Sort the array
         groqLocalModels.sort((a, b) => a.localeCompare(b))

@@ -94,6 +94,10 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             apiKey: document.querySelector<HTMLInputElement>('#googleApiKey').value,
             model: document.querySelector<HTMLInputElement>('#googleModel').value
         },
+        lms: {
+            serviceUrl: document.querySelector<HTMLInputElement>('#lmsServiceUrl').value,
+            model: document.querySelector<HTMLInputElement>('#lmsModel').value
+        },
         ollama: {
             serviceUrl: document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value,
             model: document.querySelector<HTMLInputElement>('#ollamaModel').value
@@ -171,6 +175,11 @@ document.addEventListener('DOMContentLoaded', async _ => {
     document.querySelector<HTMLInputElement>('#googleApiKey').value = configs.google?.apiKey || ''
     document.querySelector<HTMLInputElement>('#googleModel').value = configs.google?.model || 'gemini-1.5-flash'
     // <-- Google Gemini section
+
+    // LM Studio section -->
+    document.querySelector<HTMLInputElement>('#lmsServiceUrl').value = configs.lms?.serviceUrl || 'http://localhost:1234'
+    document.querySelector<HTMLInputElement>('#lmsModel').value = configs.lms?.model || ''
+    // <-- LM Studio section
 
     // Ollama section -->
     document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value = configs.ollama?.serviceUrl || 'http://localhost:11434'

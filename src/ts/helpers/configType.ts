@@ -23,6 +23,11 @@ export interface ConfigType {
         model: string
     }
 
+    lms: {
+        serviceUrl: string
+        model: string
+    }
+
     ollama: {
         serviceUrl: string
         model: string

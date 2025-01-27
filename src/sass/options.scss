@@ -148,11 +148,29 @@ $options-labels-width: 150px;
                 }
             }
 
+            // Styles for messages that for LM Studio notify the user about two scenarios:
+            //
+            //   1. When an issue occurs during API calls while attempting to list
+            //      available models;
+            //   2. When no models are found.
+            &.lms-error-api,
+            &.lms-warning-no-model {
+                display: none;
+
+                &.show {
+                    display: block;
+                }
+
+                strong {
+                    color: red;
+                }
+            }
+
             // Styles for messages that for Ollama notify the user about two scenarios:
             //
             //   1. When an issue occurs during API calls while attempting to list
             //      available models;
-            //   2. When no models are found in Ollama.
+            //   2. When no models are found.
             &.ollama-error-api,
             &.ollama-warning-no-model {
                 display: none;
@@ -167,11 +185,12 @@ $options-labels-width: 150px;
             }
 
             // Style for a warning message that notifies the user about the significant
-            // response times of the Ollama model, emphasizing the importance of setting
-            // an appropriate timeout.
-            &.ollama-warning-timeout {
+            // response times of the local LLM models, emphasizing the importance of
+            // setting an appropriate timeout.
+            &.local-llm-warning-timeout {
                 display: none;
 
+                body[data-provider='lms'] &,
                 body[data-provider='ollama'] & {
                     display: block;
                 }
@@ -221,6 +240,7 @@ $options-labels-width: 150px;
         body[data-provider='anthropic'] &#anthropic,
         body[data-provider='google'] &#google,
         body[data-provider='groq'] &#groq,
+        body[data-provider='lms'] &#lms,
         body[data-provider='ollama'] &#ollama,
         body[data-provider='openai'] &#openai,
         body[data-provider='xai'] &#xai {

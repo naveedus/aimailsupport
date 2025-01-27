@@ -11,6 +11,9 @@
     "errorTextNotFound": {
         "message": "Impossibile recuperare il testo per l'elaborazione."
     },
+    "localLlm.warningTimeout": {
+        "message": "<strong>Attenzione</strong>: LM Studio od Ollama sono eseguiti totalmente localmente, il che richiede delle risorse hardware e dei tempi di esecuzione significativamente più alti rispetto ad una chiamata ad un servizio cloud. Impostare un timeout adeguato!"
+    },
     "mailListen": {
         "message": "Ascolta"
     },
@@ -167,6 +170,9 @@
     "options.groq.listModelsButton": {
         "message": "Elenca modelli"
     },
+    "options.groq.model": {
+        "message": "Modello*"
+    },
     "options.llmProvider": {
         "message": "Provider di servizi AI"
     },
@@ -188,14 +194,35 @@
     "options.mainUserLanguage.description": {
         "message": "Lingua principale di output che si proverà ad usare in tutte le integrazioni."
     },
-    "options.ollama.listModelsButton": {
+    "options.lms.description": {
+        "message": "LM Studio è un progetto open source che permette di utilizzare diversi LLM avanzati in locale, senza bisogno di collegarsi ad un server esterno.<br />È possibile scaricare il tutto dal <a href=\"https://lmstudio.ai\">sito ufficiale</a>."
+    },
+    "options.lms.errorApi": {
+        "message": "<strong>Attenzione</strong>: Impossibile comunicare con LM Studio. Assicurarsi che sia in esecuzione e che l'opzione CORS sia attivate nei Settings."
+    },
+    "options.lms.listModelsButton": {
         "message": "Elenca modelli"
+    },
+    "options.lms.model": {
+        "message": "Modello*"
+    },
+    "options.lms.serviceUrl": {
+        "message": "URL servizi LM Studio"
+    },
+    "options.lms.serviceUrl.description": {
+        "message": "È possibile eseguire LM Studio localmente (URL: <code>http://localhost:1234</code>), oppure su una macchina separata che è possibile raggiungere definendo il relativo URL od IP di destinazione."
+    },
+    "options.lms.warningNoModel": {
+         "message": "<strong>Attenzione</strong>: Nessun modello trovato in LM Studio, procedere all'installazione di un modello, es. Llama, come indicato sul <a href=\"https://lmstudio.ai/models\">sito ufficiale</a>."
     },
     "options.ollama.description": {
         "message": "Ollama è un progetto open source che permette di utilizzare diversi LLM avanzati in locale, senza bisogno di collegarsi ad un server esterno.<br />È possibile scaricare il tutto dal <a href=\"https://ollama.com/download\">sito ufficiale</a>."
     },
     "options.ollama.errorApi": {
         "message": "<strong>Attenzione</strong>: Impossibile comunicare con Ollama, assicurarsi che sia in esecuzione e che sia stata <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama\">opportunamente configurata l'origine</a> per l'invocazione da Thunderbird, abilitando <code>moz-extension://*</code> come indicato in <a href=\"https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server\">questa sezione</a><br/>Ad esempio, in macOS con: <code>launchctl setenv OLLAMA_ORIGINS \"moz-extension://*\"</code>."
+    },
+    "options.ollama.listModelsButton": {
+        "message": "Elenca modelli"
     },
     "options.ollama.model": {
         "message": "Modello*"
@@ -208,9 +235,6 @@
     },
     "options.ollama.warningNoModel": {
         "message": "<strong>Attenzione</strong>: Nessun modello trovato in Ollama, procedere all'installazione di un modello, es. Llama, come indicato sul <a href=\"https://ollama.com/library\">sito ufficiale</a>."
-    },
-    "options.ollama.warningTimeout": {
-        "message": "<strong>Attenzione</strong>: Ollama viene eseguito totalmente localmente, il che richiede delle risorse hardware e dei tempi di esecuzione significativamente più alti rispetto ad una chiamata ad un servizio cloud. Impostare un timeout adeguato!"
     },
     "options.openai.apiKey": {
         "message": "Chiave API*"

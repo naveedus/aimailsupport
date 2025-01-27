@@ -25,7 +25,7 @@ export class OllamaProvider extends GenericProvider {
      * Returns an array of name/model pairs for all active Ollama models in
      * the local installation.
      */
-    public static async getLocalModels(serviceUrl: string): Promise<{ name: string, model: string }[]> {
+    public static async getModels(serviceUrl: string): Promise<{ name: string, model: string }[]> {
         const requestOptions: RequestInit = {
             method: 'GET',
             redirect: 'follow'

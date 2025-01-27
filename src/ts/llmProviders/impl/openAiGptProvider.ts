@@ -164,11 +164,11 @@ export class OpenAiGptProvider extends GenericProvider {
 
         const requestData = JSON.stringify({
             'model': this.model,
-            'temperature': this.temperature,
             'messages': [
                 { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }
-            ]
+            ],
+            'temperature': this.temperature
         })
 
         const requestOptions: RequestInit = {

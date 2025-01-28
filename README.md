@@ -18,7 +18,7 @@ Our aim is to assist users dealing with high volumes of daily emails, providing 
    - [Owl for Exchange bug](#owl-for-exchange-bug)
 2. [Build](#build)
 3. [Permissions details](#permissions-details)
-4. [Translation](#translation)
+4. [Localization](#localization)
 5. [License and references](#license-and-references)
 
 ## Getting started
@@ -34,14 +34,18 @@ The LLMs* currently supported are:
 * Claude by [Anthropic](https://www.anthropic.com);
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
-* Grok by [xAI](https://x.ai);
-* Llama, Mistral, Gemma, and other models using [Groq Cloud](https://groq.com);
-* Llama, Phi, Mistral, Gemma, and other models using [Ollama](https://ollama.com).
+* Grok by [xAI](https://x.ai).
+
+It is possible to access a wider set of models (e.g., Llama, Phi, Mistral, Gemma, and many others) through the use of:
+
+* [Groq Cloud](https://groq.com);
+* [LM Studio](https://lmstudio.ai);
+* [Ollama](https://ollama.com).
 
 \* To use them, it is necessary to create an account on the respective platforms and enable an API access key. <u>Usage fees apply</u>; for more details, please refer to the respective websites.
 
 **ATTENTION 1**: The services offered by Groq Cloud include the option to use a free plan, albeit with low rate limits on requests.  
-**ATTENTION 2**: Unlike other LLM models, Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
+**ATTENTION 2**: Unlike other LLM models, LM Studio and Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
 The downside is that this requires *SIGNIFICANT* hardware resources.
 
 ### Settings and usage
@@ -125,6 +129,12 @@ openai_api_key = KEY_VALUE
 xai_api_key = KEY_VALUE
 ```
 
+To test LM studio, it is necessary to install the model ```llama3.2:1b``` from the GUI or using the command:
+
+```console
+lms get llama-3.2-1b
+```
+
 To test Ollama, it is necessary to install the model ```llama3.2:1b``` using the command:
 
 ```console
@@ -149,9 +159,9 @@ AI Mail Support for Thunderbird aims to make use of a minimal set of permissions
 - storage: Enables add-on to store and retrieve data, and listen for changes to stored items.  
   Used to store user settings, see https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage.
 
-## Translation
+## Localization
 
-The add-on uses a very small set of messages that require translation, so if you want to extend the localization, it's really simple, here's what you need to do:
+The add-on uses a very small set of messages that require localization, so if you want to extend the translation, it's really simple, here's what you need to do:
 
 1. Copy the file `src/locales/en-messages.json` to `src/locales/%ISO CODE%-messages.json` where `%ISO CODE%` is your [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code;
 2. Translate your `src/locales/%ISO CODE%-messages.json`, specifically the message `fields`, and remove the `descriptions` used to provide additional context;

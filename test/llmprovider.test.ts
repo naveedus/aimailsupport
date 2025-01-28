@@ -3,6 +3,7 @@ import { ProviderFactory } from '../src/ts/llmProviders/providerFactory'
 import { AnthropicClaudeProvider } from '../src/ts/llmProviders/impl/anthropicClaudeProvider'
 import { GoogleGeminiProvider } from '../src/ts/llmProviders/impl/googleGeminiProvider'
 import { GroqProvider } from '../src/ts/llmProviders/impl/groqProvider'
+import { LmsProvider } from '../src/ts/llmProviders/impl/lmsProvider'
 import { OllamaProvider } from '../src/ts/llmProviders/impl/ollamaProvider'
 import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/openAiGptProvider'
 import { XaiGrokProvider } from '../src/ts/llmProviders/impl/xaiGrokProvider'
@@ -168,10 +169,41 @@ describe('GroqProvider', () => {
     })
 })
 
+// LM Studio tests
+describe('LmStudioProvider', () => {
+    configs.llmProvider = 'lms'
+
+    const provider = ProviderFactory.getInstance(configs)
+
+    test('should be an instance of LmsProvider', () => {
+        expect(provider).toBeInstanceOf(LmsProvider)
+    })
+
+    test('should be able to rephrase a text', async () => {
+        const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest a reply from text', async () => {
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to summarize text', async () => {
+        const output = await provider.summarizeText('Example of text to summarize')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to translate text', async () => {
+        // 'Esempio di testo da tradurre' is Italian for 'Example of text to translate'
+        const output = await provider.translateText('Esempio di testo da tradurre')
+        expect(typeof output).toBe('string')
+    })
+})
+
 // OllamaProvider tests
 describe('OllamaProvider', () => {
     configs.llmProvider = 'ollama'
-    configs.google.apiKey = process.env.google_api_key
 
     const provider = ProviderFactory.getInstance(configs)
 

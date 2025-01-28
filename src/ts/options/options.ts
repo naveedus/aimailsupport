@@ -86,13 +86,16 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             apiKey: document.querySelector<HTMLInputElement>('#anthropicApiKey').value,
             model: document.querySelector<HTMLInputElement>('#anthropicModel').value
         },
-        groq: {
-            apiKey: document.querySelector<HTMLInputElement>('#groqApiKey').value,
-            model: document.querySelector<HTMLInputElement>('#groqModel').value
+        deepseek: {
+            apiKey: document.querySelector<HTMLInputElement>('#deepseekApiKey').value
         },
         google: {
             apiKey: document.querySelector<HTMLInputElement>('#googleApiKey').value,
             model: document.querySelector<HTMLInputElement>('#googleModel').value
+        },
+        groq: {
+            apiKey: document.querySelector<HTMLInputElement>('#groqApiKey').value,
+            model: document.querySelector<HTMLInputElement>('#groqModel').value
         },
         lms: {
             serviceUrl: document.querySelector<HTMLInputElement>('#lmsServiceUrl').value,
@@ -166,15 +169,19 @@ document.addEventListener('DOMContentLoaded', async _ => {
     document.querySelector<HTMLInputElement>('#anthropicModel').value = configs.anthropic?.model || 'claude-3-haiku-20240307'
     // <-- Anthropic Claude section
 
-    // Groq section -->
-    document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.groq?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#groqModel').value = configs.groq?.model || ''
-    // <-- Groq section
+    // DeepSeek section -->
+    document.querySelector<HTMLInputElement>('#deepseekApiKey').value = configs.deepseek?.apiKey || ''
+    // <-- DeepSeek section
 
     // Google Gemini section -->
     document.querySelector<HTMLInputElement>('#googleApiKey').value = configs.google?.apiKey || ''
     document.querySelector<HTMLInputElement>('#googleModel').value = configs.google?.model || 'gemini-1.5-flash'
     // <-- Google Gemini section
+
+    // Groq section -->
+    document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.groq?.apiKey || ''
+    document.querySelector<HTMLInputElement>('#groqModel').value = configs.groq?.model || ''
+    // <-- Groq section
 
     // LM Studio section -->
     document.querySelector<HTMLInputElement>('#lmsServiceUrl').value = configs.lms?.serviceUrl || 'http://localhost:1234'

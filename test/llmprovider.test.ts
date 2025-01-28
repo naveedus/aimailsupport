@@ -24,6 +24,10 @@ const configs: ConfigType = {
         model: 'claude-3-haiku-20240307'
     },
 
+    deepseek: {
+        apiKey: null
+    },
+
     google: {
         apiKey: null,
         model: 'gemini-1.5-flash-8b'
@@ -36,7 +40,7 @@ const configs: ConfigType = {
 
     lms: {
         serviceUrl: 'http://localhost:1234',
-        model: 'llama3.2:1b'
+        model: 'llama-3.2-1b-instruct'
     },
 
     ollama: {

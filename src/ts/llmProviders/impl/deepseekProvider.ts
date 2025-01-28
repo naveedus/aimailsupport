@@ -4,24 +4,17 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 
 /**
  * Class with the implementation of methods useful for interfacing with the
- * Anthropic APIs.
- * Official documentation: https://docs.anthropic.com/en/api/getting-started
+ * DeepSeek APIs.
+ * Official documentation: https://api-docs.deepseek.com/
  */
-export class AnthropicClaudeProvider extends GenericProvider {
+export class DeepseekProvider extends GenericProvider {
     private readonly temperature: number
     private readonly apiKey: string
-    private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
-        // The temperature value is normalized based on the options, with a
-        // range of 0 to 1 for Anthropic, while for other LLM models, and
-        // consequently in the add-on options, values can be set between 0
-        // and 2.
-        this.temperature = config.temperature / 2
-        this.apiKey = config.anthropic.apiKey
-        this.model = config.anthropic.model
+        this.apiKey = config.deepseek.apiKey
     }
 
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
@@ -60,23 +53,21 @@ export class AnthropicClaudeProvider extends GenericProvider {
     private getHeader(): Headers {
         const headers: Headers = new Headers()
         headers.append('x-api-key', this.apiKey)
-        headers.append('anthropic-version', '2023-06-01')
-        headers.append('anthropic-dangerous-direct-browser-access', 'true')
-        headers.append('Content-Type', 'application/json')
+        headers.append('Authorization', `Bearer ${this.apiKey}`)
 
         return headers
     }
 
     /**
      * This asynchronous method manages message content by sending a request
-     * to the Anthropic API using the provided system and user input.
+     * to the DeepSeek API using the provided system and user input.
      * It constructs a POST request with the relevant model and message data,
      * manages the request with a timeout signal, and processes the response.
      *
      * If the request is successful, it returns the content of the response
      * message.
      * In case of failure, it throws an error with the specific message from
-     * the Anthropic API.
+     * the DeepSeek API.
      *
      * @param systemInput - The input for the 'system' role in the conversation.
      * @param userInput - The input for the 'user' role in the conversation.
@@ -90,12 +81,12 @@ export class AnthropicClaudeProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'model': this.model,
-            'temperature': this.temperature,
-            'system': systemInput,
+            'model': 'deepseek-chat',
             'messages': [
+                { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }
-            ]
+            ],
+            'temperature': this.temperature
         })
 
         const requestOptions: RequestInit = {
@@ -106,12 +97,12 @@ export class AnthropicClaudeProvider extends GenericProvider {
             signal: signal
         }
 
-        const response = await fetch('https://api.anthropic.com/v1/messages', requestOptions)
+        const response = await fetch('https://api.deepseek.com/chat/completions', requestOptions)
         clearAbortSignalWithTimeout()
 
         if (!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`Anthropic error: ${errorResponse.error.message}`)
+            throw new Error(`DeepSeek error: ${errorResponse.error.message}`)
         }
 
         const responseData = await response.json()

@@ -6,6 +6,7 @@ import { GenericProvider } from './genericProvider'
 import { ConfigType } from '../helpers/configType'
 
 import { AnthropicClaudeProvider } from './impl/anthropicClaudeProvider'
+import { DeepseekProvider } from './impl/deepseekProvider'
 import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
 import { GroqProvider } from './impl/groqProvider'
 import { LmsProvider } from './impl/lmsProvider'
@@ -26,6 +27,8 @@ export class ProviderFactory {
         switch(config.llmProvider) {
             case 'anthropic':
                 return new AnthropicClaudeProvider(config)
+            case 'deepseek':
+                return new DeepseekProvider(config)
             case 'google':
                 return new GoogleGeminiProvider(config)
             case 'groq':

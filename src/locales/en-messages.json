@@ -195,6 +195,14 @@
         "message": "Enable debug mode",
         "description": "Enabling debug mode allows for a more detailed analysis of the add-on's behavior, e.g., by enabling console logging."
     },
+    "options.deepseek.apiKey": {
+        "message": "API Key*",
+        "description": "API key field for DeepSeek."
+    },
+    "options.deepseek.apiKey.description": {
+        "message": "Go to the <a href=\"https://platform.deepseek.com/api_keys\">DeepSeek Platform</a> to retrieve or create a key.",
+        "description": "Description of the API Key section with details on how to retrieve it from the official DeepSeek Platform website."
+    },
     "options.errorOwlForExchangeBug": {
         "message": "<b>WARNING</b>: It appears that at least one of your accounts is using the Owl for Exchange add-on, which has a bug with Thunderbird's official <a href=\"https://webextension-api.thunderbird.net/en/115/messageDisplayScripts.html\">messageDisplayScripts API</a>.<br>This will prevent the 'AI Mail Support' add-on from functioning when working with Exchange or Office365 accounts.",
         "description": "The text displayed on the options page when at least one account managed by the Owl for Exchange is founded."

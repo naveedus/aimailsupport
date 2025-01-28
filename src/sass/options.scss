@@ -238,6 +238,7 @@ $options-labels-width: 150px;
         }
 
         body[data-provider='anthropic'] &#anthropic,
+        body[data-provider='deepseek'] &#deepseek,
         body[data-provider='google'] &#google,
         body[data-provider='groq'] &#groq,
         body[data-provider='lms'] &#lms,

@@ -13,6 +13,10 @@ export interface ConfigType {
         model: string
     }
 
+    deepseek: {
+        apiKey: string
+    }
+
     google: {
         apiKey: string
         model: string

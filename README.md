@@ -134,7 +134,7 @@ xai_api_key = KEY_VALUE
 To test LM studio, it is necessary to install the model ```llama3.2:1b``` from the GUI or using the command:
 
 ```console
-lms get llama-3.2-1b
+$ lms get llama-3.2-1b
 ```
 
 To test Ollama, it is necessary to install the model ```llama3.2:1b``` using the command:

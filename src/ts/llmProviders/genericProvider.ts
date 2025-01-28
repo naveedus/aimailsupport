@@ -10,6 +10,7 @@ export class GenericProvider {
 
     protected readonly PROMPTS = {
         REPHRASE: 'Take the following text and rephrase it according to the %s style using the same language as the text',
+        SUGGEST_IMPROVEMENTS: 'Suggest improvements to the content of the following email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUMMARIZE: 'Summarize the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         TRANSLATE: 'Translate the email content to %s, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers'
@@ -54,6 +55,18 @@ export class GenericProvider {
      *          text based on the specified style.
      */
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
+        throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+
+    /**
+     * Suggests improvements to the provided text input to enhance its clarity,
+     * tone, or overall quality.
+     *
+     * @param input - The input text to be analyzed and improved.
+     *
+     * @returns A Promise resolving to the improved version of the input text.
+     */
+    public async suggestImprovementsForText(input: string): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 
@@ -116,6 +129,10 @@ export class GenericProvider {
 
     public getCanSpeechFromText(): boolean {
         return this.getSpeechFromText !== GenericProvider.prototype.getSpeechFromText
+    }
+
+    public getCanSuggestImprovementsForText(): boolean {
+        return this.suggestImprovementsForText !== GenericProvider.prototype.suggestImprovementsForText
     }
 
     public getCanSuggestReply(): boolean {

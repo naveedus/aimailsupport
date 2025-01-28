@@ -89,6 +89,9 @@
     "mailRephrase.standard": {
         "message": "Standard"
     },
+    "mailSuggestImprovements": {
+        "message": "Suggerisci miglioramenti"
+    },
     "mailSuggestReply": {
         "message": "Suggerisci risposta…"
     },

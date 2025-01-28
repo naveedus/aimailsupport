@@ -39,7 +39,7 @@ The LLMs* currently supported are:
 
 It is possible to access a wider set of models (e.g., Llama, Phi, Mistral, Gemma, and many others) through the use of:
 
-* [Groq Cloud](https://groq.com);
+* [Groq Cloud*](https://groq.com);
 * [LM Studio](https://lmstudio.ai);
 * [Ollama](https://ollama.com).
 

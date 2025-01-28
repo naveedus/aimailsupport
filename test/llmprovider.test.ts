@@ -91,6 +91,11 @@ describe('AnthropicClaudeProvider', () => {
         expect(typeof output).toBe('string')
     })
 
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
     test('should be able to suggest a reply from text', async () => {
         const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
@@ -121,6 +126,11 @@ describe('DeepseekProvider', () => {
 
     test('should be able to rephrase a text', async () => {
         const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
         expect(typeof output).toBe('string')
     })
 
@@ -157,6 +167,11 @@ describe('GoogleGeminiProvider', () => {
         expect(typeof output).toBe('string')
     })
 
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
     test('should be able to suggest a reply from text', async () => {
         const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
@@ -187,6 +202,11 @@ describe('GroqProvider', () => {
 
     test('should be able to rephrase a text', async () => {
         const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
         expect(typeof output).toBe('string')
     })
 
@@ -222,6 +242,11 @@ describe('LmStudioProvider', () => {
         expect(typeof output).toBe('string')
     })
 
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
     test('should be able to suggest a reply from text', async () => {
         const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
@@ -251,6 +276,11 @@ describe('OllamaProvider', () => {
 
     test('should be able to rephrase a text', async () => {
         const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
         expect(typeof output).toBe('string')
     })
 
@@ -307,6 +337,11 @@ describe('OpenAiGptProvider', () => {
         expect(typeof output).toBe('string')
     })
 
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
     test('should be able to suggest a reply from text', async () => {
         const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
         expect(typeof output).toBe('string')
@@ -337,6 +372,11 @@ describe('XaiGrokProvider', () => {
 
     test('should be able to rephrase a text', async () => {
         const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
         expect(typeof output).toBe('string')
     })
 

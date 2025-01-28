@@ -30,6 +30,12 @@ export class AnthropicClaudeProvider extends GenericProvider {
         return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', toneOfVoice), input)
     }
 
+    public async suggestImprovementsForText(input: string): Promise<string> {
+        logMessage(`Request suggest improvements for the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS, input)
+    }
+
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
         logMessage(`Request to use the tone of voice "${toneOfVoice}" to suggest a reply to the text: ${input}`, 'debug')
 
@@ -92,6 +98,7 @@ export class AnthropicClaudeProvider extends GenericProvider {
         const requestData = JSON.stringify({
             'model': this.model,
             'temperature': this.temperature,
+            'max_tokens': 2048,
             'system': systemInput,
             'messages': [
                 { 'role': 'user', 'content': userInput }

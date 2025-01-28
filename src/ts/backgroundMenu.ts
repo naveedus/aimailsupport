@@ -271,6 +271,16 @@ const menuIdModerate = messenger.menus.create({
     ]
 })
 
+const menuIdSuggestImprovements = messenger.menus.create({
+    id: 'aiSuggestImprovements',
+    title: browser.i18n.getMessage('mailSuggestImprovements'),
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+        'selection'
+    ]
+})
+
 // Separator for the message display action menu
 browser.menus.create({
     id: 'aiMessageDisplayActionMenuSeparator1',
@@ -340,7 +350,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textRephrased})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                logMessage(`Error during rephrase: ${error.message}`, 'error')
+                logMessage(`Error during rephrasing: ${error.message}`, 'error')
             })
         }
     }
@@ -386,7 +396,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addAudio', content: blob})
             } catch (error) {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                logMessage(`Error during summarization and text2Speech: ${error.message}`, 'error')
+                logMessage(`Error during summarization and text-to-speech: ${error.message}`, 'error')
             }
         }
     }
@@ -403,7 +413,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addAudio', content: blob})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                logMessage(`Error during text2Speech conversion: ${error.message}`, 'error')
+                logMessage(`Error during text-to-speech conversion: ${error.message}`, 'error')
             })
         }
     }
@@ -440,7 +450,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'addText', content: textTranslateAndSummarized})
             } catch (error) {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
-                logMessage(`Error during translation and summarize: ${error.message}`, 'error')
+                logMessage(`Error during translation and summarization: ${error.message}`, 'error')
             }
         }
     }
@@ -478,6 +488,23 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
                 logMessage(`Error during moderation: ${error.message}`, 'error')
+            })
+        }
+    }
+    else if(info.menuItemId == menuIdSuggestImprovements) {
+        sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
+
+        const textToImprove = await getCurrentMessageContent()
+
+        if(textToImprove == null) {
+            sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
+        }
+        else {
+            llmProvider.suggestImprovementsForText(textToImprove).then(improvedText => {
+                sendMessageToActiveTab({type: 'addText', content: improvedText})
+            }).catch(error => {
+                sendMessageToActiveTab({type: 'showError', content: error.message})
+                logMessage(`Error while improving the text: ${error.message}`, 'error')
             })
         }
     }
@@ -551,6 +578,12 @@ async function updateMenuVisibility(): Promise<void> {
         enabled: llmProvider.getCanSpeechFromText()
     })
     // <-- canSpeechFromText
+
+    // canSuggestImprovementsForText -->
+    messenger.menus.update(menuIdSuggestImprovements, {
+        enabled: llmProvider.getCanSuggestImprovementsForText()
+    })
+    // <-- canSuggestImprovementsForText
 
     // canSuggestReply -->
     messenger.menus.update(subMenuIdSuggestReply, {

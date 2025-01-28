@@ -115,6 +115,10 @@
         "message": "Standard",
         "description": "This option rephrases the input text ensuring a standard tone of voice."
     },
+    "mailSuggestImprovements": {
+        "message": "Suggest improvements",
+        "description": "This option suggest improvements to an email."
+    },
     "mailSuggestReply": {
         "message": "Suggest reply…",
         "description": "Submenu option to receive a suggested reply to an email."

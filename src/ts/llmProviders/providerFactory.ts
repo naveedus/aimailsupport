@@ -14,6 +14,18 @@ import { OllamaProvider } from './impl/ollamaProvider'
 import { OpenAiGptProvider } from './impl/openAiGptProvider'
 import { XaiGrokProvider } from './impl/xaiGrokProvider'
 
+// Static map to associate the provider name with the corresponding class
+const providerMap: Record<string, new (config: ConfigType) => GenericProvider> = {
+    anthropic: AnthropicClaudeProvider,
+    deepseek: DeepseekProvider,
+    google: GoogleGeminiProvider,
+    groq: GroqProvider,
+    lms: LmsProvider,
+    ollama: OllamaProvider,
+    openai: OpenAiGptProvider,
+    xai: XaiGrokProvider
+}
+
 export class ProviderFactory {
 
     /**
@@ -24,25 +36,7 @@ export class ProviderFactory {
      * @returns An instance of the specified AI LLM provider.
      */
     static getInstance(config: ConfigType): GenericProvider {
-        switch(config.llmProvider) {
-            case 'anthropic':
-                return new AnthropicClaudeProvider(config)
-            case 'deepseek':
-                return new DeepseekProvider(config)
-            case 'google':
-                return new GoogleGeminiProvider(config)
-            case 'groq':
-                return new GroqProvider(config)
-            case 'lms':
-                return new LmsProvider(config)
-            case 'ollama':
-                return new OllamaProvider(config)
-            case 'openai':
-                return new OpenAiGptProvider(config)
-            case 'xai':
-                return new XaiGrokProvider(config)
-            default:
-                return new GenericProvider(config)
-        }
+        const ProviderClass = providerMap[config.llmProvider] || GenericProvider
+        return new ProviderClass(config)
     }
 }

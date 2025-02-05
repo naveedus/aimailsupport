@@ -59,8 +59,8 @@ export class XaiGrokProvider extends GenericProvider {
      */
     private getHeader(): Headers {
         const headers: Headers = new Headers()
-        headers.append('Content-Type', 'application/json')
         headers.append('Authorization', `Bearer ${this.apiKey}`)
+        headers.append('Content-Type', 'application/json')
 
         return headers
     }

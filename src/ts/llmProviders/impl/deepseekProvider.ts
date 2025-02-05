@@ -58,8 +58,8 @@ export class DeepseekProvider extends GenericProvider {
      */
     private getHeader(): Headers {
         const headers: Headers = new Headers()
-        headers.append('x-api-key', this.apiKey)
         headers.append('Authorization', `Bearer ${this.apiKey}`)
+        headers.append('Content-Type', 'application/json')
 
         return headers
     }
@@ -112,6 +112,6 @@ export class DeepseekProvider extends GenericProvider {
         }
 
         const responseData = await response.json()
-        return responseData.content[0].text
+        return responseData.choices[0].message.content
     }
 }

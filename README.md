@@ -32,7 +32,7 @@ Several LLMs (Large Language Models) are integrated to provide a range of option
 The LLMs* currently supported are:
 
 * Claude by [Anthropic](https://www.anthropic.com);
-* [DeepSeek](https://www.deepseek.com);
+* DeepSeek by [Hangzhou DeepSeek Artificial Intelligence Basic Technology Research](https://www.deepseek.com);
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
 * Grok by [xAI](https://x.ai).

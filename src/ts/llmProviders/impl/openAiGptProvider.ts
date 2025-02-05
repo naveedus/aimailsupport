@@ -136,8 +136,8 @@ export class OpenAiGptProvider extends GenericProvider {
      */
     private getHeader(): Headers {
         const headers: Headers = new Headers()
-        headers.append('Content-Type', 'application/json')
         headers.append('Authorization', `Bearer ${this.apiKey}`)
+        headers.append('Content-Type', 'application/json')
 
         if(this.organizationId) {
             headers.append('OpenAI-Organization', this.organizationId)

@@ -17,7 +17,7 @@ const configs: ConfigType = {
     mainUserLanguageCode: 'English',
     llmProvider: null,
     temperature: 1,
-    servicesTimeout: 25,
+    servicesTimeout: 30,
     debugMode: true,
 
     anthropic: {

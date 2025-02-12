@@ -23,6 +23,42 @@
         "message": "Moderate",
         "description": "Menu option to moderate the content of a received email."
     },
+    "mailModerate.mistralClassification.dangerous_and_criminal_content": {
+        "message": "Dangerous and criminal content",
+        "description": "Content that promotes or provides instructions for illegal activities or extremely hazardous behaviors that pose a significant risk of physical harm, death, or legal consequences."
+    },
+    "mailModerate.mistralClassification.financial": {
+        "message": "Financial",
+        "description": "Content that contains or tries to elicit detailed or tailored financial advice."
+    },
+    "mailModerate.mistralClassification.hate_and_discrimination": {
+        "message": "Hate and discrimination",
+        "description": "Content that expresses prejudice, hostility, or advocates discrimination against individuals or groups based on protected characteristics such as race, ethnicity, religion, gender, sexual orientation, or disability."
+    },
+    "mailModerate.mistralClassification.health": {
+        "message": "Health",
+        "description": "Content that contains or tries to elicit detailed or tailored medical advice."
+    },
+    "mailModerate.mistralClassification.law": {
+        "message": "Law",
+        "description": "Content that contains or tries to elicit detailed or tailored legal advice."
+    },
+    "mailModerate.mistralClassification.pii": {
+        "message": "PII (Personally Identifiable Information)",
+        "description": "Content that requests, shares, or attempts to elicit personal identifying information such as full names, addresses, phone numbers, social security numbers, or financial account details."
+    },
+    "mailModerate.mistralClassification.selfharm": {
+        "message": "Self-Harm",
+        "description": "Content that promotes, instructs, plans, or encourages deliberate self-injury, suicide, eating disorders, or other self-destructive behaviors."
+    },
+    "mailModerate.mistralClassification.sexual": {
+        "message": "Sexual",
+        "description": "Material that explicitly depicts, describes, or promotes sexual activities, nudity, or sexual services."
+    },
+    "mailModerate.mistralClassification.violence_and_threats": {
+        "message": "Violence and threats",
+        "description": "Content that describes, glorifies, incites, or threatens physical violence against individuals or groups."
+    },
     "mailModerate.openaiClassification.harassment": {
         "message": "Harassment",
         "description": "Content that expresses, incites, or promotes harassing language towards any target."
@@ -294,6 +330,14 @@
     "options.lms.warningNoModel": {
         "message": "<strong>Attention</strong>: No model found in LM Studio, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://lmstudio.ai/models\">official website</a>.",
         "description": "Message displayed when no usable LLM model is identified within LM Studio."
+    },
+    "options.mistral.apiKey": {
+        "message": "API Key*",
+        "description": "API key field for Mistral AI."
+    },
+    "options.mistral.apiKey.description": {
+        "message": "Go to the <a href=\"https://console.mistral.ai/api-keys\">API keys</a> section to retrieve or create a key.",
+        "description": "Description of the API Key section with details on how to retrieve it from the official Mistral AI website."
     },
     "options.ollama.description": {
         "message": "Ollama is an open-source project that allows you to use various advanced LLMs locally, without needing to connect to an external server.<br />You can download everything from the <a href=\"https://ollama.com/download\">official website</a>.",

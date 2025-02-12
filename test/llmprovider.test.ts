@@ -5,6 +5,7 @@ import { DeepseekProvider } from '../src/ts/llmProviders/impl/deepseekProvider'
 import { GoogleGeminiProvider } from '../src/ts/llmProviders/impl/googleGeminiProvider'
 import { GroqProvider } from '../src/ts/llmProviders/impl/groqProvider'
 import { LmsProvider } from '../src/ts/llmProviders/impl/lmsProvider'
+import { MistralProvider } from '../src/ts/llmProviders/impl/mistralProvider'
 import { OllamaProvider } from '../src/ts/llmProviders/impl/ollamaProvider'
 import { OpenAiGptProvider } from '../src/ts/llmProviders/impl/openAiGptProvider'
 import { XaiGrokProvider } from '../src/ts/llmProviders/impl/xaiGrokProvider'
@@ -17,7 +18,7 @@ const configs: ConfigType = {
     mainUserLanguageCode: 'English',
     llmProvider: null,
     temperature: 1,
-    servicesTimeout: 30,
+    servicesTimeout: 15,
     debugMode: true,
 
     anthropic: {
@@ -37,6 +38,10 @@ const configs: ConfigType = {
     groq: {
         apiKey: null,
         model: 'llama-3.2-3b-preview'
+    },
+
+    mistral: {
+        apiKey: null,
     },
 
     lms: {
@@ -65,6 +70,9 @@ const configs: ConfigType = {
         apiKey: null
     }
 }
+
+// Increase timeout for tests (value expressed in milliseconds)
+jest.setTimeout(configs.servicesTimeout * 1000)
 
 // Persists the configurations
 browser.storage.sync.set(configs)
@@ -235,6 +243,58 @@ describe('LmStudioProvider', () => {
 
     test('should be an instance of LmsProvider', () => {
         expect(provider).toBeInstanceOf(LmsProvider)
+    })
+
+    test('should be able to rephrase a text', async () => {
+        const output = await provider.rephraseText('Example of text to rephrase', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest how to improve a text', async () => {
+        const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to suggest a reply from text', async () => {
+        const output = await provider.suggestReplyFromText('Example of text for which to request a suggestion for a reply', 'shortened')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to summarize text', async () => {
+        const output = await provider.summarizeText('Example of text to summarize')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to translate text', async () => {
+        // 'Esempio di testo da tradurre' is Italian for 'Example of text to translate'
+        const output = await provider.translateText('Esempio di testo da tradurre')
+        expect(typeof output).toBe('string')
+    })
+})
+
+// MistralProvider tests
+describe('MistralProvider', () => {
+    configs.llmProvider = 'mistral'
+    configs.mistral.apiKey = process.env.mistral_api_key
+
+    const provider = ProviderFactory.getInstance(configs)
+
+    test('should be an instance of MistralProvider', () => {
+        expect(provider).toBeInstanceOf(MistralProvider)
+    })
+
+    test('should be able to modate text', async () => {
+        const output = await provider.moderateText('Example of text to moderate')
+
+        // Verify that the output is an object
+        expect(typeof output).toBe('object')
+        expect(output).not.toBeNull()
+
+        // Verify that each key is a string and each value is a number
+        Object.entries(output).forEach(([key, value]) => {
+            expect(typeof key).toBe('string')
+            expect(typeof value).toBe('number')
+        })
     })
 
     test('should be able to rephrase a text', async () => {

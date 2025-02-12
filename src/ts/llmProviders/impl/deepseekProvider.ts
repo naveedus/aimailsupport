@@ -5,7 +5,7 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 /**
  * Class with the implementation of methods useful for interfacing with the
  * DeepSeek APIs.
- * Official documentation: https://api-docs.deepseek.com/
+ * Official documentation: https://api-docs.deepseek.com
  */
 export class DeepseekProvider extends GenericProvider {
     private readonly temperature: number

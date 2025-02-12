@@ -32,6 +32,10 @@ export interface ConfigType {
         model: string
     }
 
+    mistral: {
+        apiKey: string
+    }
+
     ollama: {
         serviceUrl: string
         model: string

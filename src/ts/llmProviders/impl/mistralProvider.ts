@@ -4,18 +4,17 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 
 /**
  * Class with the implementation of methods useful for interfacing with the
- * xAI Grok APIs.
- * Official documentation: https://docs.x.ai/docs/api-reference
+ * Mistral AI APIs.
+ * Official documentation: https://docs.mistral.ai
  */
-export class XaiGrokProvider extends GenericProvider {
+export class MistralProvider extends GenericProvider {
     private readonly temperature: number
     private readonly apiKey: string
 
     public constructor(config: ConfigType) {
         super(config)
 
-        this.temperature = config.temperature
-        this.apiKey = config.xai.apiKey
+        this.apiKey = config.mistral.apiKey
     }
 
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
@@ -60,6 +59,7 @@ export class XaiGrokProvider extends GenericProvider {
     private getHeader(): Headers {
         const headers: Headers = new Headers()
         headers.append('Authorization', `Bearer ${this.apiKey}`)
+        headers.append('Accept', 'application/json')
         headers.append('Content-Type', 'application/json')
 
         return headers
@@ -67,14 +67,14 @@ export class XaiGrokProvider extends GenericProvider {
 
     /**
      * This asynchronous method manages message content by sending a request
-     * to the xAI API using the provided system and user input.
+     * to the Mistral AI API using the provided system and user input.
      * It constructs a POST request with the relevant model and message data,
      * manages the request with a timeout signal, and processes the response.
      *
      * If the request is successful, it returns the content of the response
      * message.
      * In case of failure, it throws an error with the specific message from
-     * the xAI API.
+     * the Mistral AI API.
      *
      * @param systemInput - The input for the 'system' role in the conversation.
      * @param userInput - The input for the 'user' role in the conversation.
@@ -88,7 +88,7 @@ export class XaiGrokProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'model': 'grok-2-latest',
+            'model': 'mistral-large-latest',
             'messages': [
                 { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }
@@ -104,15 +104,72 @@ export class XaiGrokProvider extends GenericProvider {
             signal: signal
         }
 
-        const response = await fetch('https://api.x.ai/v1/chat/completions', requestOptions)
+        const response = await fetch('https://api.mistral.ai/v1/chat/completions', requestOptions)
         clearAbortSignalWithTimeout()
 
         if (!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`xAI error: ${errorResponse.error}`)
+            throw new Error(`Mistral AI error: ${errorResponse.error.message}`)
         }
 
         const responseData = await response.json()
         return responseData.choices[0].message.content
+    }
+
+    // Classifies if text input is potentially harmful.
+    // https://docs.mistral.ai/capabilities/guardrailing
+    public async moderateText(input: string): Promise<{ [key: string]: number }> {
+        const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
+
+        const requestData = JSON.stringify({
+            'model': 'mistral-moderation-latest',
+            'input': input
+        })
+
+        const requestOptions: RequestInit = {
+            method: 'POST',
+            headers: this.getHeader(),
+            body: requestData,
+            redirect: 'follow',
+            signal: signal
+        }
+
+        const response = await fetch('https://api.mistral.ai/v1/moderations', requestOptions)
+        clearAbortSignalWithTimeout()
+
+        if (!response.ok) {
+            const errorResponse = await response.json()
+            throw new Error(`OpenAI error: ${errorResponse.error.message}`)
+        }
+
+        const jsonData = await response.json()
+        return this.normalizeModerationResponse(jsonData)
+    }
+
+    /**
+     * This method normalizes the moderation response by rounding the category
+     * scores to the nearest integer.
+     *
+     * It takes the first result from the provided JSON data and processes its
+     * category scores, the result is an object where the keys are the category
+     * names and the values are the rounded scores.
+     */
+    private normalizeModerationResponse(data: any): { [key: string]: number } {
+        const categoryScores = data.results[0].category_scores
+        const normalizedScores: { [key: string]: number } = {}
+
+        // Iterate over the category scores and round the values
+        for (const category in categoryScores) {
+            if (categoryScores.hasOwnProperty(category)) {
+                // Manage a translated string for a specific Mistral AI moderation
+                // category.
+                const translatedCategory = browser.i18n.getMessage(`mailModerate.mistralClassification.${category}`)
+
+                // Round the value and store it in the normalizedScores object
+                normalizedScores[translatedCategory] = Math.round(categoryScores[category] * 100)
+            }
+        }
+
+        return normalizedScores
     }
 }

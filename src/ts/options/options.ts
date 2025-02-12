@@ -101,6 +101,9 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             serviceUrl: document.querySelector<HTMLInputElement>('#lmsServiceUrl').value,
             model: document.querySelector<HTMLInputElement>('#lmsModel').value
         },
+        mistral: {
+            apiKey: document.querySelector<HTMLInputElement>('#mistralApiKey').value
+        },
         ollama: {
             serviceUrl: document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value,
             model: document.querySelector<HTMLInputElement>('#ollamaModel').value
@@ -187,6 +190,10 @@ document.addEventListener('DOMContentLoaded', async _ => {
     document.querySelector<HTMLInputElement>('#lmsServiceUrl').value = configs.lms?.serviceUrl || 'http://localhost:1234'
     document.querySelector<HTMLInputElement>('#lmsModel').value = configs.lms?.model || ''
     // <-- LM Studio section
+
+    // Mistral AI section -->
+    document.querySelector<HTMLInputElement>('#mistralApiKey').value = configs.mistral?.apiKey || ''
+    // <-- Mistral AI section
 
     // Ollama section -->
     document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value = configs.ollama?.serviceUrl || 'http://localhost:11434'

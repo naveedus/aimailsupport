@@ -20,6 +20,33 @@
     "mailModerate": {
         "message": "Modera"
     },
+    "mailModerate.mistralClassification.dangerous_and_criminal_content": {
+        "message": "Contenuti pericolosi e criminali"
+    },
+    "mailModerate.mistralClassification.financial": {
+        "message": "Finanziario"
+    },
+    "mailModerate.mistralClassification.hate_and_discrimination": {
+        "message": "Odio e discriminazione"
+    },
+    "mailModerate.mistralClassification.health": {
+        "message": "Salute"
+    },
+    "mailModerate.mistralClassification.law": {
+        "message": "Legale"
+    },
+    "mailModerate.mistralClassification.pii": {
+        "message": "PII (Informazioni Personali Identificabili)"
+    },
+    "mailModerate.mistralClassification.selfharm": {
+        "message": "Autolesionismo"
+    },
+    "mailModerate.mistralClassification.sexual": {
+        "message": "Sessuale"
+    },
+    "mailModerate.mistralClassification.violence_and_threats": {
+        "message": "Violenza e minacce"
+    },
     "mailModerate.openaiClassification.harassment": {
         "message": "Molestia"
     },
@@ -223,6 +250,12 @@
     },
     "options.lms.warningNoModel": {
          "message": "<strong>Attenzione</strong>: Nessun modello trovato in LM Studio, procedere all'installazione di un modello, es. Llama, come indicato sul <a href=\"https://lmstudio.ai/models\">sito ufficiale</a>."
+    },
+    "options.mistral.apiKey": {
+        "message": "Chiave API*"
+    },
+    "options.mistral.apiKey.description": {
+        "message": "Vai nella sezione <a href=\"https://console.mistral.ai/api-keys\">API keys</a> per recuperare o creare una chiave."
     },
     "options.ollama.description": {
         "message": "Ollama è un progetto open source che permette di utilizzare diversi LLM avanzati in locale, senza bisogno di collegarsi ad un server esterno.<br />È possibile scaricare il tutto dal <a href=\"https://ollama.com/download\">sito ufficiale</a>."

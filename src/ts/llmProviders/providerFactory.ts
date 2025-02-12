@@ -10,6 +10,7 @@ import { DeepseekProvider } from './impl/deepseekProvider'
 import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
 import { GroqProvider } from './impl/groqProvider'
 import { LmsProvider } from './impl/lmsProvider'
+import { MistralProvider } from './impl/mistralProvider'
 import { OllamaProvider } from './impl/ollamaProvider'
 import { OpenAiGptProvider } from './impl/openAiGptProvider'
 import { XaiGrokProvider } from './impl/xaiGrokProvider'
@@ -21,6 +22,7 @@ const providerMap: Record<string, new (config: ConfigType) => GenericProvider> =
     google: GoogleGeminiProvider,
     groq: GroqProvider,
     lms: LmsProvider,
+    mistral: MistralProvider,
     ollama: OllamaProvider,
     openai: OpenAiGptProvider,
     xai: XaiGrokProvider

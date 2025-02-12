@@ -36,6 +36,7 @@ The LLMs* currently supported are:
 * Gemini by [Google](https://ai.google.dev);
 * GPT by [OpenAI](https://openai.com);
 * Grok by [xAI](https://x.ai).
+* Mistral by [Mistral AI](https://mistral.ai).
 
 It is possible to access a wider set of models (e.g., Llama, Phi, Mistral, Gemma, and many others) through the use of:
 
@@ -45,7 +46,7 @@ It is possible to access a wider set of models (e.g., Llama, Phi, Mistral, Gemma
 
 \* To use them, it is necessary to create an account on the respective platforms and enable an API access key. <u>Usage fees apply</u>; for more details, please refer to the respective websites.
 
-**ATTENTION 1**: The services offered by Groq Cloud include the option to use a free plan, albeit with low rate limits on requests.  
+**ATTENTION 1**: The services offered by Groq Cloud and Mistral AI include the option to use a free plan, albeit with low rate limits on requests.  
 **ATTENTION 2**: Unlike other LLM models, LM Studio and Ollama allows you to run open-source models directly on your own PC, with no additional costs and maximum privacy, as everything is executed locally.  
 The downside is that this requires *SIGNIFICANT* hardware resources.
 
@@ -127,6 +128,7 @@ anthropic_api_key = KEY_VALUE
 deepseek_api_key = KEY VALUE
 google_api_key = KEY VALUE
 groq_api_key = KEY VALUE
+mistral_api_key = KEY VALUE
 openai_api_key = KEY_VALUE
 xai_api_key = KEY_VALUE
 ```

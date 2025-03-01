@@ -300,7 +300,7 @@
         "description": "Primary language that the user can select."
     },
     "options.mainUserLanguage.description": {
-        "message": "Primary output language that will be attempted to be used in all integrations.",
+        "message": "Primary output language that will be used in all integrations.",
         "description": "Choosing a primary language ensures consistent communication across all platforms and integrations."
     },
     "options.lms.description": {
@@ -434,6 +434,14 @@
     "options.testSuccessful": {
         "message": "Test completed successfully!",
         "description": "Text displayed when the integration test initiated through its respective CTA in the options window has been successfully completed."
+    },
+    "options.translationLanguagesCode": {
+        "message": "Languages for translations",
+        "description": "Languages the user can select for translations."
+    },
+    "options.translationLanguagesCode.description": {
+        "message": "The selected languages are those that will be used to create content translations. It is possible to select the language(s) that will actually be used for translations.",
+        "description": "The displayed text shown to the user to explain the rationale behind selecting a set of languages."
     },
     "thinking": {
         "message": "I'm thinking!",

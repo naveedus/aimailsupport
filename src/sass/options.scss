@@ -129,6 +129,12 @@ $options-labels-width: 150px;
             }
         }
 
+        multiple-language-selector {
+            display: block;
+            flex: 1;
+            min-width: 0;
+        }
+
         .full-description {
             font-size: 11px;
             margin-top: 5px;

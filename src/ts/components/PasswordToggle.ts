@@ -6,7 +6,7 @@ class PasswordToggle extends HTMLInputElement {
 
         const icon: HTMLSpanElement = document.createElement('span')
         icon.classList.add('icon')
-        icon.innerHTML = '&#x1F513' // Lock icon in unicode character
+        icon.innerHTML = '🔓'
 
         icon.addEventListener('click', () => {
             this.type = this.type === 'password' ? 'text' : 'password'

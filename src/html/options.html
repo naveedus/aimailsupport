@@ -19,10 +19,18 @@
 
             <div class="form-group">
                 <label for="mainUserLanguageCode" data-l10n-ref="options.mainUserLanguage">&nbsp;</label>
-                <select id="mainUserLanguageCode" is="language-selector">
+                <select id="mainUserLanguageCode" is="language-selector"></select>
 
                 <div class="description" data-l10n-ref="options.mainUserLanguage.description"></div>
             </div>
+
+            <!--<div class="form-group">
+                <label for="translationLanguagesCode" data-l10n-ref="options.translationLanguagesCode">&nbsp;</label>
+
+                <multiple-language-selector id="translationLanguagesCode"></multiple-language-selector>
+
+                <div class="description" data-l10n-ref="options.translationLanguagesCode.description"></div>
+            </div>-->
 
             <div class="form-group">
                 <label for="llmProvider" data-l10n-ref="options.llmProvider">&nbsp;</label>
@@ -96,6 +104,7 @@
 
         <!-- Components: -->
         <script type="module" src="../ts/components/LanguageSelector.ts"></script>
+        <script type="module" src="../ts/components/MultipleLanguageSelector.ts"></script>
         <script type="module" src="../ts/components/PasswordToggle.ts"></script>
 
         <!-- Options: -->

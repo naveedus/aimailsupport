@@ -228,7 +228,7 @@
         "message": "Lingua principale"
     },
     "options.mainUserLanguage.description": {
-        "message": "Lingua principale di output che si proverà ad usare in tutte le integrazioni."
+        "message": "Lingua principale che si usarerà in tutte le integrazioni."
     },
     "options.lms.description": {
         "message": "LM Studio è un progetto open source che permette di utilizzare diversi LLM avanzati in locale, senza bisogno di collegarsi ad un server esterno.<br />È possibile scaricare il tutto dal <a href=\"https://lmstudio.ai\">sito ufficiale</a>."
@@ -328,6 +328,12 @@
     },
     "options.testSuccessful": {
         "message": "Test completato con successo!"
+    },
+    "options.translationLanguagesCode": {
+        "message": "Lingue per traduzioni"
+    },
+    "options.translationLanguagesCode.description": {
+        "message": "Le lingue selezionate sono quelle che verranno usate per creare traduzioni di contenuti, è possibile selezionare la/le lingue che sono oggetto di traduzioni effettivamente usate."
     },
     "thinking": {
         "message": "Sto pensando!"

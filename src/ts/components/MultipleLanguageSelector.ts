@@ -68,10 +68,12 @@ class MultipleLanguageSelector extends HTMLElement {
     }
 
     /**
-     * Moves selected options between lists
+     * Moves selected options between lists.
      *
-     * @param toTarget - Direction flag
-     * (true = to target list, false = to source list)
+     * @param toTarget - Direction flag, boolean value:
+     *
+     *   true = to target list;
+     *   false = to source list.
      */
     private moveSelected(toTarget: boolean) {
         const source = toTarget ? this.sourceSelect : this.targetSelect
@@ -82,7 +84,7 @@ class MultipleLanguageSelector extends HTMLElement {
             target.appendChild(opt)
         })
 
-        // Sort only target list alphabetically
+        // Sort target list alphabetically
         if (toTarget) {
             const options = Array.from(target.options)
         

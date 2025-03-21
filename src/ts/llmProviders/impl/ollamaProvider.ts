@@ -21,6 +21,12 @@ export class OllamaProvider extends GenericProvider {
         this.model = config.ollama.model
     }
 
+    public async explainText(input: string): Promise<string> {
+        logMessage(`Request to explain the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.EXPLAIN, input)
+    }
+
     /**
      * Returns an array of name/model pairs for all active Ollama models in
      * the local installation.

@@ -20,6 +20,12 @@ export class GroqProvider extends GenericProvider {
         this.model = config.groq.model
     }
 
+    public async explainText(input: string): Promise<string> {
+        logMessage(`Request to explain the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.EXPLAIN, input)
+    }
+
     /**
      * Returns an array of model IDs for all available Groq Cloud models.
      */

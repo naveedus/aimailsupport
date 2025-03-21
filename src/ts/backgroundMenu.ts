@@ -2,6 +2,16 @@ import { ProviderFactory } from './llmProviders/providerFactory'
 import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './helpers/utils'
 
 // Create the menu entries -->
+const menuIdExplain = messenger.menus.create({
+    id: 'aiExplain',
+    title: browser.i18n.getMessage('mailExplain'),
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+        'selection'
+    ]
+})
+
 const menuIdSummarize = messenger.menus.create({
     id: 'aiSummarize',
     title: browser.i18n.getMessage('mailSummarize'),
@@ -311,7 +321,24 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
     const configs = await getConfigs()
     const llmProvider = ProviderFactory.getInstance(configs)
 
-    if(info.menuItemId == menuIdSummarize) {
+    if(info.menuItemId == menuIdExplain) {
+        sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
+
+        const textToExplain = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
+
+        if(textToExplain == null) {
+            sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
+        }
+        else {
+            llmProvider.explainText(textToExplain).then(textExplained => {
+                sendMessageToActiveTab({type: 'addText', content: textExplained})
+            }).catch(error => {
+                sendMessageToActiveTab({type: 'showError', content: error.message})
+                logMessage(`Error during explanation: ${error.message}`, 'error')
+            })
+        }
+    }
+    else if(info.menuItemId == menuIdSummarize) {
         sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
 
         const textToSummarize = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
@@ -552,6 +579,12 @@ browser.runtime.onMessage.addListener(async (message) => {
 async function updateMenuVisibility(): Promise<void> {
     const configs = await getConfigs()
     const llmProvider = ProviderFactory.getInstance(configs)
+
+    // canExplainText -->
+    messenger.menus.update(menuIdExplain, {
+        enabled: llmProvider.getCanExplainText()
+    })
+    // <-- canExplainText
 
     // canModerateText -->
     messenger.menus.update(menuIdModerate, {

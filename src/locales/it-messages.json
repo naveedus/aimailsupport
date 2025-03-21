@@ -149,6 +149,9 @@
     "mailSuggestReply.standard": {
         "message": "Standard"
     },
+    "mailExplain": {
+        "message": "Spiega"
+    },
     "mailSummarize": {
         "message": "Riassumi"
     },
@@ -304,6 +307,9 @@
     },
     "options.openai.text2speech.audioQuality.tts1hd": {
         "message": "Qualità più alta"
+    },
+    "options.openai.text2speech.audioQuality.ttsgpt4omini": {
+        "message": "Basato su GPT-4o mini"
     },
     "options.openai.text2speech.speed": {
         "message": "Velocità* (<span class=\"monospace\"></span>x)"

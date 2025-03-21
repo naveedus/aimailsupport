@@ -28,6 +28,12 @@ export class OpenAiGptProvider extends GenericProvider {
         this.text2speechSpeed = config.openai.text2speech.speed
     }
 
+    public async explainText(input: string): Promise<string> {
+        logMessage(`Request to explain the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.EXPLAIN, input)
+    }
+
     public async getSpeechFromText(input: string): Promise<Blob> {
         logMessage(`Request for text2speech of the text: ${input}`, 'debug')
 

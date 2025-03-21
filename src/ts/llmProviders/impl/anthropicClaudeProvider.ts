@@ -24,6 +24,12 @@ export class AnthropicClaudeProvider extends GenericProvider {
         this.model = config.anthropic.model
     }
 
+    public async explainText(input: string): Promise<string> {
+        logMessage(`Request to explain the text: ${input}`, 'debug')
+
+        return this.manageMessageContent(this.PROMPTS.EXPLAIN, input)
+    }
+
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
         logMessage(`Request to use the tone of voice "${toneOfVoice}" to rephrase the text: ${input}`, 'debug')
 

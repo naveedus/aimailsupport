@@ -9,6 +9,7 @@ export class GenericProvider {
     protected servicesTimeout: number
 
     protected readonly PROMPTS = {
+        EXPLAIN: 'Explain the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         REPHRASE: 'Take the following text and rephrase it according to the %s style using the same language as the text',
         SUGGEST_IMPROVEMENTS: 'Suggest improvements to the content of the following email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
@@ -19,6 +20,17 @@ export class GenericProvider {
     public constructor(config: ConfigType) {
         this.mainUserLanguageCode = config.mainUserLanguageCode
         this.servicesTimeout = config.servicesTimeout
+    }
+
+    /**
+     * Explains the input string.
+     * 
+     * @param input - The string to be explained.
+     *
+     * @returns A promise that resolves to the explained version of the input text.
+     */
+    public async explainText(input: string): Promise<any> {
+        throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 
     /**
@@ -119,6 +131,10 @@ export class GenericProvider {
     // specific capabilities.
     // This is done by checking that the current class actually has a specific
     // implementation for the reference method. -->
+    public getCanExplainText(): boolean {
+        return this.explainText !== GenericProvider.prototype.explainText
+    }
+
     public getCanModerateText(): boolean {
         return this.moderateText !== GenericProvider.prototype.moderateText
     }

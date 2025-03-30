@@ -443,11 +443,11 @@
         "message": "Test completed successfully!",
         "description": "Text displayed when the integration test initiated through its respective CTA in the options window has been successfully completed."
     },
-    "options.translationLanguagesCode": {
+    "options.translationLanguageCodes": {
         "message": "Languages for translations",
         "description": "Languages the user can select for translations."
     },
-    "options.translationLanguagesCode.description": {
+    "options.translationLanguageCodes.description": {
         "message": "The selected languages are those that will be used to create content translations. It is possible to select the language(s) that will actually be used for translations.",
         "description": "The displayed text shown to the user to explain the rationale behind selecting a set of languages."
     },

@@ -71,7 +71,6 @@ class MultipleLanguageSelector extends HTMLElement {
      * Moves selected options between lists.
      *
      * @param toTarget - Direction flag, boolean value:
-     *
      *   true = to target list;
      *   false = to source list.
      */
@@ -79,16 +78,16 @@ class MultipleLanguageSelector extends HTMLElement {
         const source = toTarget ? this.sourceSelect : this.targetSelect
         const target = toTarget ? this.targetSelect : this.sourceSelect
 
-        Array.from(source.selectedOptions).forEach(opt => {
-            source.removeChild(opt)
-            target.appendChild(opt)
+        Array.from(source.selectedOptions).forEach(option => {
+            source.removeChild(option)
+            target.appendChild(option)
         })
 
         // Sort target list alphabetically
         if (toTarget) {
             const options = Array.from(target.options)
-        
-            const sortedOptions = options.toSorted((a, b) => {
+
+            const sortedOptions = options.toSorted((a: HTMLOptionElement, b: HTMLOptionElement) => {
                 const textA = a.textContent || ''
                 const textB = b.textContent || ''
 
@@ -114,6 +113,37 @@ class MultipleLanguageSelector extends HTMLElement {
      */
     get selectedValues(): string[] {
         return Array.from(this.targetSelect.selectedOptions).map(opt => opt.value)
+    }
+
+    /**
+     * Sets selected values and synchronizes both lists
+     * @param values - Array of language codes to select (e.g. ['en', 'fr'])
+     */
+    setValues(values: string[]) {
+        // Aggregate all options from both lists
+        const allOptions = [
+            ...Array.from(this.sourceSelect.options),
+            ...Array.from(this.targetSelect.options)
+        ]
+
+        // Filter and sort options for both lists
+        const sortComparator = (a: HTMLOptionElement, b: HTMLOptionElement) =>
+            (a.textContent || '').localeCompare(b.textContent || '')
+
+        const sourceOptions = allOptions
+            .filter(option => !values.includes(option.value))
+            .sort(sortComparator)
+
+        const targetOptions = allOptions
+            .filter(option => values.includes(option.value))
+            .sort(sortComparator)
+
+        // Rebuild lists with sorted options
+        this.sourceSelect.replaceChildren(...sourceOptions)
+        this.targetSelect.replaceChildren(...targetOptions)
+
+        // Notify listeners
+        this.dispatchEvent(new Event('change'))
     }
 }
 

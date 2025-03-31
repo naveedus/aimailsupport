@@ -9,8 +9,8 @@ export class GenericProvider {
     protected servicesTimeout: number
 
     protected readonly PROMPTS = {
-        EXPLAIN: 'Explain the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        REPHRASE: 'Take the following text and rephrase it according to the %s style using the same language as the text',
+        EXPLAIN: 'Explain the email content in %language%, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
+        REPHRASE: 'Take the following text and rephrase it in %language%, according to the %toneOfVoice% style. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUGGEST_IMPROVEMENTS: 'Suggest improvements to the content of the following email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
         SUMMARIZE: 'Summarize the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',

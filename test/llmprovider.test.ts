@@ -15,7 +15,8 @@ import 'jest-webextension-mock'
 
 // Dummy configuration:
 const configs: ConfigType = {
-    mainUserLanguageCode: 'English',
+    mainUserLanguageCode: 'en',
+    translationLanguageCodes: [],
     llmProvider: null,
     temperature: 1,
     servicesTimeout: 15,

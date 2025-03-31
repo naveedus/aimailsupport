@@ -22,9 +22,9 @@ export class OllamaProvider extends GenericProvider {
     }
 
     public async explainText(input: string): Promise<string> {
-        logMessage(`Request to explain the text: ${input}`, 'debug')
+        logMessage(`Request to explain in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.EXPLAIN, input)
+        return this.manageMessageContent(this.PROMPTS.EXPLAIN.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
     }
 
     /**
@@ -56,9 +56,10 @@ export class OllamaProvider extends GenericProvider {
     }
 
     public async rephraseText(input: string, toneOfVoice: string): Promise<string> {
-        logMessage(`Request to use the tone of voice "${toneOfVoice}" to rephrase the text: ${input}`, 'debug')
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to rephrase in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%s', toneOfVoice), input)
+        return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode))
+            .replace('%toneOfVoice%', toneOfVoice), input)
     }
 
     public async suggestImprovementsForText(input: string): Promise<string> {

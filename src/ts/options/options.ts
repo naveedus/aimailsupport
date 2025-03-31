@@ -78,7 +78,7 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
     // Store options -->
     const configs: ConfigType = {
         mainUserLanguageCode: document.querySelector<HTMLInputElement>('#mainUserLanguageCode').value,
-        translationLanguageCodes: document.querySelector<MultipleLanguageSelector>('#translationLanguageCodes').selectedValues,
+        translationLanguageCodes: document.querySelector<MultipleLanguageSelector>('#translationLanguageCodes').getValues(),
         llmProvider: document.querySelector<HTMLInputElement>('#llmProvider').value,
         temperature: parseFloat(document.querySelector<HTMLInputElement>('#llmTemperature').value),
         servicesTimeout: parseInt(document.querySelector<HTMLInputElement>('#servicesTimeout').value),

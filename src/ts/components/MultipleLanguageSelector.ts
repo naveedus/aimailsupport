@@ -109,15 +109,15 @@ class MultipleLanguageSelector extends HTMLElement {
     get selectedOptions(): HTMLCollectionOf<HTMLOptionElement> { return this.targetSelect.selectedOptions }
 
     /**
-     * Returns array of selected language codes
+     * Returns array of language codes
      */
-    get selectedValues(): string[] {
-        return Array.from(this.targetSelect.selectedOptions).map(opt => opt.value)
+    getValues(): string[] {
+        return Array.from(this.targetSelect.options).map(opt => opt.value)
     }
 
     /**
-     * Sets selected values and synchronizes both lists
-     * @param values - Array of language codes to select (e.g. ['en', 'fr'])
+     * Sets values and synchronizes both lists
+     * @param values - Array of language codes (e.g. ['en', 'fr'])
      */
     setValues(values: string[]) {
         // Aggregate all options from both lists

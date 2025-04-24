@@ -56,5 +56,6 @@ export interface ConfigType {
 
     xai: {
         apiKey: string
+        model: string
     }
 }

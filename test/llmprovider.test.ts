@@ -19,7 +19,7 @@ const configs: ConfigType = {
     translationLanguageCodes: [],
     llmProvider: null,
     temperature: 1,
-    servicesTimeout: 15,
+    servicesTimeout: 30,
     debugMode: true,
 
     anthropic: {
@@ -38,7 +38,7 @@ const configs: ConfigType = {
 
     groq: {
         apiKey: null,
-        model: 'llama-3.2-3b-preview'
+        model: 'llama-3.1-8b-instant'
     },
 
     mistral: {
@@ -68,7 +68,8 @@ const configs: ConfigType = {
     },
 
     xai: {
-        apiKey: null
+        apiKey: null,
+        model: 'grok-2-latest'
     }
 }
 

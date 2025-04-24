@@ -59,9 +59,9 @@ export class GroqProvider extends GenericProvider {
     }
 
     public async suggestImprovementsForText(input: string): Promise<string> {
-        logMessage(`Request suggest improvements for the text: ${input}`, 'debug')
+        logMessage(`Request suggest improvements in ${getLanguageNameFromCode(this.mainUserLanguageCode)} for the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS, input)
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
     }
 
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {

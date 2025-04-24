@@ -10,12 +10,14 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
 export class XaiGrokProvider extends GenericProvider {
     private readonly temperature: number
     private readonly apiKey: string
+    private readonly model: string
 
     public constructor(config: ConfigType) {
         super(config)
 
         this.temperature = config.temperature
         this.apiKey = config.xai.apiKey
+        this.model = config.xai.model
     }
 
     public async explainText(input: string): Promise<string> {
@@ -32,9 +34,9 @@ export class XaiGrokProvider extends GenericProvider {
     }
 
     public async suggestImprovementsForText(input: string): Promise<string> {
-        logMessage(`Request suggest improvements for the text: ${input}`, 'debug')
+        logMessage(`Request suggest improvements in ${getLanguageNameFromCode(this.mainUserLanguageCode)} for the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS, input)
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
     }
 
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
@@ -95,7 +97,7 @@ export class XaiGrokProvider extends GenericProvider {
         const { signal, clearAbortSignalWithTimeout } = this.createAbortSignalWithTimeout(this.servicesTimeout)
 
         const requestData = JSON.stringify({
-            'model': 'grok-2-latest',
+            'model': this.model,
             'messages': [
                 { 'role': 'system', 'content': systemInput },
                 { 'role': 'user', 'content': userInput }

@@ -462,5 +462,9 @@
     "options.xai.apiKey.description": {
         "message": "Go to the <a href=\"https://console.x.ai\">xAI console</a> site to retrieve or create a key.",
         "description": "Description of the website where it is possible to generate an API access key."
+    },
+    "options.xai.model": {
+        "message": "Model*",
+        "description": "Model to be used for all text processing: https://docs.x.ai/docs/models"
     }
 }

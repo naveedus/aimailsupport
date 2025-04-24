@@ -120,7 +120,8 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
             }
         },
         xai: {
-            apiKey: document.querySelector<HTMLInputElement>('#xaiApiKey').value
+            apiKey: document.querySelector<HTMLInputElement>('#xaiApiKey').value,
+            model: document.querySelector<HTMLInputElement>('#xaiModel').value
         }
     }
     // <-- store options
@@ -215,6 +216,7 @@ document.addEventListener('DOMContentLoaded', async _ => {
 
     // xAI Grok section -->
     document.querySelector<HTMLInputElement>('#xaiApiKey').value = configs.xai?.apiKey || ''
+    document.querySelector<HTMLInputElement>('#xaiModel').value = configs.xai?.model || 'grok-2-latest'
     // <-- xAI Grok section
 
     updateDOMBasedOnSelectLlmProvider(selectedLlmProvider)

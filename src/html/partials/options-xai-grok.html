@@ -6,4 +6,14 @@
         <input id="xaiApiKey" is="password-toggle" data-required>
         <div class="description" data-l10n-ref="options.xai.apiKey.description"></div>
     </div>
+
+    <!-- https://docs.x.ai/docs/models -->
+    <div class="form-group">
+        <label for="xaiModel" data-l10n-ref="options.xai.model">&nbsp;</label>
+        <select id="xaiModel" data-required>
+            <option value="grok-3-beta">Grok 3 (Beta)</option>
+            <option value="grok-3-fast-beta">Grok 3 Fast (Beta)</option>
+            <option value="grok-2-latest">Grok 2</option>
+        </select>
+    </div>
 </fieldset>

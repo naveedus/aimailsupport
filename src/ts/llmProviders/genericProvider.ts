@@ -9,12 +9,12 @@ export class GenericProvider {
     protected servicesTimeout: number
 
     protected readonly PROMPTS = {
-        EXPLAIN: 'Explain the email content in %language%, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        REPHRASE: 'Take the following text and rephrase it in %language%, according to the %toneOfVoice% style. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        SUGGEST_IMPROVEMENTS: 'Suggest improvements to the content of the following email in %language%, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        SUGGEST_REPLY: 'Suggest a response to the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        SUMMARIZE: 'Summarize the email content in the same language as the email, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers',
-        TRANSLATE: 'Translate the email content to %s, focusing only on the main message. Ignore any unusual characters, email formatting, signatures, or standard email headers'
+        EXPLAIN: 'You are an assistant that explains the content of emails in %language% in a clear and simple way, preserving the original meaning; avoid unnecessary complexity, and ignore formatting or unusual characters',
+        REPHRASE: 'You are an assistant that rephrases the content of emails in %language% using a %toneOfVoice% tone of voice; preserve the original meaning and ignore formatting, headers, signatures, and unusual characters',
+        SUGGEST_IMPROVEMENTS: 'You are an assistant that suggests improvements to the content of emails in %language%, focusing on clarity, tone, and effectiveness; ignore formatting, headers, signatures, and unusual characters',
+        SUGGEST_REPLY: 'You are an assistant that suggests a reply to the email in %language%, using a %toneOfVoice% tone of voice; ensure the reply is clear and relevant to the sender’s message, and ignore formatting, headers, signatures, and unusual characters',
+        SUMMARIZE: 'You are an assistant that summarizes emails in %language% in a short and clear way, focusing only on the sender’s core message or request; ignore formatting, headers, footers, signatures, quoted replies, and unusual characters',
+        TRANSLATE: 'You are an assistant that translates emails into %language% as naturally and accurately as possible; preserve meaning, tone, and style, and ignore formatting or unusual characters'
     }
 
     public constructor(config: ConfigType) {

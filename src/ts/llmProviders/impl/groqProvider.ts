@@ -65,25 +65,26 @@ export class GroqProvider extends GenericProvider {
     }
 
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
-        logMessage(`Request to use the tone of voice "${toneOfVoice}" to suggest a reply to the text: ${input}`, 'debug')
+        logMessage(`Request to use the tone of voice "${toneOfVoice}" to suggest a reply in ${getLanguageNameFromCode(this.mainUserLanguageCode)} to the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY.replace('%s', toneOfVoice), input)
+        return this.manageMessageContent(this.PROMPTS.SUGGEST_REPLY.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode))
+            .replace('%toneOfVoice%', toneOfVoice), input)
     }
 
     public async summarizeText(input: string): Promise<string> {
-        logMessage(`Request to summarize the text: ${input}`, 'debug')
+        logMessage(`Request to summarize in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input} in ${getLanguageNameFromCode(this.mainUserLanguageCode)}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.SUMMARIZE, input)
+        return this.manageMessageContent(this.PROMPTS.SUMMARIZE.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
     }
 
     public async testIntegration(): Promise<void> {
         await this.translateText('Hi!')
     }
 
-    public async translateText(input: string): Promise<string> {
-        logMessage(`Request to translate in ${getLanguageNameFromCode(this.mainUserLanguageCode)} the text: ${input}`, 'debug')
+    public async translateText(input: string, languageCode: string = this.mainUserLanguageCode): Promise<string> {
+        logMessage(`Request to translate in ${getLanguageNameFromCode(languageCode)} the text: ${input}`, 'debug')
 
-        return this.manageMessageContent(this.PROMPTS.TRANSLATE.replace('%s', getLanguageNameFromCode(this.mainUserLanguageCode)), input)
+        return this.manageMessageContent(this.PROMPTS.TRANSLATE.replace('%language%', getLanguageNameFromCode(languageCode)), input)
     }
 
     /**

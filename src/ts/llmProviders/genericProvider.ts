@@ -120,10 +120,13 @@ export class GenericProvider {
      * Translates the input text.
      *
      * @param input - The input text to be translated.
+     * @param languageCode - The target language code for the translation.
+     *        Can be omitted or null, in such cases, the user's main language
+     *        preference will be used as the default.
      *
      * @returns A Promise resolving to the translated text.
      */
-    public async translateText(input: string): Promise<string> {
+    public async translateText(input: string, languageCode: string | null = null): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 

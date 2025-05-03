@@ -17,6 +17,9 @@
     "mailListen": {
         "message": "Ascolta"
     },
+    "mailListenAndAfter": {
+        "message": "Ed ascolta"
+    },
     "mailModerate": {
         "message": "Modera"
     },
@@ -158,11 +161,23 @@
     "mailSummarizeAnd": {
         "message": "Riassumi e…"
     },
+    "mailSummarizeAndAfter": {
+        "message": "E riassumi"
+    },
     "mailTranslate": {
         "message": "Traduci"
     },
     "mailTranslateAnd": {
-        "message": "Traduci e…"
+        "message": "Traduci…"
+    },
+    "mailTranslateTo": {
+        "message": "In $language$",
+        "placeholders": {
+            "language": {
+                "content": "$1",
+                "example": "inglese"
+            }
+        }
     },
     "menuAiSupport": {
         "message": "Supporto AI"

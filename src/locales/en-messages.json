@@ -19,6 +19,10 @@
         "message": "Listen",
         "description": "Menu option to play audio from the textual content of an email or a portion of it."
     },
+    "mailListenAndAfter": {
+        "message": "And listen",
+        "description": "Submenu option to play audio from the textual content of an email or a portion of it and following another action, such as translating the text"
+    },
     "mailModerate": {
         "message": "Moderate",
         "description": "Menu option to moderate the content of a received email."
@@ -207,13 +211,27 @@
         "message": "Summarize and…",
         "description": "Submenu option to summarize the content of an email or a portion of it and apply other operation"
     },
+    "mailSummarizeAndAfter": {
+        "message": "And summarize",
+        "description": "Submenu option to summarize the content of an email or a portion of it and following another action, such as translating the text"
+    },
     "mailTranslate": {
         "message": "Translate",
         "description": "Menu option to translate the content of an email or a portion of it."
     },
     "mailTranslateAnd": {
-        "message": "Translate and…",
+        "message": "Translate…",
         "description": "Submenu option to translate the content of an email or a portion of it and apply other operation"
+    },
+    "mailTranslateTo": {
+        "message": "Into $language$.",
+        "description": "This message is used as a prompt or label indicating that the content should be translated into a specified language.",
+        "placeholders": {
+            "language": {
+                "content": "$1",
+                "example": "English"
+            }
+        }
     },
     "menuAiSupport": {
         "message": "AI support",

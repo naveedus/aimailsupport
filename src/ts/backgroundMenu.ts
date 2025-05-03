@@ -1,5 +1,10 @@
 import { ProviderFactory } from './llmProviders/providerFactory'
-import { getConfigs, getCurrentMessageContent, logMessage, sendMessageToActiveTab } from './helpers/utils'
+import { getConfig, getConfigs, getCurrentMessageContent, getLanguageNameFromCode, logMessage, sendMessageToActiveTab } from './helpers/utils'
+
+
+// The array contains references to the menus of any custom languages selected
+// by the user for which a translation is requested.
+let translationMenuItemIds: (number | string)[] = null
 
 // Create the menu entries -->
 const menuIdExplain = messenger.menus.create({
@@ -244,7 +249,7 @@ const menuIdTranslate = messenger.menus.create({
 
 // Translate submenu -->
 const subMenuIdTranslateAnd = messenger.menus.create({
-    id: 'aiSubMenuTranslateSummarize',
+    id: 'aiSubMenuTranslate',
     title: browser.i18n.getMessage('mailTranslateAnd'),
     contexts: [
         'message_display_action_menu',
@@ -254,7 +259,7 @@ const subMenuIdTranslateAnd = messenger.menus.create({
 
 const menuIdTranslateAndSummarize = messenger.menus.create({
     id: 'aiTranslateAndSummarize',
-    title: browser.i18n.getMessage('mailSummarize'),
+    title: browser.i18n.getMessage('mailSummarizeAndAfter'),
     parentId: subMenuIdTranslateAnd,
     contexts: [
         'message_display_action_menu',
@@ -264,13 +269,27 @@ const menuIdTranslateAndSummarize = messenger.menus.create({
 
 const menuIdTranslateAndText2Speech = messenger.menus.create({
     id: 'aiTranslateAndText2Speech',
-    title: browser.i18n.getMessage('mailListen'),
+    title: browser.i18n.getMessage('mailListenAndAfter'),
     parentId: subMenuIdTranslateAnd,
     contexts: [
         'message_display_action_menu',
         'selection'
     ]
 })
+
+// Separator for the message display action menu
+const menuIdTranslateSeparator = browser.menus.create({
+    type: 'separator',
+    parentId: subMenuIdTranslateAnd,
+    contexts: [
+        'message_display_action_menu',
+        'selection'
+    ],
+    visible: false
+})
+
+// Translations into the (optional) target languages selected by the user
+updateMenuWithUserTranslationPreferences()
 // <-- translate submenu
 
 const menuIdModerate = messenger.menus.create({
@@ -311,7 +330,8 @@ messenger.menus.create({
     }
 })
 
-// Invocation of the method to handle the visibility of menu options based on the user-selected LLM.
+// Invocation of the method to handle the visibility of menu options based on the
+// user-selected LLM.
 // This ensures that all menu items are properly handled at add-on startup.
 updateMenuVisibility()
 // <-- create the menu entries
@@ -444,7 +464,7 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
-    else if(info.menuItemId == menuIdTranslate) {
+    else if(info.menuItemId == menuIdTranslate || translationMenuItemIds?.includes(info.menuItemId)) {
         sendMessageToActiveTab({type: 'thinking', content: messenger.i18n.getMessage('thinking')})
 
         const textToTranslate = (info.selectionText) ? info.selectionText : await getCurrentMessageContent()
@@ -453,7 +473,16 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             sendMessageToActiveTab({type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound')})
         }
         else {
-            llmProvider.translateText(textToTranslate).then(textTranslated => {
+            let languageCode = null;
+
+            // The language code is retrieved when selected from a menu item that
+            // propagates the specific code in its ID.
+            const prefix = 'aiTranslateTo_';
+            if ((info.menuItemId as string).startsWith(prefix)) {
+                languageCode = (info.menuItemId as string).slice(prefix.length)
+            }
+
+            llmProvider.translateText(textToTranslate, languageCode).then(textTranslated => {
                 sendMessageToActiveTab({type: 'addText', content: textTranslated})
             }).catch(error => {
                 sendMessageToActiveTab({type: 'showError', content: error.message})
@@ -571,6 +600,7 @@ messenger.composeScripts.register({
 browser.runtime.onMessage.addListener(async (message) => {
     if (message.type === 'optionsChanged') {
         updateMenuVisibility()
+        updateMenuWithUserTranslationPreferences()
     }
 })
 
@@ -643,4 +673,57 @@ async function updateMenuVisibility(): Promise<void> {
         enabled: llmProvider.getCanTranslateText()
     })
     // <-- canTranslateText
+}
+
+// Updates the menu based on the user's preferred languages.
+// This function retrieves the user's language preferences and dynamically
+// updates the menu options accordingly.
+async function updateMenuWithUserTranslationPreferences(): Promise<void> {
+    const mainUserLanguageCode = await getConfig('mainUserLanguageCode')
+    const translationLanguageCodes = await getConfig('translationLanguageCodes')
+
+    // Removal of old menu items, necessary to ensure consistency of values
+    // in case the user updates their language settings.
+    translationMenuItemIds?.forEach((menuItemId: (number | string)) => {
+        messenger.menus.remove(menuItemId)
+    })
+
+    // Inhibition of visibility for the separator between general translation
+    // menu items and those specific to multiple languages.
+    messenger.menus.update(menuIdTranslateSeparator, {
+        visible: false
+    })
+
+    if(translationLanguageCodes?.length > 0) {
+        translationMenuItemIds = []
+
+        // Enabling the visibility of the separator between general translation
+        // menu items and those specific to multiple languages.
+        messenger.menus.update(menuIdTranslateSeparator, {
+            visible: true
+        })
+
+        translationLanguageCodes.forEach((languageCode: string) => {
+            const languageName = getLanguageNameFromCode(languageCode, mainUserLanguageCode)
+
+            if(languageName !== undefined) {
+                // The language code is embedded directly into the menu item ID to uniquely
+                // identify the translation target (e.g., "aiTranslateTo_it" for Italian).
+                // This allows easy lookup or removal of specific language-related menu items.
+                const menuId = `aiTranslateTo_${languageCode}`
+
+                const menuItemId = messenger.menus.create({
+                    id: menuId,
+                    title: browser.i18n.getMessage('mailTranslateTo', languageName),
+                    parentId: subMenuIdTranslateAnd,
+                    contexts: [
+                        'message_display_action_menu',
+                        'selection'
+                    ]
+                })
+
+                translationMenuItemIds.push(menuItemId)
+            }
+        })
+    }
 }

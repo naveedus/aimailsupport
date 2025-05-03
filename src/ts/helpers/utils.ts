@@ -124,18 +124,21 @@ export async function getCurrentMessageContent(): Promise<string> {
  * Retrieves the extended name of a language based on its code.
  *
  * @param {string} languageCode - The language code (e.g., 'en' for English).
+ * @param {string} locale - The locale used to format the language name, e.g.,
+ *         'it' to display names in Italian.
+ *          If not specified, 'en' (English) is used as the default.
  *
  * @returns {string | undefined} The extended name of the language if found,
- *          otherwise 'en'.
+ *          otherwise undefined.
  */
-export function getLanguageNameFromCode(languageCode: string): string | undefined {
-    const languageNames = new Intl.DisplayNames(['en'], { type: 'language' })
+export function getLanguageNameFromCode(languageCode: string, locale: string = 'en'): string | undefined {
+    const languageNames = new Intl.DisplayNames([locale], { type: 'language' })
 
     try {
         return languageNames.of(languageCode)
     } catch (error) {
         logMessage(`Error in retrieving the language name from the code: ${error}`, 'error')
-        return 'en'
+        return undefined
     }
 }
 

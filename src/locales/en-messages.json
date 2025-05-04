@@ -224,7 +224,7 @@
         "description": "Submenu option to translate the content of an email or a portion of it and apply other operation."
     },
     "mailTranslateTo": {
-        "message": "Into $language$.",
+        "message": "Into $language$",
         "description": "This message is used as a prompt or label indicating that the content should be translated into a specified language.",
         "placeholders": {
             "language": {

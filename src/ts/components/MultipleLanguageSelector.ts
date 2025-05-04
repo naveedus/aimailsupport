@@ -84,18 +84,16 @@ class MultipleLanguageSelector extends HTMLElement {
         })
 
         // Sort target list alphabetically
-        if (toTarget) {
-            const options = Array.from(target.options)
+        const options = Array.from(target.options)
 
-            const sortedOptions = options.toSorted((a: HTMLOptionElement, b: HTMLOptionElement) => {
-                const textA = a.textContent || ''
-                const textB = b.textContent || ''
+        const sortedOptions = options.toSorted((a: HTMLOptionElement, b: HTMLOptionElement) => {
+            const textA = a.textContent || ''
+            const textB = b.textContent || ''
 
-                return textA.localeCompare(textB)
-            })
+            return textA.localeCompare(textB)
+        })
 
-            target.replaceChildren(...sortedOptions)
-        }
+        target.replaceChildren(...sortedOptions)
     }
 
     // HTMLSelectElement interface proxy

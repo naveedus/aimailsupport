@@ -21,7 +21,7 @@
     },
     "mailListenAndAfter": {
         "message": "And listen",
-        "description": "Submenu option to play audio from the textual content of an email or a portion of it and following another action, such as translating the text"
+        "description": "Submenu option to play audio from the textual content of an email or a portion of it and following another action, such as translating the text."
     },
     "mailModerate": {
         "message": "Moderate",
@@ -117,7 +117,7 @@
     },
     "mailRephrase": {
         "message": "Rephrase…",
-        "description": "This option opens a submenu with various tones of voice that can be used to rephrase a text"
+        "description": "This option opens a submenu with various tones of voice that can be used to rephrase a text."
     },
     "mailRephrase.academic": {
         "message": "Academic",
@@ -209,11 +209,11 @@
     },
     "mailSummarizeAnd": {
         "message": "Summarize and…",
-        "description": "Submenu option to summarize the content of an email or a portion of it and apply other operation"
+        "description": "Submenu option to summarize the content of an email or a portion of it and apply other operation."
     },
     "mailSummarizeAndAfter": {
         "message": "And summarize",
-        "description": "Submenu option to summarize the content of an email or a portion of it and following another action, such as translating the text"
+        "description": "Submenu option to summarize the content of an email or a portion of it and following another action, such as translating the text."
     },
     "mailTranslate": {
         "message": "Translate",
@@ -221,7 +221,7 @@
     },
     "mailTranslateAnd": {
         "message": "Translate…",
-        "description": "Submenu option to translate the content of an email or a portion of it and apply other operation"
+        "description": "Submenu option to translate the content of an email or a portion of it and apply other operation."
     },
     "mailTranslateTo": {
         "message": "Into $language$.",
@@ -251,7 +251,7 @@
     },
     "options.anthropic.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://docs.anthropic.com/en/docs/about-claude/models"
+        "description": "Model to be used for all text processing: https://docs.anthropic.com/en/docs/about-claude/models."
     },
     "options.debugMode": {
         "message": "Enable debug mode",
@@ -279,7 +279,7 @@
     },
     "options.google.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://ai.google.dev/gemini-api/docs/models/gemini#model-variations"
+        "description": "Model to be used for all text processing: https://ai.google.dev/gemini-api/docs/models/gemini#model-variations."
     },
     "options.groq.apiKey": {
         "message": "API Key*",
@@ -295,7 +295,7 @@
     },
     "options.groq.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://console.groq.com/docs/models"
+        "description": "Model to be used for all text processing: https://console.groq.com/docs/models."
     },
     "options.llmProvider": {
         "message": "AI Service Provider",
@@ -335,11 +335,11 @@
     },
     "options.lms.listModelsButton": {
         "message": "List models",
-        "description": "List locally available LM Studio models"
+        "description": "List locally available LM Studio models."
     },
     "options.lms.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://lmstudio.ai/models"
+        "description": "Model to be used for all text processing: https://lmstudio.ai/models."
     },
     "options.lms.serviceUrl": {
         "message": "LM Studio services URL",
@@ -347,7 +347,7 @@
     },
     "options.lms.serviceUrl.description": {
         "message": "LM Studio can be run locally (URL: <code>http://localhost:1234</code>), or on a separate machine that can be accessed by specifying the target URL or IP address.",
-        "description": "Description explaining the target URL for invoking LM Studio services"
+        "description": "Description explaining the target URL for invoking LM Studio services."
     },
     "options.lms.warningNoModel": {
         "message": "<strong>Attention</strong>: No model found in LM Studio, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://lmstudio.ai/models\">official website</a>.",
@@ -371,11 +371,11 @@
     },
     "options.ollama.listModelsButton": {
         "message": "List models",
-        "description": "List locally available Ollama models"
+        "description": "List locally available Ollama models."
     },
     "options.ollama.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://ollama.com/library"
+        "description": "Model to be used for all text processing: https://ollama.com/library."
     },
     "options.ollama.serviceUrl": {
         "message": "Ollama services URL",
@@ -383,7 +383,7 @@
     },
     "options.ollama.serviceUrl.description": {
         "message": "Ollama can be run locally (URL: <code>http://localhost:11434</code>), or on a separate machine that can be accessed by specifying the target URL or IP address.",
-        "description": "Description explaining the target URL for invoking Ollama services"
+        "description": "Description explaining the target URL for invoking Ollama services."
     },
     "options.ollama.warningNoModel": {
         "message": "<strong>Attention</strong>: No model found in Ollama, please proceed to install a model, e.g. Llama, as indicated on the <a href=\"https://ollama.com/library\">official website</a>.",
@@ -399,7 +399,7 @@
     },
     "options.openai.model": {
         "message": "Model*",
-        "description": "Model to be used for all text processing: https://platform.openai.com/docs/models/overview"
+        "description": "Model to be used for all text processing: https://platform.openai.com/docs/models/overview."
     },
     "options.openai.organizationId": {
         "message": "Organization",

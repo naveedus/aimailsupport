@@ -1,0 +1,23 @@
+<fieldset id="lms">
+    <legend>LM Studio:</legend>
+
+    <!-- https://lms.ai/models -->
+    <div class="form-group">
+        <div class="full-description" data-l10n-ref="options.lms.description"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="lmsServiceUrl" data-l10n-ref="options.lms.serviceUrl">&nbsp;</label>
+        <input id="lmsServiceUrl" type="input" placeholder="http://localhost:1234" data-required>
+        <div class="description" data-l10n-ref="options.lms.serviceUrl.description"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="lmsModel" data-l10n-ref="options.lms.model">&nbsp;</label>
+        <select id="lmsModel" data-required></select>
+        <button id="lmsListModel" data-l10n-ref="options.lms.listModelsButton">&nbsp;</button>
+
+        <div class="description lms-error-api" data-l10n-ref="options.lms.errorApi"></div>
+        <div class="description lms-warning-no-model" data-l10n-ref="options.lms.warningNoModel"></div>
+    </div>
+</fieldset>

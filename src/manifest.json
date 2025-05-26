@@ -16,6 +16,7 @@
         "accountsRead",
         "compose",
         "menus",
+	"activeTab",
         "messagesRead",
         "messagesModify",
         "storage"

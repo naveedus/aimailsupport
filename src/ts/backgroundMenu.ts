@@ -118,6 +118,53 @@ const menuIdRephrasePolite = messenger.menus.create({
 })
 // <-- rephrase submenu
 
+// Review Code submenu -->
+const subMenuIdReviewCode = messenger.menus.create({
+    id: 'aiSubMenuReviewCode',
+    title: browser.i18n.getMessage('mailReviewCode'),
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+	'selection'
+    ]
+})
+
+const menuIdReviewCodeDetailed = messenger.menus.create({
+    id: 'aiReviewCodeDetailed',
+    title: browser.i18n.getMessage('mailReviewCode.detailed'),
+    parentId: subMenuIdReviewCode,
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+	'selection'
+    ]
+})
+
+const menuIdReviewCodeHighLevel = messenger.menus.create({
+    id: 'aiReviewCodeHighLevel',
+    title: browser.i18n.getMessage('mailReviewCode.highLevel'),
+    parentId: subMenuIdReviewCode,
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+	'selection'
+    ]
+})
+
+const menuIdReviewCodeConcise = messenger.menus.create({
+    id: 'aiReviewCodeConcise',
+    title: browser.i18n.getMessage('mailReviewCode.concise'),
+    parentId: subMenuIdReviewCode,
+    contexts: [
+        'compose_action_menu',
+        'message_display_action_menu',
+	'selection'
+    ]
+})
+// <-- Review Code submenu
+
+
+
 // Suggest reply submenu -->
 const subMenuIdSuggestReply = messenger.menus.create({
     id: 'aiSubMenuSuggestReply',
@@ -399,6 +446,52 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
                 sendMessageToActiveTab({type: 'showError', content: error.message})
                 logMessage(`Error during rephrasing: ${error.message}`, 'error')
             })
+        }
+    }
+    else if (
+        info.menuItemId === menuIdReviewCodeDetailed ||
+        info.menuItemId === menuIdReviewCodeHighLevel ||
+        info.menuItemId === menuIdReviewCodeConcise
+    ) {
+        sendMessageToActiveTab({
+            type: 'thinking',
+            content: messenger.i18n.getMessage('thinking')
+        })
+
+        const codeToReview = info.selectionText
+            ? info.selectionText
+            : await getCurrentMessageContent()
+
+        if (!codeToReview) {
+            sendMessageToActiveTab({
+                type: 'showError',
+                content: messenger.i18n.getMessage('errorTextNotFound')
+            })
+        } else {
+            let reviewStyle: 'detailed' | 'high-level' | 'concise'
+
+            if (info.menuItemId === menuIdReviewCodeDetailed) {
+                reviewStyle = 'detailed'
+            } else if (info.menuItemId === menuIdReviewCodeHighLevel) {
+                reviewStyle = 'high-level'
+            } else {
+                reviewStyle = 'concise'
+            }
+
+            llmProvider.reviewCode(codeToReview, reviewStyle)
+                .then(reviewedCode => {
+                    sendMessageToActiveTab({
+                        type: 'addText',
+                        content: reviewedCode
+                    })
+                })
+                .catch(error => {
+                    sendMessageToActiveTab({
+                        type: 'showError',
+                        content: error.message
+                    })
+                    logMessage(`Error during code review: ${error.message}`, 'error')
+                })
         }
     }
     else if([menuIdSuggestReplyStandard, menuIdSuggestReplyFluid, menuIdSuggestReplyCreative, menuIdSuggestReplySimple,

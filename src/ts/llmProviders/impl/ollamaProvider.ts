@@ -8,6 +8,7 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation:
  * https://github.com/ollama/ollama/blob/main/docs/api.md
  */
+export type ReviewStyle = 'detailed' | 'high-level' | 'concise';
 export class OllamaProvider extends GenericProvider {
     private readonly temperature: number
     private readonly serviceUrl: string
@@ -60,6 +61,21 @@ export class OllamaProvider extends GenericProvider {
 
         return this.manageMessageContent(this.PROMPTS.REPHRASE.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode))
             .replace('%toneOfVoice%', toneOfVoice), input)
+    }
+
+    public async reviewCode(input: string, reviewStyle: ReviewStyle = 'detailed'): Promise<string> {
+        const allowedStyles: ReviewStyle[] = ['detailed', 'high-level', 'concise']
+        if (!allowedStyles.includes(reviewStyle)) {
+            throw new Error(`Invalid review style: ${reviewStyle}`)
+    }
+
+    logMessage(`Review text in style "${reviewStyle}" (${getLanguageNameFromCode(this.mainUserLanguageCode)}): ${input}`, 'debug')
+    return this.manageMessageContent(
+        this.PROMPTS.REVIEW_PATCH
+          .replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode))
+          .replace('%reviewStyle%', reviewStyle),
+        input
+     )
     }
 
     public async suggestImprovementsForText(input: string): Promise<string> {

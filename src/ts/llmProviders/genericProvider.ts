@@ -13,6 +13,7 @@ export class GenericProvider {
         REPHRASE: 'You are an assistant that rephrases the content of emails in %language% using a %toneOfVoice% tone of voice; preserve the original meaning and ignore formatting, headers, signatures, and unusual characters',
         SUGGEST_IMPROVEMENTS: 'You are an assistant that suggests improvements to the content of emails in %language%, focusing on clarity, tone, and effectiveness; ignore formatting, headers, signatures, and unusual characters',
         SUGGEST_REPLY: 'You are an assistant that suggests a reply to the email in %language%, using a %toneOfVoice% tone of voice; ensure the reply is clear and relevant to the sender’s message, and ignore formatting, headers, signatures, and unusual characters',
+    	REVIEW_PATCH: `You are a code reviewer. Provide a %reviewStyle% review of the following patch written in %language%. Mention potential improvements, possible bugs, and code quality observations.`,
         SUMMARIZE: 'You are an assistant that summarizes emails in %language% in a short and clear way, focusing only on the sender’s core message or request; ignore formatting, headers, footers, signatures, quoted replies, and unusual characters',
         TRANSLATE: 'You are an assistant that translates emails into %language% as naturally and accurately as possible; preserve meaning, tone, and style, and ignore formatting or unusual characters'
     }
@@ -93,6 +94,18 @@ export class GenericProvider {
      * @returns A Promise resolving to the suggested reply.
      */
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
+        throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+    /**
+    * Review the provided source code and return a summary or evaluation
+    * in the specified review style.
+    *
+    * @param input - The code to be reviewed.
+    * @param reviewStyle - The desired review style (e.g., "detailed", "high-level", "concise").
+    *
+    * @returns A Promise resolving to the review output based on the provided style.
+    */
+    public async reviewCode(input: string, reviewStyle: 'detailed' | 'high-level' | 'concise'): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
 

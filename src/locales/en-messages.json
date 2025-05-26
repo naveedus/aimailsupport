@@ -155,6 +155,22 @@
         "message": "Standard",
         "description": "This option rephrases the input text ensuring a standard tone of voice."
     },
+    "mailReviewCode": {
+        "message": "Review Code",
+        "description": "This option suggests code review options"
+    },
+    "mailReviewCode.detailed": {
+        "message": "Detailed Review",
+        "description": "Detailed code review"
+    },
+    "mailReviewCode.highLevel": {
+        "message": "High-Level Review",
+        "description": "High-level summary code review"
+    },
+    "mailReviewCode.concise": {
+        "message": "Concise Review",
+        "description": "Concise style code review"
+    },
     "mailSuggestImprovements": {
         "message": "Suggest improvements",
         "description": "This option suggest improvements to an email."

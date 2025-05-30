@@ -8,6 +8,7 @@ import { getLanguageNameFromCode, logMessage } from '../../helpers/utils'
  * Official documentation:
  * https://github.com/ollama/ollama/blob/main/docs/api.md
  */
+export type ReviewStyle = 'detailed' | 'high-level' | 'concise';
 export class OllamaProvider extends GenericProvider {
     private readonly temperature: number
     private readonly serviceUrl: string
@@ -62,7 +63,32 @@ export class OllamaProvider extends GenericProvider {
             .replace('%toneOfVoice%', toneOfVoice), input)
     }
 
-    public async suggestImprovementsForText(input: string): Promise<string> {
+    public async reviewCodeDetailed(input: string): Promise<string> {
+       const lang = getLanguageNameFromCode(this.mainUserLanguageCode);
+       logMessage(`Detailed review (${lang}): ${input}`, 'debug');
+       return this.manageMessageContent(
+            this.PROMPTS.REVIEW_CODE_DETAILED.replace('%language%', lang),
+            input);
+    }
+
+    public async reviewCodeHighLevel(input: string): Promise<string> {
+    	const lang = getLanguageNameFromCode(this.mainUserLanguageCode);
+    	logMessage(`High-level review (${lang}): ${input}`, 'debug');
+    	return this.manageMessageContent(
+        	this.PROMPTS.REVIEW_CODE_HIGH_LEVEL.replace('%language%', lang),
+        	input);
+    }
+
+    public async reviewCodeConcise(input: string): Promise<string> {
+    	const lang = getLanguageNameFromCode(this.mainUserLanguageCode);
+    	logMessage(`Concise review (${lang}): ${input}`, 'debug');
+    	return this.manageMessageContent(
+        	this.PROMPTS.REVIEW_CODE_CONCISE.replace('%language%', lang),
+        	input);
+    }
+
+ 
+   public async suggestImprovementsForText(input: string): Promise<string> {
         logMessage(`Request suggest improvements in ${getLanguageNameFromCode(this.mainUserLanguageCode)} for the text: ${input}`, 'debug')
 
         return this.manageMessageContent(this.PROMPTS.SUGGEST_IMPROVEMENTS.replace('%language%', getLanguageNameFromCode(this.mainUserLanguageCode)), input)

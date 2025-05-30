@@ -118,6 +118,36 @@ const menuIdRephrasePolite = messenger.menus.create({
 })
 // <-- rephrase submenu
 
+messenger.menus.create({
+  id: 'aiReviewCodeDetailed',
+  title: browser.i18n.getMessage('mailReviewCode.detailed'),
+  contexts: [
+    'compose_action_menu',
+    'message_display_action_menu',
+    'selection'
+  ]
+});
+
+messenger.menus.create({
+  id: 'aiReviewCodeHighLevel',
+  title: browser.i18n.getMessage('mailReviewCode.highLevel'),
+  contexts: [
+    'compose_action_menu',
+    'message_display_action_menu',
+    'selection'
+  ]
+});
+
+messenger.menus.create({
+  id: 'aiReviewCodeConcise',
+  title: browser.i18n.getMessage('mailReviewCode.concise'),
+  contexts: [
+    'compose_action_menu',
+    'message_display_action_menu',
+    'selection'
+  ]
+});
+
 // Suggest reply submenu -->
 const subMenuIdSuggestReply = messenger.menus.create({
     id: 'aiSubMenuSuggestReply',
@@ -401,6 +431,37 @@ messenger.menus.onClicked.addListener(async (info: browser.menus.OnClickData) =>
             })
         }
     }
+    else if (
+    	info.menuItemId === 'aiReviewCodeDetailed' || 
+    	info.menuItemId === 'aiReviewCodeHighLevel' || 
+    	info.menuItemId === 'aiReviewCodeConcise'
+	){
+    	sendMessageToActiveTab({ type: 'thinking', content: messenger.i18n.getMessage('thinking') });
+
+    	const textToReview = info.selectionText ? info.selectionText : await getCurrentMessageContent();
+
+    	if (textToReview == null) {
+        	sendMessageToActiveTab({ type: 'showError', content: messenger.i18n.getMessage('errorTextNotFound') });
+    	} else {
+        	try {
+            	let reviewPromise: Promise<string>;
+
+            	if (info.menuItemId === 'aiReviewCodeHighLevel') {
+                	reviewPromise = llmProvider.reviewCodeHighLevel(textToReview);
+            	}else if (info.menuItemId === 'aiReviewCodeConcise') {
+                	reviewPromise = llmProvider.reviewCodeConcise(textToReview);
+            	} else {
+                	reviewPromise = llmProvider.reviewCodeDetailed(textToReview);
+            	}
+
+            	const textReviewed = await reviewPromise;
+            	sendMessageToActiveTab({ type: 'addText', content: textReviewed });
+        	} catch (error: any) {
+            		sendMessageToActiveTab({ type: 'showError', content: error.message });
+            		logMessage(`Error during code review: ${error.message}`, 'error');
+        		}
+    		}
+	}	
     else if([menuIdSuggestReplyStandard, menuIdSuggestReplyFluid, menuIdSuggestReplyCreative, menuIdSuggestReplySimple,
             menuIdSuggestReplyFormal, menuIdSuggestReplyAcademic, menuIdSuggestReplyExpanded, menuIdSuggestReplyShortened,
             menuIdSuggestReplyPolite].includes(info.menuItemId)) {

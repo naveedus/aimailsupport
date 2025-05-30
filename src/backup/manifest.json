@@ -1,14 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "Ollama Email Inference",
+    "name": "AI Mail Support",
     "description": "__MSG_addonDescription__",
-    "version": "0.99",
-    "author": "Naveed",
-    "homepage_url": "http://localhost",
+    "version": "0.91",
+    "author": "Yellow Sakura",
+    "homepage_url": "https://www.yellowsakura.com",
     "default_locale": "en",
     "browser_specific_settings": {
         "gecko": {
-            "id": "support@localhost.com",
+            "id": "ai-mail-support@yellowsakura.com",
             "strict_min_version": "115.0"
         }
     },
@@ -16,10 +16,12 @@
         "accountsRead",
         "compose",
         "menus",
-	"activeTab",
         "messagesRead",
         "messagesModify",
-        "storage"
+        "sensitiveDataUpload",
+        "storage",
+        "https://api.anthropic.com/",
+        "https://api.x.ai/"
     ],
     "icons": {
         "64": "images/bot-icon-color-64.webp",

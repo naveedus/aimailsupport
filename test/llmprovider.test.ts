@@ -51,8 +51,8 @@ const configs: ConfigType = {
     },
 
     ollama: {
-        serviceUrl: 'http://localhost:11434',
-        model: 'llama3.2:1b'
+        serviceUrl: 'http://9.3.90.12:11434',
+        model: 'granite3.2:latest'
     },
 
     openai: {
@@ -378,6 +378,11 @@ describe('OllamaProvider', () => {
 
     test('should be able to suggest how to improve a text', async () => {
         const output = await provider.suggestImprovementsForText('Example of text to improve')
+        expect(typeof output).toBe('string')
+    })
+
+    test('should be able to review the patch',async() => {
+	const output = await provider.reviewCodeDetailed('Example of code to review');
         expect(typeof output).toBe('string')
     })
 

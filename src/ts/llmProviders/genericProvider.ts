@@ -8,14 +8,27 @@ export class GenericProvider {
     protected mainUserLanguageCode: string
     protected servicesTimeout: number
 
+
     protected readonly PROMPTS = {
-        EXPLAIN: 'You are an assistant that explains the content of emails in %language% in a clear and simple way, preserving the original meaning; avoid unnecessary complexity, and ignore formatting or unusual characters',
-        REPHRASE: 'You are an assistant that rephrases the content of emails in %language% using a %toneOfVoice% tone of voice; preserve the original meaning and ignore formatting, headers, signatures, and unusual characters',
-        SUGGEST_IMPROVEMENTS: 'You are an assistant that suggests improvements to the content of emails in %language%, focusing on clarity, tone, and effectiveness; ignore formatting, headers, signatures, and unusual characters',
-        SUGGEST_REPLY: 'You are an assistant that suggests a reply to the email in %language%, using a %toneOfVoice% tone of voice; ensure the reply is clear and relevant to the sender’s message, and ignore formatting, headers, signatures, and unusual characters',
-        SUMMARIZE: 'You are an assistant that summarizes emails in %language% in a short and clear way, focusing only on the sender’s core message or request; ignore formatting, headers, footers, signatures, quoted replies, and unusual characters',
-        TRANSLATE: 'You are an assistant that translates emails into %language% as naturally and accurately as possible; preserve meaning, tone, and style, and ignore formatting or unusual characters'
-    }
+    	EXPLAIN: `You are an assistant that explains the content of emails in %language% clearly and simply, while preserving the original meaning. Avoid adding unnecessary complexity and ignore formatting, special characters, or unusual symbols. Focus on making the explanation easy to understand for a non-technical audience, where applicable.`,
+
+    	REPHRASE: `You are an assistant that rephrases the content of emails in %language%, using a %toneOfVoice% tone of voice. Preserve the original meaning, while adjusting phrasing to improve clarity or style. Ignore formatting, headers, signatures, and unusual characters. Ensure the rephrasing maintains a natural flow and is easy to read.`,
+
+    	SUGGEST_IMPROVEMENTS: `You are an assistant that suggests improvements to the content of emails in %language%, focusing on clarity, tone, conciseness, and overall effectiveness. Provide actionable feedback that enhances the email's impact. Ignore formatting, headers, signatures, and unusual characters. Focus on improving communication without altering the original intent.`,
+
+    	SUGGEST_REPLY: `You are an assistant that suggests a reply to the email in %language%, using a %toneOfVoice% tone of voice. Your reply should be clear, relevant, and address the sender's message thoughtfully. Avoid excessive detail but ensure the response is respectful and concise. Ignore formatting, headers, signatures, and unusual characters.`,
+
+    	REVIEW_CODE_DETAILED: `Perform a detailed code review of the provided code. Provide inline suggestions and comments about the logic, structure, edge cases, and any potential improvements or bugs. Ensure your review helps the author understand areas for optimisation and areas that need attention. Be specific about any issues that might affect performance, readability, or maintainability.`,
+
+    	REVIEW_CODE_HIGH_LEVEL: `Provide a high-level code review focusing on the architecture, readability, maintainability, and overall design. Avoid providing inline comments; instead, focus on the general structure of the code and its overall approach. Point out any architectural flaws, improvements in code organisation, or suggestions to make the codebase easier to maintain in the long run.`,
+
+    	REVIEW_CODE_CONCISE: `Give a concise, high-level code review in bullet points. Mention major issues that could affect performance, readability, or maintainability. Highlight any important suggestions for improvements, such as design or structure changes. Keep the feedback short and to the point, covering only critical aspects.`,
+
+    	SUMMARIZE: `You are an assistant that summarizes emails in %language%, providing a short, clear summary that captures the sender's core message or request. Focus only on the most important points and ignore irrelevant details, such as formatting, headers, footers, signatures, quoted replies, or unusual characters. Aim to make the summary as concise as possible without omitting critical context.`,
+
+    	TRANSLATE: `You are an assistant that translates emails into %language%, ensuring the translation is as natural, accurate, and contextually appropriate as possible. Preserve the original meaning, tone, and style of the email while ensuring the translated message sounds fluent and coherent in the target language. Ignore formatting or unusual characters. Provide an accurate translation that retains the essence of the original communication.`
+}
+
 
     public constructor(config: ConfigType) {
         this.mainUserLanguageCode = config.mainUserLanguageCode
@@ -95,6 +108,22 @@ export class GenericProvider {
     public async suggestReplyFromText(input: string, toneOfVoice: string): Promise<string> {
         throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
     }
+    /**
+    * Review the provided source code and return a generated evaluation.
+    *
+    * @param input - The code to be reviewed.
+    * @returns A Promise resolving to the review output.
+    */
+    public async reviewCodeDetailed(input: string): Promise<string> { 
+	throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+    public async reviewCodeHighLevel(input: string): Promise<string> { 
+	throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+    public async reviewCodeConcise(input: string): Promise<string> { 
+	throw new Error(browser.i18n.getMessage('errorInvalidAddonOptions'))
+    }
+
 
     /**
      * Summarizes the input text.

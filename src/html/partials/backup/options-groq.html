@@ -1,0 +1,18 @@
+<fieldset id="groq">
+    <legend>Groq cloud:</legend>
+
+    <div class="form-group">
+        <label for="groqApiKey" data-l10n-ref="options.groq.apiKey">&nbsp;</label>
+        <input id="groqApiKey" is="password-toggle" data-required>
+        <div class="description" data-l10n-ref="options.groq.apiKey.description"></div>
+    </div>
+
+    <!-- https://console.groq.com/docs/models -->
+    <div class="form-group">
+        <label for="groqModel" data-l10n-ref="options.groq.model">&nbsp;</label>
+        <select id="groqModel" data-required></select>
+        <button id="groqListModel" data-l10n-ref="options.groq.listModelsButton">&nbsp;</button>
+
+        <div class="description groq-error-api"></div>
+    </div>
+</fieldset>

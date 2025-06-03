@@ -37,9 +37,17 @@
                 <select id="llmProvider" required>
                     <option disabled selected data-l10n-ref="options.llmProvider.default"></option>
                     <!--
+                    <option value="anthropic">Anthropic Claude</option>
+                    <option value="google">Google Gemini</option>
+                    <option value="groq">Groq cloud (Gemma, Llama, Mistral)</option>
+                    <option value="deepseek">Hangzhou DeepSeek AI</option>
+                    <option value="lms">LM Studio (Gemma, Llama, Mistral, Phi, StarCoder, &hellip;)</option>
+                    <option value="mistral">Mistral</option>
                     -->
                     <option value="ollama">Ollama (IBM Granite3.1, Granite3.2, Granite3.3 &hellip;)</option>
                     <!--
+                    <option value="openai">OpenAI GPT</option>
+                    <option value="xai">xAI Grok</option>
                     -->
                 </select>
 
@@ -65,8 +73,32 @@
                 <input type="checkbox" id="debugMode">
             </div>
 
+            <!-- Anthropic Claude section -->
+            <include src="partials/options-anthropic-claude.html"></include><!-- /Anthropic Claude section -->
+
+            <!-- DeepSeek section -->
+            <include src="partials/options-deepseek.html"></include><!-- /DeepSeek section -->
+
+            <!-- Google Gemini section -->
+            <include src="partials/options-google-gemini.html"></include><!-- /Google Gemini section -->
+
+            <!-- Groq section -->
+            <include src="partials/options-groq.html"></include><!-- /Groq section -->
+
+            <!-- LM Studio section -->
+            <include src="partials/options-lms.html"></include><!-- /LM Studio section -->
+
+            <!-- Mistral AI section -->
+            <include src="partials/options-mistral.html"></include><!-- / Mistral AI section -->
+
             <!-- Ollama section -->
             <include src="partials/options-ollama.html"></include><!-- /Ollama section -->
+
+            <!-- OpenAI GPT section -->
+            <include src="partials/options-openai-gpt.html"></include><!-- /OpenAI GPT section -->
+
+            <!-- xAI Grok section -->
+            <include src="partials/options-xai-grok.html"></include><!-- /xAI Grok section -->
 
             <div class="form-group buttons">
                 <button type="button" class="test" data-l10n-ref="options.testButton" disabled>&nbsp;</button>
@@ -80,6 +112,10 @@
         <script type="module" src="../ts/components/PasswordToggle.ts"></script>
 
         <!-- Options: -->
+        <script type="module" src="../ts/options/options.ts"></script>
+        <script type="module" src="../ts/options/optionsGroq.ts"></script>
+        <script type="module" src="../ts/options/optionsLms.ts"></script>
         <script type="module" src="../ts/options/optionsOllama.ts"></script>
+        <script type="module" src="../ts/options/optionsOpenai.ts"></script>
     </body>
 </html>

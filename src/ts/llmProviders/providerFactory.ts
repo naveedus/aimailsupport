@@ -4,11 +4,28 @@
  */
 import { GenericProvider } from './genericProvider'
 import { ConfigType } from '../helpers/configType'
+
+import { AnthropicClaudeProvider } from './impl/anthropicClaudeProvider'
+import { DeepseekProvider } from './impl/deepseekProvider'
+import { GoogleGeminiProvider } from './impl/googleGeminiProvider'
+import { GroqProvider } from './impl/groqProvider'
+import { LmsProvider } from './impl/lmsProvider'
+import { MistralProvider } from './impl/mistralProvider'
 import { OllamaProvider } from './impl/ollamaProvider'
+import { OpenAiGptProvider } from './impl/openAiGptProvider'
+import { XaiGrokProvider } from './impl/xaiGrokProvider'
 
 // Static map to associate the provider name with the corresponding class
 const providerMap: Record<string, new (config: ConfigType) => GenericProvider> = {
-    ollama: OllamaProvider
+    anthropic: AnthropicClaudeProvider,
+    deepseek: DeepseekProvider,
+    google: GoogleGeminiProvider,
+    groq: GroqProvider,
+    lms: LmsProvider,
+    mistral: MistralProvider,
+    ollama: OllamaProvider,
+    openai: OpenAiGptProvider,
+    xai: XaiGrokProvider
 }
 
 export class ProviderFactory {

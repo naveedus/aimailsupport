@@ -196,6 +196,7 @@ $options-labels-width: 150px;
             &.local-llm-warning-timeout {
                 display: none;
 
+                body[data-provider='lms'] &,
                 body[data-provider='ollama'] & {
                     display: block;
                 }
@@ -241,7 +242,15 @@ $options-labels-width: 150px;
             padding: 10px 0 0 0;
         }
 
-        body[data-provider='ollama'] &#ollama {
+        body[data-provider='anthropic'] &#anthropic,
+        body[data-provider='deepseek'] &#deepseek,
+        body[data-provider='google'] &#google,
+        body[data-provider='groq'] &#groq,
+        body[data-provider='lms'] &#lms,
+        body[data-provider='mistral'] &#mistral,
+        body[data-provider='ollama'] &#ollama,
+        body[data-provider='openai'] &#openai,
+        body[data-provider='xai'] &#xai {
             display: block;
         }
     }

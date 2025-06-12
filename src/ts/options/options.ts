@@ -83,45 +83,9 @@ document.querySelector('#optionsForm').addEventListener('submit', async (event) 
         temperature: parseFloat(document.querySelector<HTMLInputElement>('#llmTemperature').value),
         servicesTimeout: parseInt(document.querySelector<HTMLInputElement>('#servicesTimeout').value),
         debugMode: document.querySelector<HTMLInputElement>('#debugMode').checked,
-        anthropic: {
-            apiKey: document.querySelector<HTMLInputElement>('#anthropicApiKey').value,
-            model: document.querySelector<HTMLInputElement>('#anthropicModel').value
-        },
-        deepseek: {
-            apiKey: document.querySelector<HTMLInputElement>('#deepseekApiKey').value
-        },
-        google: {
-            apiKey: document.querySelector<HTMLInputElement>('#googleApiKey').value,
-            model: document.querySelector<HTMLInputElement>('#googleModel').value
-        },
-        groq: {
-            apiKey: document.querySelector<HTMLInputElement>('#groqApiKey').value,
-            model: document.querySelector<HTMLInputElement>('#groqModel').value
-        },
-        lms: {
-            serviceUrl: document.querySelector<HTMLInputElement>('#lmsServiceUrl').value,
-            model: document.querySelector<HTMLInputElement>('#lmsModel').value
-        },
-        mistral: {
-            apiKey: document.querySelector<HTMLInputElement>('#mistralApiKey').value
-        },
         ollama: {
             serviceUrl: document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value,
             model: document.querySelector<HTMLInputElement>('#ollamaModel').value
-        },
-        openai: {
-            apiKey: document.querySelector<HTMLInputElement>('#openaiApiKey').value,
-            organizationId: document.querySelector<HTMLInputElement>('#openaiOrganizationId').value,
-            model: document.querySelector<HTMLInputElement>('#openaiModel').value,
-            text2speech: {
-                audioQuality: document.querySelector<HTMLInputElement>('#openaiText2SpeechAudioQuality').value,
-                voice: document.querySelector<HTMLInputElement>('#openaiText2SpeechVoice').value,
-                speed: parseFloat(document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value)
-            }
-        },
-        xai: {
-            apiKey: document.querySelector<HTMLInputElement>('#xaiApiKey').value,
-            model: document.querySelector<HTMLInputElement>('#xaiModel').value
         }
     }
     // <-- store options
@@ -170,54 +134,12 @@ document.addEventListener('DOMContentLoaded', async _ => {
     document.querySelector<HTMLInputElement>('#servicesTimeout').value = (configs.servicesTimeout || 12).toString()
     document.querySelector<HTMLInputElement>('#debugMode').checked = configs.debugMode
 
-    // Anthropic Claude section -->
-    document.querySelector<HTMLInputElement>('#anthropicApiKey').value = configs.anthropic?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#anthropicModel').value = configs.anthropic?.model || 'claude-3-haiku-20240307'
-    // <-- Anthropic Claude section
-
-    // DeepSeek section -->
-    document.querySelector<HTMLInputElement>('#deepseekApiKey').value = configs.deepseek?.apiKey || ''
-    // <-- DeepSeek section
-
-    // Google Gemini section -->
-    document.querySelector<HTMLInputElement>('#googleApiKey').value = configs.google?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#googleModel').value = configs.google?.model || 'gemini-1.5-flash'
-    // <-- Google Gemini section
-
-    // Groq section -->
-    document.querySelector<HTMLInputElement>('#groqApiKey').value = configs.groq?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#groqModel').value = configs.groq?.model || ''
-    // <-- Groq section
-
-    // LM Studio section -->
-    document.querySelector<HTMLInputElement>('#lmsServiceUrl').value = configs.lms?.serviceUrl || 'http://localhost:1234'
-    document.querySelector<HTMLInputElement>('#lmsModel').value = configs.lms?.model || ''
-    // <-- LM Studio section
-
-    // Mistral AI section -->
-    document.querySelector<HTMLInputElement>('#mistralApiKey').value = configs.mistral?.apiKey || ''
-    // <-- Mistral AI section
 
     // Ollama section -->
     document.querySelector<HTMLInputElement>('#ollamaServiceUrl').value = configs.ollama?.serviceUrl || 'http://localhost:11434'
     document.querySelector<HTMLInputElement>('#ollamaModel').value = configs.ollama?.model || ''
     // <-- Ollama section
 
-    // OpenAI GPT section -->
-    document.querySelector<HTMLInputElement>('#openaiApiKey').value = configs.openai?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#openaiOrganizationId').value = configs.openai?.organizationId || ''
-    document.querySelector<HTMLInputElement>('#openaiModel').value = configs.openai?.model || 'gpt-4o-mini'
-    document.querySelector<HTMLInputElement>('#openaiText2SpeechAudioQuality').value = configs.openai?.text2speech?.audioQuality || 'tts-1'
-    document.querySelector<HTMLInputElement>('#openaiText2SpeechVoice').value = configs.openai?.text2speech?.voice || 'onyx'
-    document.querySelector<HTMLAudioElement>('#openaiText2SpeechVoicePreview audio').setAttribute('src', `https://cdn.openai.com/API/docs/audio/${document.querySelector<HTMLInputElement>('#openaiText2SpeechVoice').value}.wav`)
-    document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value = (configs.openai?.text2speech?.speed || 1).toString()
-    document.querySelector<HTMLInputElement>('label[for=openaiText2SpeechSpeed] span').innerText = parseFloat(document.querySelector<HTMLInputElement>('#openaiText2SpeechSpeed').value).toFixed(2)
-    // <-- OpenAI GPT section
-
-    // xAI Grok section -->
-    document.querySelector<HTMLInputElement>('#xaiApiKey').value = configs.xai?.apiKey || ''
-    document.querySelector<HTMLInputElement>('#xaiModel').value = configs.xai?.model || 'grok-2-latest'
-    // <-- xAI Grok section
 
     updateDOMBasedOnSelectLlmProvider(selectedLlmProvider)
 

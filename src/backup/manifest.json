@@ -20,8 +20,6 @@
         "messagesModify",
         "sensitiveDataUpload",
         "storage",
-        "https://api.anthropic.com/",
-        "https://api.x.ai/"
     ],
     "icons": {
         "64": "images/bot-icon-color-64.webp",
